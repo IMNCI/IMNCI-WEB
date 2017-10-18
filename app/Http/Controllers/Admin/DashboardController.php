@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Review;
+use App\AppUser;
 
 class DashboardController extends Controller
 {
@@ -19,7 +20,7 @@ class DashboardController extends Controller
     }
 
     function index(){
-    	$reviews = Review::orderBy('created_at', 'DESC')->get();
-    	return view('dashboard/dashboard/index')->with(['reviews'=>$reviews]);
+        $appusers = AppUser::get();
+    	return view('dashboard/dashboard/index')->with(['appusers'=>$appusers]);
     }
 }
