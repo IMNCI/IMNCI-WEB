@@ -9,7 +9,7 @@
 
 @section('content')
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-9">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					App Users
@@ -48,8 +48,23 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
-			
+		<div class="col-md-3">
+			<div class="ibox">
+				<div class="ibox-content">
+					<h5>Users</h5>
+					<h1 class="no-margins">{{ count($appusers) }}</h1>
+					<div class="stat-percent font-bold text-navy"><i class="fa fa-users"></i></div>
+					<small>Total users</small>
+				</div>
+			</div>
+			<div class="ibox">
+				<div class="ibox-content">
+					<h5>Rating</h5>
+					<h1 class="no-margins">{{ number_format($rating, 1) }}</h1>
+					<div class="stat-percent font-bold text-navy"><i class="fa fa-star-half-o"></i></div>
+					<small>Average Rating</small>
+				</div>
+			</div>
 		</div>
 	</div>
 @stop

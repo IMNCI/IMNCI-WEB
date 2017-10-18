@@ -21,6 +21,7 @@ class DashboardController extends Controller
 
     function index(){
         $appusers = AppUser::get();
-    	return view('dashboard/dashboard/index')->with(['appusers'=>$appusers]);
+        $average = Review::avg('rating');
+    	return view('dashboard/dashboard/index')->with(['appusers'=>$appusers, 'rating'    =>  $average]);
     }
 }
