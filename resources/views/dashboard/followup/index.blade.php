@@ -22,7 +22,7 @@
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="form-group">
-								<label class="control-label">Age Group</label>
+								<label class="control-label">Cohort</label>
 								{{ Form::select('age-group', $age_groups, null, ['class'=>'form-control']) }}
 							</div>
 						</div>
@@ -40,10 +40,10 @@
 								<textarea class="form-control" rows="8" name = "advice_textarea"></textarea>
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<button class="btn btn-primary" id="save-advice">Save Advice</button>
 								<p id = "wait-save-advice">Please wait...</p>
-							</div>
+							</div> -->
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
@@ -51,11 +51,13 @@
 								<textarea class="form-control" rows="8" name = "treatment_textarea"></textarea>
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<button class="btn btn-primary" id="save-treatment">Save Treatment</button>
 								<p id = "wait-save-treatment">Please wait...</p>
-							</div>
+							</div> -->
 						</div>
+
+						<button id="save-advice-treatment" class="btn btn-success btn-block">Save Advice & Treatment</button>
 					</div>
 				</div>
 			</div>
@@ -137,12 +139,45 @@
 			var ailment_id = $('select[name="ailments"]').val();
 
 			var data = {
+				'advice' 		: advice,
 				'treatment' 		: treatment,
 				'ailment_id'	: ailment_id
 			};
 
 			$.ajax({
 				url			: '/api/addTreatment',
+				type		: 'post',
+				data 		: data,
+				beforeSend	: function(){
+					$('#wait-save-treatment').show();
+					$('#save-treatment').attr('disabled');
+				},
+				success		: function(res){
+					toastr.success("Follow up treatment saved successfully");
+					$('#wait-save-treatment').hide();
+					$('#save-treatment').removeAttr('disabled');
+				},
+				error: 		 function(){
+					toastr.error("There was an error while saving your data");
+					$('#wait-save-treatment').hide();
+					$('#save-treatment').removeAttr('disabled');
+				} 
+			});
+		});
+
+		$('#save-advice-treatment').click(function(){
+			var treatment = $('textarea[name="treatment_textarea"]').val();
+			var advice = $('textarea[name="advice_textarea"]').val();
+			var ailment_id = $('select[name="ailments"]').val();
+
+			var data = {
+				'advice' 		: advice,
+				'treatment' 	: treatment,
+				'ailment_id'	: ailment_id
+			};
+
+			$.ajax({
+				url			: '/api/addAdviceTreatment',
 				type		: 'post',
 				data 		: data,
 				beforeSend	: function(){

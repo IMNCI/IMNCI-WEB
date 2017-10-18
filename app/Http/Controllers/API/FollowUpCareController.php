@@ -47,6 +47,40 @@ class FollowUpCareController extends Controller
 		return FollowUpCareTreatment::create($request->all());
 	}
 
+	function addAdiveTreatment(Request $request){
+		$ailment_id = $request->input('ailment_id');
+		$treatment = FollowUpCareTreatment::where('ailment_id', $ailment_id)->first();
+		$advice = FollowUpCareAdvice::where('ailment_id', $ailment_id)->first();
+
+		if ($treatment) {
+			$treatment->treatment = $request->input('treatment');
+
+			$treatment->save();
+		}else{
+			$treatment = new \StdClass;
+
+			$treatment->ailment_id = $ailment_id;
+			$treatment->treatment = $request->input('treatment');
+
+			$treatment = (array)$treatment;
+			FollowUpCareTreatment::create($treatment);
+			// $treatment->save();
+		}
+
+
+		if ($advice) {
+			$advice->advice = $request->input('advice');
+
+			$advice->save();
+		}else{
+			$advice->ailment_id = $ailment_id;
+			$advice->advice = $request->input('advice');
+
+			$advice = (array) $advice;
+			FollowUpCareAdvice::create($advice);
+		}
+	}
+
 	function get(){
 		$advices = FollowUpCareAdvice::all();
 		$treatments = FollowUpCareTreatment::all();

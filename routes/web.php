@@ -17,8 +17,12 @@ Route::get('/', function () {
 
 Route::get('/admin', 'Admin\DashboardController@index')->name('admin');
 Route::get('/assess_classify_treatment', 'Admin\AssessClassifyTreatmentController@index')->name('assess_classify_treatment');
+Route::get('/classifications', 'Admin\AssessClassifyTreatmentController@classification');
+Route::get('classifications/{id}', 'Admin\AssessClassifyTreatmentController@classification');
+Route::get('signs-and-treatments/{id}', 'Admin\AssessClassifyTreatmentController@signsandtreatments');
 Route::get('/followUpCare', 'Admin\FollowUpCareController@index')->name('follow_up');
 Route::get('/reviews', 'Admin\ReviewController@index')->name('reviews');
+Route::get('/glossary', 'Admin\GlossaryController@index')->name('glossary');
 
 Auth::routes();
 

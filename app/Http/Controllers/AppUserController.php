@@ -12,6 +12,14 @@ class AppUserController extends Controller
     }
 
     public function addappuser(Request $request){
-    	return AppUser::create($request->all());
+    	$display_no = $request->input('display_no');
+
+    	$appuser = AppUser::where('display_no', $display_no)->first();
+    	if ($appuser) {
+    		$appuser->phone_id = $request->input('phone_id');
+    	}else{
+    		$appuser = AppUser::create($request->all());
+    	}
+    	return $appuser;
     }
 }
