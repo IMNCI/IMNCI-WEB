@@ -9,7 +9,11 @@ use App\Glossary;
 
 class GlossaryController extends Controller
 {
-    //
+    public function index(){
+    	return Glossary::all();
+    }
+
+
     public function store(Request $request){
     	$id = $request->input('id');
 
