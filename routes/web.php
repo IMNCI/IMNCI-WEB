@@ -23,6 +23,9 @@ Route::get('signs-and-treatments/{id}', 'Admin\AssessClassifyTreatmentController
 Route::get('/followUpCare', 'Admin\FollowUpCareController@index')->name('follow_up');
 Route::get('/reviews', 'Admin\ReviewController@index')->name('reviews');
 Route::get('/glossary', 'Admin\GlossaryController@index')->name('glossary');
+Route::get('/ailments', 'Admin\AilmentsController@index');
+
+// Submits
 
 Auth::routes();
 

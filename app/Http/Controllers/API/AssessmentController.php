@@ -63,7 +63,7 @@ class AssessmentController extends Controller
     }
 
     function add_assessment_classification(Request $request){
-    	$id = $request->input('id');
+    	$id = $request->input('classification_id');
     	if (!$id) {
     		$classification = new AssessmentClassfication();
 
@@ -71,12 +71,16 @@ class AssessmentController extends Controller
 	    	$classification->classification = $request->input('classification');
 	    	$classification->assessment_id = $request->input('assessment_id');
 	    	$classification->parent = $request->input('parent');
+            $classification->signs = $request->input('signs');
+            $classification->treatments = $request->input('treatments');
     	}else{
     		$classification = AssessmentClassfication::find($id);
 
     		$classification->disease_classification_id = $request->input('category');
 	    	$classification->classification = $request->input('classification');
 	    	$classification->parent = $request->input('parent');
+            $classification->signs = $request->input('signs');
+            $classification->treatments = $request->input('treatments');
     	}
     	
     	$classification->save();

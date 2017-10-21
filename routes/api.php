@@ -27,6 +27,7 @@ Route::post('appuser/add', 'AppUserController@addappuser');
 Route::post('review', 'ReviewController@store');
 Route::post('ailment', 'AilmentsController@store');
 Route::get('ailment', 'AilmentsController@index');
+Route::get('/delete-ailment/{id}', 'AilmentsController@delete');
 Route::post('followupbyailment', 'API\FollowUpCareController@getbyailment');
 Route::get('ailments/{age_group_id}', 'AilmentsController@ailmentbyage');
 Route::post('/addAdvice', 'API\FollowUpCareController@addAdvice');
@@ -46,6 +47,9 @@ Route::post('/sign', 'API\AssessmentClassificationSignController@store');
 
 Route::get('/treatments', 'API\AssessmentClassificationTreatmentController@index');
 Route::post('/treatment', 'API\AssessmentClassificationTreatmentController@store');
+
+Route::post('/glossary', 'API\GlossaryController@store');
+Route::delete('/glossary/{id}', 'API\GlossaryController@delete');
 
 Route::get('/signs/{classification_id}', 'API\AssessmentClassificationSignController@get_by_classification');
 Route::get('/treatments/{classification_id}', 'API\AssessmentClassificationTreatmentController@get_by_classification');

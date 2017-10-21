@@ -35,8 +35,9 @@ class AssessClassifyTreatmentController extends Controller
         $data['categories'] = DiseaseClassification::all();
         $data['classifications'] = AssessmentClassfication::join('disease_classifications', 'assessment_classfications.disease_classification_id', '=', 'disease_classifications.id')->where('assessment_id', $id)->select('assessment_classfications.*', 'disease_classifications.color')->get();
         $data['parents'] = AssessmentClassfication::where('assessment_id', $id)->select('parent')->groupBy('parent')->get();
-        $data['signs'] = AssessmentClassificationSign::where('classification_id', $id)->first();
-        $data['treatment'] = AssessmentClassificationTreatment::where('classification_id', $id)->first();
+        
+        // $data['signs'] = AssessmentClassificationSign::where('classification_id', $id)->first();
+        // $data['treatment'] = AssessmentClassificationTreatment::where('classification_id', $id)->first();
 
         return view('dashboard/assess_classify/classification')->with($data);
     }
@@ -50,4 +51,5 @@ class AssessClassifyTreatmentController extends Controller
 
         return view('dashboard/assess_classify/signs_treatments')->with($data);
     }
+
 }

@@ -7,6 +7,7 @@
 	@section('page_css')
 		<link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/bootstrap.min.css') }}">
 		<link rel="stylesheet" type="text/css" href="{{ asset('dashboard/font-awesome/css/font-awesome.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/toastr/toastr.min.css') }}">
 	@show
 	<link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/animate.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/style.css') }}">
@@ -97,6 +98,21 @@
 		<script src="{{ asset('dashboard/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('dashboard/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
 		<script src="{{ asset('dashboard/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+		<script src="{{ asset('dashboard/js/plugins/toastr/toastr.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('dashboard/js/jquery.blockUI.js') }}"></script>
+		<script type="text/javascript">
+			toastr.options = {
+				closeButton: true,
+				progressBar: true,
+				showMethod: 'slideDown',
+				timeOut: 4000
+			};
+
+			$('.clickable').click(function(){
+				parent.history.back();
+				return false;
+			});
+		</script>
 	@show
 	<script src="{{ asset('dashboard/js/inspinia.js') }}"></script>
 	<script src="{{ asset('dashboard/js/plugins/pace/pace.min.js') }}"></script>

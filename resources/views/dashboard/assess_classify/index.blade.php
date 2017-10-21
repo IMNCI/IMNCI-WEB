@@ -46,7 +46,7 @@
 								<label class="control-label">&nbsp;</label>
 								<div class="">
 									<a class="btn btn-primary btn-sm" id="get-data">Get Assessments</a>
-									<a class="btn btn-default btn-sm" data-toggle = "modal" data-target = "#add-assessment-modal" id="add-assessment">Add Assessment</a>
+									<a class="btn btn-success btn-sm" data-toggle = "modal" data-target = "#add-assessment-modal" id="add-assessment">Add Assessment</a>
 								</div>
 							</div>
 						</div>
@@ -86,6 +86,16 @@
 					<small class="font-bold">Create a new assessment</small>
 				</div>
 				<div class="modal-body">
+					<div class="form-group">
+						<label class="control-label">Cohort</label>
+						<input class="form-control" disabled="disabled" id="cohort" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label">Section</label>
+						<input class="form-control" disabled="disabled" id="section" />
+					</div>
+
 					<div class="form-group">
 						<label class="control-label">Assessment Title</label>
 						<input class="form-control" name = "title" />
@@ -132,6 +142,12 @@
 			e.stopPropagation();
 			toastr.error("Cannot add assessment before picking a section");
 		}
+
+		var age_group = $('#age_group').val();
+		var section = $('#section').val();
+
+		$('#add-assessment-modal input#cohort').val($('#age_group option[value="'+age_group+'"]').text());
+		$('#add-assessment-modal input#section').val($('#section option[value="'+section+'"]').text());
 	});
 
 	var header_count = $('#assessment-table thead tr th').length;
@@ -226,7 +242,10 @@
 	});
 
 	$('#assessment-table').on('click', 'a.edit-assessment', function(){
+		$('#add-assessment-modal input#section').val($(this).closest('td').prev('td').text());
 		$.get('/api/assessment/' + $(this).attr('data-id'), function(res){
+			var age_group = $('#age_group').val();
+			$('#add-assessment-modal input#cohort').val($('#age_group option[value="'+age_group+'"]').text());
 			$('#add-assessment-modal').modal();
 			$('#add-assessment-modal .modal-header').html('<h4 class="modal-title">Edit Assessment</h4><small class="font-bold">Editting the selected assessment</small>');
 			$('#add-assessment-modal .modal-body input[name="title"]').val(res.title);
