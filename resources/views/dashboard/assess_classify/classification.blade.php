@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Classifications  for Assessment: <small>{{ $assessment->title }}</small>
+Classifications  for Assessment: <small>{{ $assessment->title . " (" . $cohort->age_group . ")" }}</small>
 @stop
 
 @section('breadcrumb')
@@ -39,13 +39,13 @@ Classifications  for Assessment: <small>{{ $assessment->title }}</small>
 	</div>
 	
 	<div class="col-lg-4">
-		<div class="ibox">
+		<div class="ibox">			
 			<div class="ibox-content h-300">
 				<h3>
 					Classification
 				</h3>
 
-				<a id="add-classification-btn" href="#" class="btn btn-success btn-sm pull-right">Add Classification</a>
+				<a id="add-classification-btn" class="btn btn-success btn-sm pull-right">Add Classification</a>
 				@if ($classifications)
 				<ul class="sortable-list connectList agile-list" id="todo">
 					@foreach($parents as $parent)
@@ -57,8 +57,8 @@ Classifications  for Assessment: <small>{{ $assessment->title }}</small>
 								<span>{{ $classification->classification }}</span>
 								<div class="agile-detail">
 									<span class="pull-right">
-										<a class="btn btn-xs btn-white edit-classification" data-id = "{{ $classification->id }}">Edit</a>&nbsp;
-										<a class="btn btn-xs btn-white remove-classification" data-id = "{{ $classification->id }}">Remove</a>
+										<a class="btn btn-xs btn-white edit-classification" data-id = "{{ $classification->id }}">View/Edit</a>&nbsp;
+										<a class="btn btn-xs btn-white remove-classification" data-id = "{{ $classification->id }}" data-classification = '{{ $classification->classification }}'>Remove</a>
 									</span>
 									@if ($classification->parent)
 									{{ $classification->parent }}
@@ -79,9 +79,14 @@ Classifications  for Assessment: <small>{{ $assessment->title }}</small>
 	</div>
 
 	<div class="col-lg-8">
-		<div class="ibox animated hidden" id="manage-classification">
+		<div class="ibox hbuilt animated hidden" id="manage-classification">
+			<div class="ibox-title">
+				<h5 class="title">New Classification</h5>
+				<div class="pull-right">
+					<a class="close-btn text-danger" title="Close this section"><i class = "fa fa-times"></i></a>
+				</div>
+			</div>
 			<div class="ibox-content">
-				<h3 class="title">New Classification</h3>
 
 				<form class="form-horizontal" method="POST" id="manage-classification-form">
 					<input type="hidden" name="classification_id">
@@ -164,11 +169,11 @@ Classifications  for Assessment: <small>{{ $assessment->title }}</small>
 	var emptyText = "<p></p><p></p>";
 	$(document).ready(function(){
 		signs_summernote = $('textarea[name="signs"]').summernote({
-			height: "100px",
+			height: "250px",
 			placeholder: "Type here..."
 		});
 		treatment_summernote = $('textarea[name="treatments"]').summernote({
-			height: "100px",
+			height: "250px",
 			placeholder: "Type here..."
 		});
 
@@ -177,14 +182,22 @@ Classifications  for Assessment: <small>{{ $assessment->title }}</small>
 
 	$('#submit-btn-confirmation').click(function(e){
 		e.preventDefault();
-		swal("Review", "Please review this content before submitting it", "info");
-		$(this).addClass('hidden');
-		$('#submit-btn').removeClass('hidden');
+		if ($('textarea[name="signs"]').val() != "" && $('textarea[name="treatments"]').val() != "" && $('input[name="parent"]').val() != "") {
+			swal("Review", "Please review this content before submitting it", "info");
+			$(this).addClass('hidden');
+			$('#submit-btn').removeClass('hidden');
+		}else{
+			$('#submit-btn').removeAttr('disabled');
+			$('#submit-btn').addClass('hidden');
+			$('#submit-btn-confirmation').removeClass('hidden');
+			toastr.error("Please ensure that all fields have been filled in");
+		}
 	});
 
 	$('#submit-btn').click(function(e){
 		e.preventDefault();
-		if ($('textarea[name="signs"]').val() != "" && $('textarea[name="treatments"]').val() != "") {
+		$(this).attr('disabled', 'disabled');
+		
 			var classification = $('input[name="classification"]').val();
 			var category = $('select[name="category"]').val();
 			var parent = $('input[name="parent"]').val();
@@ -212,20 +225,18 @@ Classifications  for Assessment: <small>{{ $assessment->title }}</small>
 					$('#manage-classification').children('.ibox-content').removeClass('sk-loading');
 					
 					if (classification_id == "") {
-						location.reload();
 						toastr.success('Successfully added classification');
 					}else{
 						toastr.success('Successfully updated classification');
 					}
+					location.reload();
 				},
 				error 		: function(){
+					$('#submit-btn').attr('disabled', "");
 					toastr.error('There was an error adding the classification');
 					$('#manage-classification').children('.ibox-content').removeClass('sk-loading');
 				}
 			});
-		}else{
-			toastr.error("You need both signs and treatments in order to save this classification");
-		}
 	});
 
 	$.get('/api/get-classification-parents/{{ $assessment->id }}', function(data){
@@ -245,7 +256,7 @@ Classifications  for Assessment: <small>{{ $assessment->title }}</small>
 			},
 			success 	: function(res){
 				$('#manage-classification').children('.ibox-content').removeClass('sk-loading');
-				$('h3.title').text("Edit Classification");
+				$('.title').text("View/Edit Classification");
 				$('input[name="classification_id"]').val(res.id);
 				$('input[name="classification"]').val(res.classification);
 				$('select[name="category"]').val(res.disease_classification_id);
@@ -295,7 +306,7 @@ Classifications  for Assessment: <small>{{ $assessment->title }}</small>
 
 	$('#add-classification-btn').click(function(){
 		showManageClassification();
-		$('h3.title').text("New Classification");
+		$('h5.title').text("New Classification");
 		$('input[name="classification_id"]').val("");
 		$('input[name="classification"]').val("");
 		$('select[name="category"]').val($('select[name="category option:first"]').val());
@@ -321,9 +332,10 @@ Classifications  for Assessment: <small>{{ $assessment->title }}</small>
 
 	$('.remove-classification').click(function(e){
 		var id = $(this).attr('data-id');
+		var classification = $(this).attr('data-classification');
 		swal({
 			title: "Are you sure?",
-			text: "This action cannot be undone",
+			text: classification + " will be deleted together with it's signs and treatments. This action cannot be undone",
 			type: "warning",
 			showCancelButton: true,
 			confirmButtonColor: "#DD6B55",
@@ -427,7 +439,10 @@ Classifications  for Assessment: <small>{{ $assessment->title }}</small>
 	}
 
 	function showManageClassification(){
+		$('#submit-btn-confirmation').removeClass('hidden');
+		$('#submit-btn').addClass('hidden');
 		$('#manage-classification').removeClass('hidden');
+		$('#manage-classification').removeClass('bounceOutRight');
 		$('#manage-classification').addClass('bounceInRight');
 	}
 
@@ -498,6 +513,11 @@ Classifications  for Assessment: <small>{{ $assessment->title }}</small>
 		}else{
 			alert("Please enter a treatment");
 		}
+	});
+
+	$('.close-btn').click(function(){
+		$('#manage-classification').removeClass('bounceInRight');
+		$('#manage-classification').addClass('bounceOutRight');
 	});
 </script>
 @stop

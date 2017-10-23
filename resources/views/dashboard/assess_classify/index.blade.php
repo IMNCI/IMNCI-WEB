@@ -7,6 +7,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/toastr/toastr.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote-bs3.css') }}">
+<style type="text/css">
+	.modal-lg{
+		width: 900px !important;
+	}
+</style>
 @stop
 
 @section('content')
@@ -57,10 +62,9 @@
 							<table class="table table-bordered" id="assessment-table">
 								<thead>
 									<tr>
-										<th style="width: 5%;">#</th>
 										<th>Assessment Title</th>
 										<th>Section</th>
-										<th style="width: 15%;">Actions</th>
+										<th style="width: 20%;">Actions</th>
 									</tr>
 								</thead>
 								<tbody id="table-content">
@@ -76,9 +80,9 @@
 @stop
 
 @section('modal')
-	<div class="modal inmodal" id="add-assessment-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+	<div class="modal inmodal" id="add-assessment-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;" data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog modal-lg">
-			<div class="modal-content animated slideInDown">
+			<div class="modal-content animated bounceInRight">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 					<!-- <i class="fa fa-laptop modal-icon"></i> -->
@@ -131,7 +135,10 @@
 		timeOut: 4000
 	};
 
-	var assessment_text_area = $('textarea[name="assessment"]').summernote();
+	var assessment_text_area = $('textarea[name="assessment"]').summernote({
+			height: "250px",
+			placeholder: "Type here..."
+		});
 
 	var add_assessment_btn = $('#add-assessment');
 	add_assessment_btn.hide();
@@ -178,10 +185,8 @@
 					var table = $('#table-content');
 					var table_content = "";
 					if (res.length > 0) {
-						var counter = 1;
 						$.each(res, function(key, value){
 							table_content += "<tr>";
-							table_content += "<td>"+counter+"</td>";
 							table_content += "<td>"+value.title+"</td>";
 							table_content += "<td>"+value.group+"</td>";
 							table_content += "<td>";
@@ -189,7 +194,6 @@
 							table_content += "<a class = 'manage-classifications btn btn-xs btn-default' href = '/classifications/"+value.id+"' data-id = '"+value.id+"'>Manage Classifications</a>";
 							table_content += "</td>";
 							table_content += "</tr>";
-							counter++;
 						});
 					}
 					else{
@@ -247,7 +251,7 @@
 			var age_group = $('#age_group').val();
 			$('#add-assessment-modal input#cohort').val($('#age_group option[value="'+age_group+'"]').text());
 			$('#add-assessment-modal').modal();
-			$('#add-assessment-modal .modal-header').html('<h4 class="modal-title">Edit Assessment</h4><small class="font-bold">Editting the selected assessment</small>');
+			$('#add-assessment-modal .modal-header').html('<h4 class="modal-title">Edit Assessment</h4><small class="font-bold">Editing the selected assessment</small>');
 			$('#add-assessment-modal .modal-body input[name="title"]').val(res.title);
 			assessment_text_area.summernote('code', res.assessment);
 			$('input[name="assessment_id"]').val(res.id);

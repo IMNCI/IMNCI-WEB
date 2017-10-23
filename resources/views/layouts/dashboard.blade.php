@@ -43,8 +43,8 @@
 					@section('sidebar')
 						<li><a href="{{ route('admin') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a></li>
 						<li><a href="{{ route('assess_classify_treatment') }}"><i class="fa fa-clipboard"></i> <span class="nav-label">Assess, Classify and Identify Treatment</span></a></li>
+						<li><a href="{{ route('treat') }}"><i class="fa fa-heartbeat"></i> <span class="nav-label">Treat the Infant/Child</span></a></li>
 						<li><a href="{{ route('follow_up') }}"><i class="fa fa-stethoscope"></i> <span class="nav-label">Follow Up Care</span></a></li>
-						<li><a href="{{ route('treat') }}"><i class="fa fa-heartbeat"></i> <span class="nav-label">Treat the Child/Infant</span></a></li>
 						<li><a href="{{ route('glossary') }}"><i class="fa fa-book"></i> <span class="nav-label">Glossary</span></a></li>
 						<li><a href="{{ route('reviews') }}"><i class="fa fa-commenting-o"></i> <span class="nav-label">Reviews</span></a></li>
 						<li><a href="#"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a></li>

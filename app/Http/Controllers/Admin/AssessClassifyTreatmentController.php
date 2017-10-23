@@ -32,6 +32,7 @@ class AssessClassifyTreatmentController extends Controller
     function classification(Request $request){
         $id = $request->id;
         $data['assessment'] = Assessment::find($id);
+        $data['cohort'] = AgeGroup::find($data['assessment']->age_group_id);
         $data['categories'] = DiseaseClassification::all();
         $data['classifications'] = AssessmentClassfication::join('disease_classifications', 'assessment_classfications.disease_classification_id', '=', 'disease_classifications.id')->where('assessment_id', $id)->select('assessment_classfications.*', 'disease_classifications.color')->get();
         $data['parents'] = AssessmentClassfication::where('assessment_id', $id)->select('parent')->groupBy('parent')->get();
