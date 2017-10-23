@@ -53,6 +53,7 @@ Route::post('/glossary', 'API\GlossaryController@store');
 Route::delete('/glossary/{id}', 'API\GlossaryController@delete');
 
 Route::post('title', 'API\TreatController@store');
+Route::get('titles', 'API\TreatController@index');
 
 Route::get('/signs/{classification_id}', 'API\AssessmentClassificationSignController@get_by_classification');
 Route::get('/treatments/{classification_id}', 'API\AssessmentClassificationTreatmentController@get_by_classification');

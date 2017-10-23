@@ -10,6 +10,11 @@ use App\TreatTitle;
 class TreatController extends Controller
 {
     //
+
+    function index(){
+    	return TreatTitle::all();
+    }
+
     function store(Request $request){
     	$id = $request->input('id');
     	if ($id == 0) {
