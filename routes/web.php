@@ -21,6 +21,8 @@ Route::get('/classifications', 'Admin\AssessClassifyTreatmentController@classifi
 Route::get('classifications/{id}', 'Admin\AssessClassifyTreatmentController@classification');
 Route::get('signs-and-treatments/{id}', 'Admin\AssessClassifyTreatmentController@signsandtreatments');
 Route::get('/followUpCare', 'Admin\FollowUpCareController@index')->name('follow_up');
+Route::get('/treat', 'Admin\TreatController@index')->name('treat');
+Route::get('/treatments/{id}', 'Admin\TreatController@treatment');
 Route::get('/reviews', 'Admin\ReviewController@index')->name('reviews');
 Route::get('/glossary', 'Admin\GlossaryController@index')->name('glossary');
 Route::get('/ailments', 'Admin\AilmentsController@index');
