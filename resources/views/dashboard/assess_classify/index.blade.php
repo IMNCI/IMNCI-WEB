@@ -62,9 +62,9 @@
 							<table class="table table-bordered" id="assessment-table">
 								<thead>
 									<tr>
-										<th>Assessment Title</th>
+										<th style="width: 40%;">Assessment Title</th>
 										<th>Section</th>
-										<th style="width: 20%;">Actions</th>
+										<th>Actions</th>
 									</tr>
 								</thead>
 								<tbody id="table-content">
@@ -92,12 +92,22 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label class="control-label">Cohort</label>
-						<input class="form-control" disabled="disabled" id="cohort" />
+						<!-- <input class="form-control" disabled="disabled" id="cohort" /> -->
+						<select class="form-control" name = "age_group_id">
+							@foreach ($age_groups as $group)
+							<option value="{{ $group->id }}">{{ $group->age_group }}</option>
+							@endforeach
+						</select>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label">Section</label>
-						<input class="form-control" disabled="disabled" id="section" />
+						<!-- <input class="form-control" disabled="disabled" id="section" /> -->
+						<select class="form-control" name="section_id">
+							@foreach ($sections as $section)
+							<option value="{{ $section->id }}">{{ $section->group }}</option>
+							@endforeach
+						</select>
 					</div>
 
 					<div class="form-group">
@@ -149,12 +159,15 @@
 			e.stopPropagation();
 			toastr.error("Cannot add assessment before picking a section");
 		}
+		initialiseModal();
 
 		var age_group = $('#age_group').val();
 		var section = $('#section').val();
 
-		$('#add-assessment-modal input#cohort').val($('#age_group option[value="'+age_group+'"]').text());
-		$('#add-assessment-modal input#section').val($('#section option[value="'+section+'"]').text());
+		toastr.warning($('#age_group').val());
+
+		$('#add-assessment-modal select[name="age_group_id"]').val(age_group);
+		$('#add-assessment-modal select[name="category_id"]').val(section);
 	});
 
 	var header_count = $('#assessment-table thead tr th').length;
@@ -190,7 +203,7 @@
 							table_content += "<td>"+value.title+"</td>";
 							table_content += "<td>"+value.group+"</td>";
 							table_content += "<td>";
-							table_content += "<a class = 'edit-assessment btn btn-xs btn-default' href = '#' data-id = '"+value.id+"'>Edit Assessment</a>";
+							table_content += "<a class = 'edit-assessment btn btn-xs btn-default' href = '#' data-id = '"+value.id+"' data-section_id = '"+value.category_id+"'>Edit Assessment</a>";
 							table_content += "<a class = 'manage-classifications btn btn-xs btn-default' href = '/classifications/"+value.id+"' data-id = '"+value.id+"'>Manage Classifications</a>";
 							table_content += "</td>";
 							table_content += "</tr>";
@@ -211,8 +224,8 @@
 	});
 
 	$('#save-changes').click(function(){
-		var age_group = $('#age_group').val();
-		var category_id = $('#section').val();
+		var age_group = $('input[name="age_group_id"]').val();
+		var category_id = $('input[name="category_id"]').val();
 		var title = $('input[name="title"]').val();
 		var assessment = $('textarea[name="assessment"]').val();
 		var assessment_id = $('input[name="assessment_id"]').val();
@@ -247,9 +260,13 @@
 
 	$('#assessment-table').on('click', 'a.edit-assessment', function(){
 		$('#add-assessment-modal input#section').val($(this).closest('td').prev('td').text());
+		var section = $(this).attr('data-section_id');
 		$.get('/api/assessment/' + $(this).attr('data-id'), function(res){
 			var age_group = $('#age_group').val();
-			$('#add-assessment-modal input#cohort').val($('#age_group option[value="'+age_group+'"]').text());
+			// var section = $(this).val();;
+			$('#add-assessment-modal select[name="category_id"]').val(section);
+			// $('#add-assessment-modal input#cohort').val($('#age_group option[value="'+age_group+'"]').text());
+			$('#add-assessment-modal select[name="age_group_id"]').val(age_group);
 			$('#add-assessment-modal').modal();
 			$('#add-assessment-modal .modal-header').html('<h4 class="modal-title">Edit Assessment</h4><small class="font-bold">Editing the selected assessment</small>');
 			$('#add-assessment-modal .modal-body input[name="title"]').val(res.title);

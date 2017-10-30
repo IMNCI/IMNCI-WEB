@@ -55,6 +55,9 @@ Route::delete('/glossary/{id}', 'API\GlossaryController@delete');
 Route::post('title', 'API\TreatController@store');
 Route::get('titles', 'API\TreatController@index');
 
+Route::post('treat_ailment', 'API\TreatController@storeAilments');
+Route::post('treat_ailment_treatments', 'API\TreatController@storeTreatment');
+
 Route::get('/signs/{classification_id}', 'API\AssessmentClassificationSignController@get_by_classification');
 Route::get('/treatments/{classification_id}', 'API\AssessmentClassificationTreatmentController@get_by_classification');
 Route::get('/remove-classification/{classification_id}', 'API\ClassificationController@remove');

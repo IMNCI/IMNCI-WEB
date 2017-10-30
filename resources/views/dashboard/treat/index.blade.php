@@ -18,11 +18,12 @@
 				<a id="add-title" class="btn btn-primary btn-xs pull-right" href="#">Add Title</a>
 			</div>
 			<div class="ibox-content">
-				<table class="table table-hover table-striped">
+				<table class="table table-hover table-bordered table-striped">
 					<thead>
 						<tr>
 							<th>#</th>
-							<th style="width: 80%;">Title</th>
+							<th>Title</th>
+							<th>Cohort</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
@@ -33,9 +34,10 @@
 						<tr>
 							<td>{{$counter}}</td>
 							<td>{{ $title->title }}</td>
+							<td>{{ $title->age_group->age_group }}</td>
 							<td>
-								<a class="btn btn-primary btn-xs btn-block" href="/treatments/{{ $title->id }}">Manage Treatments</a>
-								<a class="btn btn-default btn-xs btn-block edit-title" data-id = "{{ $title->id }}" data-title = "{{ $title->title }}" data-guide = "{{ $title->guide }}">Edit</a>
+								<a class="btn btn-primary btn-xs btn-block" href="/treat_ailments/{{ $title->id }}">Manage Ailments</a>
+								<a class="btn btn-default btn-xs btn-block edit-title" data-id = "{{ $title->id }}" data-title = "{{ $title->title }}" data-guide = "{{ $title->guide }}" data-cohort-id = "{{ $title->age_group_id }}">Edit</a>
 								<!-- <a class="btn btn-danger btn-xs btn-block delete-title" data-id = "{{ $title->id }}">Remove</a> -->
 							</td>
 						</tr>
@@ -58,6 +60,16 @@
 					<div class="form-group">
 						<label class="control-label">Title</label>
 						<input class="form-control" name="title" type="text" />
+					</div>
+
+					<div class="form-group">
+						<label class="control-label">Cohort</label>
+						<select class = "form-control" name="age_group_id" required="">
+							<option value="0">Select a cohort...</option>
+							@foreach($cohorts as $cohort)
+							<option value="{{ $cohort->id }}">{{$cohort->age_group}}</option>
+							@endforeach
+						</select>
 					</div>
 
 					<div class="form-group">
@@ -117,6 +129,7 @@
 
 		$('input[name="id"]').val(0);
 		$('input[name="title"]').val("");
+		$('select[name="age_group_id"]').val(0);
 		guide_summernote.summernote("code", "");
 	});
 
@@ -125,6 +138,7 @@
 
 		$('input[name="id"]').val($(this).attr('data-id'));
 		$('input[name="title"]').val($(this).attr('data-title'));
+		$('select[name="age_group_id"]').val($(this).attr('data-cohort-id'));
 		guide_summernote.summernote("code", $(this).attr('data-guide'));
 	});
 

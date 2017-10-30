@@ -22,7 +22,8 @@ Route::get('classifications/{id}', 'Admin\AssessClassifyTreatmentController@clas
 Route::get('signs-and-treatments/{id}', 'Admin\AssessClassifyTreatmentController@signsandtreatments');
 Route::get('/followUpCare', 'Admin\FollowUpCareController@index')->name('follow_up');
 Route::get('/treat', 'Admin\TreatController@index')->name('treat');
-Route::get('/treatments/{id}', 'Admin\TreatController@treatment');
+Route::get('/treat_ailments/{id}', 'Admin\TreatController@ailments');
+Route::get('/treat_ailment_treatments/{id}', 'Admin\TreatController@treatments');
 Route::get('/reviews', 'Admin\ReviewController@index')->name('reviews');
 Route::get('/glossary', 'Admin\GlossaryController@index')->name('glossary');
 Route::get('/ailments', 'Admin\AilmentsController@index');
