@@ -55,6 +55,9 @@ Route::delete('/glossary/{id}', 'API\GlossaryController@delete');
 Route::post('title', 'API\TreatController@store');
 Route::get('titles', 'API\TreatController@index');
 
+Route::get('treat_ailments', 'API\TreatController@ailments');
+Route::get('treat_ailment_treatments', 'API\TreatController@treatments');
+
 Route::post('treat_ailment', 'API\TreatController@storeAilments');
 Route::post('treat_ailment_treatments', 'API\TreatController@storeTreatment');
 
@@ -99,7 +102,7 @@ Route::get('assessment_class_group', function(){
 				'group'	=>	"Main Symptoms"
 			],
 			[
-				'group'	=>	"Checks"
+				'group'	=>	"Check For"
 			],
 			[
 				'group'	=>	'Ask For'

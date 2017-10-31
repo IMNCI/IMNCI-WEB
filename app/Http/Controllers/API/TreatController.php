@@ -35,6 +35,10 @@ class TreatController extends Controller
     	return $treatTitle;
     }
 
+    function ailments(){
+        return TreatAilment::all();
+    }
+
     function storeAilments(Request $request){
        $id = $request->input('id');
         if ($id == 0) {
@@ -50,6 +54,10 @@ class TreatController extends Controller
         }
 
         return $treatAilment; 
+    }
+
+    function treatments(){
+        return TreatAilmentTreatment::all();
     }
 
     function storeTreatment(Request $request){
