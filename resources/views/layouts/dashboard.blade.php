@@ -33,7 +33,7 @@
                         	</a>
 							<ul class="dropdown-menu animated fadeInRight m-t-xs">
 								<li><a href="#">Profile</a></li>
-								<li><a href="#">Logout</a></li>
+								<li><a class="logout" href="{{ route('logout') }}">Logout</a></li>
 							</ul>
                     	</div>
 						<div class="logo-element">
@@ -47,7 +47,7 @@
 						<li><a href="{{ route('follow_up') }}"><i class="fa fa-stethoscope"></i> <span class="nav-label">Follow Up Care</span></a></li>
 						<li><a href="{{ route('glossary') }}"><i class="fa fa-book"></i> <span class="nav-label">Glossary</span></a></li>
 						<li><a href="{{ route('reviews') }}"><i class="fa fa-commenting-o"></i> <span class="nav-label">Reviews</span></a></li>
-						<li><a href="#"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a></li>
+						<li><a href="{{ route('logout') }}" class="logout"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a></li>
 					@show
 				</ul>
 			</div>
@@ -93,6 +93,8 @@
 			@yield('modal')
 		</div>
 	</div>
+
+	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
 	
 	@section('page_js')
 		<script src="{{ asset('dashboard/js/jquery-3.1.1.min.js') }}"></script>
@@ -112,6 +114,11 @@
 			$('.clickable').click(function(){
 				parent.history.back();
 				return false;
+			});
+
+			$('.logout').click(function(event){
+				event.preventDefault(); 
+				document.getElementById('logout-form').submit();
 			});
 		</script>
 	@show

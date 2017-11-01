@@ -1,8 +1,16 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Treat the Infact/Child: Ailment Treatments:
-<small>{{ $ailment->ailment }}</small>
+Treat the Infant/Child: Ailment Treatments:
+<small>{{ $ailment->ailment }} ({{ $ailment->treat_title->age_group->age_group }})</small>
+@stop
+
+@section('breadcrumb')
+<ol class="breadcrumb">
+	<li><a href="/treat">Treat Titles</a></li>
+	<li><a href="/treat_ailments/{{ $ailment->id }}">Ailments</a></li>
+	<li class="active">Treatments</li>
+</ol>
 @stop
 
 @section('content')

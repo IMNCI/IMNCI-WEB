@@ -29,7 +29,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<?php $counter = 1;?>
+									<?php $counter = count($appusers);?>
 									@foreach($appusers as $appuser)
 									<tr>
 										<td>{{ $counter }}</td>
@@ -39,7 +39,7 @@
 										<td>Android {{ $appuser->android_release }}</td>
 										<td>{{ date('d.m.Y \a\t h:i a', strtotime($appuser->opened_at)) }}</td>
 									</tr>
-									<?php $counter++; ?>
+									<?php $counter--; ?>
 									@endforeach
 								</tbody>
 							</table>
@@ -73,6 +73,8 @@
 @parent
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/dataTables/datatables.min.js') }}"></script>
 <script type="text/javascript">
-	$('#app-users').dataTable();
+	$('#app-users').dataTable({
+		aaSorting: [[0, 'desc']]
+	});
 </script>
 @stop

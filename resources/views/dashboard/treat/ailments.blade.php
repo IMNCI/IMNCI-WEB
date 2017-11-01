@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Treat the Infact/Child: Ailments:
-<small>{{ $title->title }}</small>
+Treat the Infant/Child: Ailments:
+<small>{{ $title->title }} ({{ $title->age_group->age_group }})</small>
 @stop
 
 @section('page_css')
@@ -11,6 +11,13 @@ Treat the Infact/Child: Ailments:
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote-bs3.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/dataTables/datatables.min.css') }}">
+@stop
+
+@section('breadcrumb')
+<ol class="breadcrumb">
+	<li><a href="/treat">Treat Titles</a></li>
+	<li class="active">Ailments</li>
+</ol>
 @stop
 
 @section('content')
