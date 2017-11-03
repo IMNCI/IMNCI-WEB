@@ -14,39 +14,62 @@
 <div class="row">
 	<div class="col-md-7">
 		<div class="ibox h-built">
-			<div class="ibox-title">
+			<!-- <div class="ibox-title"> -->
 				<a id="add-title" class="btn btn-primary btn-xs pull-right" href="#">Add Title</a>
-			</div>
-			<div class="ibox-content">
-				<table class="table table-hover table-bordered table-striped">
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>Title</th>
-							<th>Cohort</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						@if($titles)
-						<?php $counter = 1; ?>
-						@foreach($titles as $title)
-						<tr>
-							<td>{{$counter}}</td>
-							<td>{{ $title->title }}</td>
-							<td>{{ $title->age_group->age_group }}</td>
-							<td>
-								<a class="btn btn-primary btn-xs btn-block" href="/treat_ailments/{{ $title->id }}">Manage Ailments</a>
-								<a class="btn btn-default btn-xs btn-block edit-title" data-id = "{{ $title->id }}" data-title = "{{ $title->title }}" data-guide = "{{ $title->guide }}" data-cohort-id = "{{ $title->age_group_id }}">Edit</a>
-								<!-- <a class="btn btn-danger btn-xs btn-block delete-title" data-id = "{{ $title->id }}">Remove</a> -->
-							</td>
-						</tr>
-						<?php $counter++; ?>
+			<!-- </div> -->
+			<!-- <div class="ibox-content"> -->
+				<div class="tabs-container">
+					<ul class="nav nav-tabs">
+						<?php $class = "active"; ?>
+						@foreach($cohorts as $cohort)
+							<li class="{{ $class }}"><a data-toggle="tab" href="#{{ md5($cohort->id) }}">{{ $cohort->age_group }}</a></li>
+							<?php $class = ""; ?>
 						@endforeach
-						@endif
-					</tbody>
-				</table>
-			</div>
+					</ul>
+
+					<div class="tab-content">
+						<?php $class = "active"; ?>
+						@foreach($cohorts as $cohort)
+							<div id="{{ md5($cohort->id) }}" class = "tab-pane {{ $class }}">
+								<div class = "panel-body">
+									<table class="table table-hover table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Title</th>
+												<th>Cohort</th>
+												<th>Actions</th>
+											</tr>
+										</thead>
+										<tbody>
+											@if($titles)
+											<?php $counter = 1; ?>
+											@foreach($titles as $title)
+											@if($title->age_group->id == $cohort->id)
+											<tr>
+												<td>{{$counter}}</td>
+												<td>{{ $title->title }}</td>
+												<td>{{ $title->age_group->age_group }}</td>
+												<td>
+													<a class="btn btn-primary btn-xs btn-block" href="/treat_ailments/{{ $title->id }}">Manage Ailments</a>
+													<a class="btn btn-default btn-xs btn-block edit-title" data-id = "{{ $title->id }}" data-title = "{{ $title->title }}" data-guide = "{{ $title->guide }}" data-cohort-id = "{{ $title->age_group_id }}">Edit</a>
+													<!-- <a class="btn btn-danger btn-xs btn-block delete-title" data-id = "{{ $title->id }}">Remove</a> -->
+												</td>
+											</tr>
+											<?php $counter++; ?>
+											@endif
+											@endforeach
+											@endif
+										</tbody>
+									</table>
+								</div>
+							</div>
+						<?php $class = ""; ?>
+						@endforeach
+					</div>
+				</div>
+				
+			<!-- </div> -->
 		</div>
 	</div>
 	<div class="col-md-5">

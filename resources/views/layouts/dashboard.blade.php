@@ -68,7 +68,7 @@
 			</div>
 			<div class="row wrapper border-bottom white-bg page-heading">
 				<div class="col-sm-10">
-					<h2>@yield('title')</h2>
+					<h2>@yield('title')<small>@yield('subtitle')</small></h2>
 					@yield('breadcrumb')
 					<!-- <ol class="breadcrumb">
 						<li>

@@ -1,6 +1,9 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Assess, Classify & Identify Treatment')
+@section('title', 'Assess, Classify & Identify Treatment: ')
+@section('subtitle')
+<b id="cohort-sub-title"></b>
+@stop
 
 @section('page_css')
 @parent
@@ -62,8 +65,9 @@
 							<table class="table table-bordered" id="assessment-table">
 								<thead>
 									<tr>
-										<th style="width: 40%;">Assessment Title</th>
 										<th>Section</th>
+										<th style="width: 40%;">Assessment Title</th>
+										<th>Content Available?</th>
 										<th>Actions</th>
 									</tr>
 								</thead>
@@ -145,6 +149,10 @@
 		timeOut: 4000
 	};
 
+	$('#age_group').change(function(){
+		$('#cohort-sub-title').text($('#age_group option:selected').text());
+	});
+
 	var assessment_text_area = $('textarea[name="assessment"]').summernote({
 			height: "250px",
 			placeholder: "Type here..."
@@ -164,8 +172,6 @@
 		var age_group = $('#age_group').val();
 		var section = $('#section').val();
 
-		toastr.warning($('#age_group').val());
-
 		$('#add-assessment-modal select[name="age_group_id"]').val(age_group);
 		$('#add-assessment-modal select[name="category_id"]').val(section);
 	});
@@ -173,6 +179,7 @@
 	var header_count = $('#assessment-table thead tr th').length;
 	$(document).ready(function(){
 		$('#get-data').trigger('click');
+		$('#cohort-sub-title').text($('#age_group option:selected').text());
 	});
 	
 	$('#get-data').click(function(){
@@ -199,12 +206,22 @@
 					var table_content = "";
 					if (res.length > 0) {
 						$.each(res, function(key, value){
+							var remove_button = "";
 							table_content += "<tr>";
-							table_content += "<td>"+value.title+"</td>";
 							table_content += "<td>"+value.group+"</td>";
+							table_content += "<td>"+value.title+"</td>";
+							table_content += "<td><center>";
+							if (value.classifications > 0) {
+								table_content += "<i class = 'fa fa-check text-info'></i>";
+							}else{
+								table_content += "<i class = 'fa fa-times text-danger'></i>";
+								remove_button = "&nbsp;<a class = 'remove-assessment btn btn-danger btn-xs' data-id = '"+value.id+"'>Remove</a>";
+							}
+							table_content += "</center></td>";
 							table_content += "<td>";
 							table_content += "<a class = 'edit-assessment btn btn-xs btn-default' href = '#' data-id = '"+value.id+"' data-section_id = '"+value.category_id+"'>Edit Assessment</a>";
-							table_content += "<a class = 'manage-classifications btn btn-xs btn-default' href = '/classifications/"+value.id+"' data-id = '"+value.id+"'>Manage Classifications</a>";
+							table_content += "&nbsp;<a class = 'manage-classifications btn btn-xs btn-default' href = '/classifications/"+value.id+"' data-id = '"+value.id+"'>Manage Classifications</a>";
+							// table_content += remove_button;
 							table_content += "</td>";
 							table_content += "</tr>";
 						});

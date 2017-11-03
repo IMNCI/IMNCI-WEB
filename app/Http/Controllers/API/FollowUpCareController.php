@@ -73,6 +73,8 @@ class FollowUpCareController extends Controller
 
 			$advice->save();
 		}else{
+			$advice = new \StdClass;
+			
 			$advice->ailment_id = $ailment_id;
 			$advice->advice = $request->input('advice');
 

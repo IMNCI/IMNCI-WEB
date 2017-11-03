@@ -15,8 +15,10 @@ class AssessmentController extends Controller
     	$response = [];
     	$age_group_id = $request->input('age_group');
     	$category_id = $request->input('category');
-        $assessments = Assessment::join('asessment_classfication_categories', 'asessment_classfication_categories.id', '=', 'assessments.category_id')->where('assessments.age_group_id', $age_group_id)
-            ->select('assessments.*' ,'asessment_classfication_categories.group');
+        $assessments = Assessment::join('asessment_classfication_categories', 'asessment_classfication_categories.id', '=', 'assessments.category_id')
+            ->join('assessment_classification_count_view', 'assessment_classification_count_view.id', '=', 'assessments.id')
+            ->where('assessments.age_group_id', $age_group_id)
+            ->select('assessments.*', 'assessment_classification_count_view.classifications','asessment_classfication_categories.group');
         if ($category_id != 0) {
             $assessments->where('asessment_classfication_categories.id', $category_id);
         }
