@@ -133,7 +133,8 @@ Classifications  for Assessment: <small>{{ $assessment->title . " (" . $cohort->
 						</div>
 						<label class="error"></label>
 					</div>
-							
+
+					<button class = "btn btn-block btn-danger animated" id = "submit-btn-remove">Yes, Remove it!</button>
 					<button class = "btn btn-block btn-success animated" id = "submit-btn-confirmation">Save Classification, Signs and Treatments</button>
 					<button class = "btn btn-block btn-primary hidden animated" id = "submit-btn">Submit</button>
 				</form>
@@ -239,6 +240,23 @@ Classifications  for Assessment: <small>{{ $assessment->title . " (" . $cohort->
 			});
 	});
 
+	$('#submit-btn-remove').click(function(event){
+		event.preventDefault();
+		var id = $('input[name="classification_id"]').val();
+		$('#manage-classification').children('.ibox-content').addClass('sk-loading');
+		$.get('/api/remove-classification/' + id, function(res){
+			$('#manage-classification').children('.ibox-content').removeClass('sk-loading');
+			swal({
+				title: "Success", 
+				text: "Classification removed Successfully", 
+				type: "success",
+				closeOnConfirm: true
+			}, function(){
+				location.reload();
+			});
+		});
+	});
+
 	$.get('/api/get-classification-parents/{{ $assessment->id }}', function(data){
 		 $('input[name="parent"]').typeahead({ source:data });
 		 $('input[name="edit_parent"]').typeahead({ source:data });
@@ -256,7 +274,6 @@ Classifications  for Assessment: <small>{{ $assessment->title . " (" . $cohort->
 			},
 			success 	: function(res){
 				$('#manage-classification').children('.ibox-content').removeClass('sk-loading');
-				$('.title').text("View/Edit Classification");
 				$('input[name="classification_id"]').val(res.id);
 				$('input[name="classification"]').val(res.classification);
 				$('select[name="category"]').val(res.disease_classification_id);
@@ -333,27 +350,29 @@ Classifications  for Assessment: <small>{{ $assessment->title . " (" . $cohort->
 	$('.remove-classification').click(function(e){
 		var id = $(this).attr('data-id');
 		var classification = $(this).attr('data-classification');
-		swal({
-			title: "Are you sure?",
-			text: classification + " will be deleted together with it's signs and treatments. This action cannot be undone",
-			type: "warning",
-			showCancelButton: true,
-			confirmButtonColor: "#DD6B55",
-			confirmButtonText: "Yes, remove it!",
-			closeOnConfirm: false,
-			showLoaderOnConfirm: true
-		}, function(){
-			$.get('/api/remove-classification/' + id, function(res){
-				swal({
-					title: "Success", 
-					text: "Classification removed Successfully", 
-					type: "success",
-					closeOnConfirm: true
-				}, function(){
-					location.reload();
-				});
-			});
-		});
+		// swal({
+		// 	title: "Are you sure?",
+		// 	text: classification + " will be deleted together with it's signs and treatments. This action cannot be undone",
+		// 	type: "warning",
+		// 	showCancelButton: true,
+		// 	confirmButtonColor: "#DD6B55",
+		// 	confirmButtonText: "Yes, remove it!",
+		// 	closeOnConfirm: false,
+		// 	showLoaderOnConfirm: true
+		// }, function(){
+		// 	$.get('/api/remove-classification/' + id, function(res){
+		// 		swal({
+		// 			title: "Success", 
+		// 			text: "Classification removed Successfully", 
+		// 			type: "success",
+		// 			closeOnConfirm: true
+		// 		}, function(){
+		// 			location.reload();
+		// 		});
+		// 	});
+		// });
+		showManageClassification("remove");
+		getClassificationDetails(id);
 		e.stopPropagation();
 	});
 	$('#edit-changes').click(function(e){
@@ -438,8 +457,16 @@ Classifications  for Assessment: <small>{{ $assessment->title . " (" . $cohort->
 		}
 	}
 
-	function showManageClassification(){
-		$('#submit-btn-confirmation').removeClass('hidden');
+	function showManageClassification(type){
+		if (typeof(type) == "undefined") {
+			$('.title').text("View/Edit Classification");
+			$('#submit-btn-confirmation').removeClass('hidden');
+			$('#submit-btn-remove').addClass('hidden');
+		}else{
+			$('.title').text("Remove Classification");
+			$('#submit-btn-confirmation').addClass("hidden");
+			$('#submit-btn-remove').removeClass('hidden');
+		}		
 		$('#submit-btn').addClass('hidden');
 		$('#manage-classification').removeClass('hidden');
 		$('#manage-classification').removeClass('bounceOutRight');

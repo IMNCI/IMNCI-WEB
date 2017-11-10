@@ -127,8 +127,47 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-				<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary" id = "save-changes">Save changes</button>
+					<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" id = "save-changes">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal inmodal" id="content-modal" tabindex="-1" role = "dialog" aria-hidden = "true" style="display: none;" data-backdrop="static" data-keyboard="false">
+		<div class="modal-dialog">
+			<div class="modal-content animated bounceInRight">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+					<!-- <i class="fa fa-laptop modal-icon"></i> -->
+					<h4 class="modal-title">Confirm Assessment</h4>
+					<small class="font-bold">Confirm that this is the assessment you want to delete</small>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" name="_assessment_id" value="0" />
+					<div class="well well-sm">
+						<h3>Cohort</h3>
+						<span id="content-cohort"></span>
+					</div>
+
+					<div class="well well-sm">
+						<h3>Section</h3>
+						<span id="content-section"></span>
+					</div>
+
+					<div class="well well-sm">
+						<h3>Title</h3>
+						<span id="content-title"></span>
+					</div>
+
+					<div class="well well-sm">
+						<h3>Content</h3>
+						<span id="content-content"></span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-white" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-danger" id = "continue">Remove this Assessment!</button>
 				</div>
 			</div>
 		</div>
@@ -220,7 +259,7 @@
 							table_content += "</center></td>";
 							table_content += "<td>";
 							table_content += "<a class = 'edit-assessment btn btn-xs btn-default' href = '#' data-id = '"+value.id+"' data-section_id = '"+value.category_id+"'>Edit Assessment</a>";
-							table_content += "&nbsp;<a class = 'manage-classifications btn btn-xs btn-default' href = '/classifications/"+value.id+"' data-id = '"+value.id+"'>Manage Classifications</a>";
+							table_content += "&nbsp;<a class = 'manage-classifications btn btn-xs btn-default' href = '/classifications/"+value.id+"' data-id = '"+value.id+"'>Manage Classifications</a>" + remove_button;
 							// table_content += remove_button;
 							table_content += "</td>";
 							table_content += "</tr>";
@@ -241,22 +280,24 @@
 	});
 
 	$('#save-changes').click(function(){
-		var age_group = $('input[name="age_group_id"]').val();
-		var category_id = $('input[name="category_id"]').val();
+		var age_group = $('select[name="age_group_id"]').val();
+		var category_id = $('select[name="section_id"]').val();
 		var title = $('input[name="title"]').val();
 		var assessment = $('textarea[name="assessment"]').val();
 		var assessment_id = $('input[name="assessment_id"]').val();
 
-		$.ajax({
-			url : "/api/assessment",
-			type: "POST",
-			data : {
+		submit_data = {
 				age_group 	: age_group,
 				section 	: category_id,
 				title 		: title,
 				assessment 	: assessment,
 				id  		: assessment_id
-			},
+			};
+
+		$.ajax({
+			url : "/api/assessment",
+			type: "POST",
+			data : submit_data,
 			beforeSend: function(){
 				$('body').block();
 			},
@@ -292,8 +333,56 @@
 		});
 	});
 
+	$('#assessment-table').on('click', 'a.remove-assessment', function(){
+		var id = $(this).attr('data-id');
+
+		var age_groups = jQuery.parseJSON('<?= @$age_groups; ?>');
+		var sections = jQuery.parseJSON('<?= @$sections; ?>');
+
+		$.get('/api/assessment/' + id, function(res){
+			var _age_group = _section = "";
+			$.each(age_groups, function(key, value){
+				if (value.id == res.age_group_id) {
+					_age_group = value.age_group;
+				}
+			});
+
+			$.each(sections, function(key, value){
+				if (value.id == res.category_id) {
+					_section = value.group;
+				}
+			});
+			$('#content-modal input[name="_assessment_id"]').val(res.id);
+			$('#content-cohort').text(_age_group);
+			$('#content-section').text(_section);
+			$('#content-title').text(res.title);
+			$('#content-content').html(res.assessment);
+			$('#content-modal').modal();
+		});
+	});
+
 	$('#assessment-table').on('click', 'a.manage-classifications', function(){
 		// window.location = "/classifications/" + $(this).attr('data-id');
+	});
+
+	$('#continue').on('click', function(){
+		$.ajax({
+			url: "/api/assessment/" + $('#content-modal input[name="_assessment_id"]').val(),
+			method: "DELETE",
+			beforeSend: function(){
+				$('#modal-content .modal-content').block({
+					message: ""
+				});
+			},
+			success: function(){
+				toastr.success("Successfully deleted assessment");
+				location.reload();
+			},
+			error: function(){
+				$('#modal-content').unblock();
+				toastr.error("There was an error deleting the assessment");
+			}
+		});
 	});
 
 	function initialiseModal(){

@@ -12,4 +12,8 @@ class Assessment extends Model
     public function classifications(){
     	return $this->hasMany('App\AssessmentClassfication', 'id');
     }
+
+    public function age_group(){
+    	return $this->belongsTo('App\AgeGroup', 'age_group_id');
+    }
 }

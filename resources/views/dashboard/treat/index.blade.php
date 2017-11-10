@@ -73,9 +73,12 @@
 		</div>
 	</div>
 	<div class="col-md-5">
-		<div class="ibox h-built" id="title-form-wrapper">
+		<div class="ibox h-built animated bounceOutRight" id="title-form-wrapper">
 			<div class="ibox-title">
 				<h5>Add Title</h5>
+				<div class="pull-right">
+					<a class="close-btn text-danger" title="Close this section"><i class = "fa fa-times"></i></a>
+				</div>
 			</div>
 			<div class="ibox-content">
 				<form method="POST" action="/api/title" id="title-form">
@@ -150,6 +153,9 @@
 	$('#add-title').on('click', function(){
 		$('#title-form-wrapper .ibox-title h5').text("Add Title");
 
+		$('#title-form-wrapper').addClass('bounceInRight');
+		$('#title-form-wrapper').removeClass('bounceOutRight');
+
 		$('input[name="id"]').val(0);
 		$('input[name="title"]').val("");
 		$('select[name="age_group_id"]').val(0);
@@ -159,10 +165,18 @@
 	$('.edit-title').on('click', function(){
 		$('#title-form-wrapper .ibox-title h5').text("Editing Title");
 
+		$('#title-form-wrapper').addClass('bounceInRight');
+		$('#title-form-wrapper').removeClass('bounceOutRight');
+
 		$('input[name="id"]').val($(this).attr('data-id'));
 		$('input[name="title"]').val($(this).attr('data-title'));
 		$('select[name="age_group_id"]').val($(this).attr('data-cohort-id'));
 		guide_summernote.summernote("code", $(this).attr('data-guide'));
+	});
+
+	$('.close-btn').click(function(){
+		$('#title-form-wrapper').removeClass('bounceInRight');
+		$('#title-form-wrapper').addClass('bounceOutRight');
 	});
 
 	// $('.delete-title')

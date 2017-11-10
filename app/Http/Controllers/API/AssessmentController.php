@@ -64,6 +64,18 @@ class AssessmentController extends Controller
     	return $assessment;
     }
 
+    function destroy(Request $request){
+        $id = $request->id;
+
+        $counts = \DB::table('assessment_classification_count_view')
+                    ->where('id', $id)
+                    ->first();
+
+        if ($counts->classifications == 0) {
+            Assessment::destroy($id);
+        }
+    }
+
     function add_assessment_classification(Request $request){
     	$id = $request->input('classification_id');
     	if (!$id) {

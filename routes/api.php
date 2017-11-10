@@ -36,6 +36,7 @@ Route::post('/addAdviceTreatment', 'API\FollowUpCareController@addAdiveTreatment
 Route::post('/get_assessment_classification_treatment', 'API\AssessClassifyTreatmentController@get');
 Route::post('/assessment', 'API\AssessmentController@create');
 Route::get('/assessment', 'API\AssessmentController@all');
+Route::delete('/assessment/{id}', 'API\AssessmentController@destroy');
 Route::post('/get-assessments', 'API\AssessmentController@index');
 Route::get('/assessment/{id}', 'API\AssessmentController@get');
 Route::post('/classification', 'API\AssessmentController@add_assessment_classification');
@@ -60,6 +61,9 @@ Route::get('treat_ailment_treatments', 'API\TreatController@treatments');
 
 Route::post('treat_ailment', 'API\TreatController@storeAilments');
 Route::post('treat_ailment_treatments', 'API\TreatController@storeTreatment');
+
+Route::get('counsel-titles', 'API\CounselTheMotherController@index');
+Route::post('counsel-title', 'API\CounselTheMotherController@store');
 
 Route::get('/signs/{classification_id}', 'API\AssessmentClassificationSignController@get_by_classification');
 Route::get('/treatments/{classification_id}', 'API\AssessmentClassificationTreatmentController@get_by_classification');
