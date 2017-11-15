@@ -7,6 +7,7 @@ use App\AsessmentClassficationCategory;
 use App\Sample;
 use App\DiseaseClassification;
 use App\AssessmentClassfication;
+use App\county;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -70,6 +71,11 @@ Route::post('counsel-sub-content', 'API\CounselTheMotherController@store_sub_con
 Route::get('/signs/{classification_id}', 'API\AssessmentClassificationSignController@get_by_classification');
 Route::get('/treatments/{classification_id}', 'API\AssessmentClassificationTreatmentController@get_by_classification');
 Route::get('/remove-classification/{classification_id}', 'API\ClassificationController@remove');
+
+Route::get('/counties', function(Request $request){
+	return county::all();
+});
+
 Route::get("/get-classification-parents/{assessment_id}", function(Request $request){
 	$parents = AssessmentClassfication::where('assessment_id', $request->assessment_id)->where('parent', '!=', null)->distinct()->get(['parent']);
 	$response = [];
