@@ -22,7 +22,7 @@ Route::get('classifications/{id}', 'Admin\AssessClassifyTreatmentController@clas
 Route::get('signs-and-treatments/{id}', 'Admin\AssessClassifyTreatmentController@signsandtreatments');
 Route::get('/followUpCare', 'Admin\FollowUpCareController@index')->name('follow_up');
 Route::get('/counsel-the-mother', 'Admin\CounselTheMotherController@index')->name('counsel_the_mother');
-Route::get('/counsel-subtitles', 'Admin\CounselTheMotherController@subtitles');
+Route::get('/counsel-subtitles/{title_id}', 'Admin\CounselTheMotherController@subtitles');
 Route::get('/treat', 'Admin\TreatController@index')->name('treat');
 Route::get('/treat_ailments/{id}', 'Admin\TreatController@ailments');
 Route::get('/treat_ailment_treatments/{id}', 'Admin\TreatController@treatments');

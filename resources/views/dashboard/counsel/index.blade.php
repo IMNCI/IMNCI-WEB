@@ -7,11 +7,13 @@
 <link rel="stylesheet" type="text/css" href='{{ asset("dashboard/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css") }}'>
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote-bs3.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/dataTables/datatables.min.css') }}">
 @stop
 
 @section('page_js')
 @parent
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/summernote/summernote.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('dashboard/js/plugins/dataTables/datatables.min.js') }}"></script>
 <script type="text/javascript">
 	var content_summernote;
 	$(document).ready(function(){
@@ -19,6 +21,8 @@
 			height: "250px",
 			placeholder: "Type here..."
 		});
+
+		$('table').dataTable();
 	});
 	$('#add-title-btn, .edit-title').click(function(){
 		manageAddEditUI(this);
@@ -141,7 +145,7 @@
 										<td>
 											<a class="btn btn-xs btn-white btn-block edit-title" data-id = "{{ $title->id }}" data-cohort = "{{ $title->age_group_id }}" data-title = "{{ $title->title }}" data-content = "{{ $title->content }}" data-is-parent = "{{ $title->is_parent }}">Edit</a>
 											@if($title->is_parent == 1)
-											<a href = "/counsel-subtitles" class="btn btn-block btn-white btn-xs">Manage Subtitles</a> 
+											<a href = "/counsel-subtitles/{{ $title->id }}" class="btn btn-block btn-white btn-xs">Manage Sub Content</a> 
 											@endif
 										</td>
 									</tr>

@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\CounselTitles;
+use App\CounselSubContent;
 
 class CounselTheMotherController extends Controller
 {
+
 	function index(Request $request){
 		return CounselTitles::all();
 	}
+
     function store(Request $request){
     	$post_data = $request->all();
 
@@ -38,5 +41,28 @@ class CounselTheMotherController extends Controller
 
     		return $title;
     	}
+    }
+
+    function all_sub_content(){
+        return CounselSubContent::all();
+    }
+
+    function store_sub_content(Request $request){
+        $post_data = $request->all();
+        $id = $post_data['sub_content_id'];
+        unset($post_data['sub_content_id']);
+
+        if ($id == 0) {
+            return CounselSubContent::create($post_data);
+        }else{
+            $sub_content = CounselSubContent::find($id);
+
+            $sub_content->sub_content_title = $post_data['sub_content_title'];
+            $sub_content->content = $post_data['content'];
+
+            $sub_content->save();
+
+            return $sub_content;            
+        }       
     }
 }

@@ -64,6 +64,8 @@ Route::post('treat_ailment_treatments', 'API\TreatController@storeTreatment');
 
 Route::get('counsel-titles', 'API\CounselTheMotherController@index');
 Route::post('counsel-title', 'API\CounselTheMotherController@store');
+Route::get('counsel-sub-contents', 'API\CounselTheMotherController@all_sub_content');
+Route::post('counsel-sub-content', 'API\CounselTheMotherController@store_sub_content');
 
 Route::get('/signs/{classification_id}', 'API\AssessmentClassificationSignController@get_by_classification');
 Route::get('/treatments/{classification_id}', 'API\AssessmentClassificationTreatmentController@get_by_classification');

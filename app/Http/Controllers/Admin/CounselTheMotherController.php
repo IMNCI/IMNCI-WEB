@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\AgeGroup;
 use App\CounselTitles;
+use App\CounselSubContent;
 
 class CounselTheMotherController extends Controller
 {
@@ -18,7 +19,16 @@ class CounselTheMotherController extends Controller
     	return view('dashboard.counsel.index')->with($data);
     }
 
-    function subtitles(){
+    function subtitles(Request $request){
+    	try{
+	    	$title = CounselTitles::findOrFail($request->title_id);
+	    	$data = [];
+
+	    	$data['title'] = $title;
+	    	return view('dashboard.counsel.subtitles')->with($data);
+	    }catch(Exception $ex){
+	    	echo "There is another thing here";
+	    }
     	
     }
 }
