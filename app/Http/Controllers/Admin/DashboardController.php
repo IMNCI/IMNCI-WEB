@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Review;
 use App\AppUser;
 
 class DashboardController extends Controller
@@ -21,7 +20,6 @@ class DashboardController extends Controller
 
     function index(){
         $appusers = AppUser::orderBy('updated_at', 'DESC')->get();
-        $average = Review::avg('rating');
-    	return view('dashboard/dashboard/index')->with(['appusers'=>$appusers, 'rating'    =>  $average]);
+    	return view('dashboard/dashboard/index')->with(['appusers'=>$appusers]);
     }
 }

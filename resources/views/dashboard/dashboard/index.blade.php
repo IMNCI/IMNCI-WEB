@@ -57,14 +57,6 @@
 					<small>Total users</small>
 				</div>
 			</div>
-			<div class="ibox">
-				<div class="ibox-content">
-					<h5>Rating</h5>
-					<h1 class="no-margins">{{ number_format($rating, 1) }}</h1>
-					<div class="stat-percent font-bold text-navy"><i class="fa fa-star-half-o"></i></div>
-					<small>Average Rating</small>
-				</div>
-			</div>
 		</div>
 	</div>
 @stop

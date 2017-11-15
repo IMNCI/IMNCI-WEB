@@ -70,7 +70,7 @@
 
 						<button id="save-advice-treatment-confirmation" class="btn btn-success btn-block">Save Advice & Treatment</button>
 
-						<button id="save-advice-treatment" class="btn btn-primary hidden btn-block">Save Advice & Treatment</button>
+						<button id="save-advice-treatment" class="btn btn-primary hidden btn-block">Submit Advice & Treatment</button>
 					</div>
 				</div>
 			</div>
