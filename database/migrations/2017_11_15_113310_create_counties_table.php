@@ -18,16 +18,6 @@ class CreateCountiesTable extends Migration
             $table->increments('id');
             $table->string('county');
         });
-
-        Schema::table('users', function(Blueprint $table){
-            // $sql = 'ALTER TABLE `users` MODIFY `age` DATETIME';
-            if (!Storage::disk('local')->exists('counties.sql')) {
-                throw new Exception('Counties SQL statement not found');
-            }
-
-            $sql = Storage::disk('local')->get('counties.sql');
-            DB::connection()->getPdo()->exec($sql);
-        });
     }
 
     /**
