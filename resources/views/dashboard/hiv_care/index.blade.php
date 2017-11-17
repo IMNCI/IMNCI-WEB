@@ -112,8 +112,8 @@
 					<small class="font-bold">Are you sure you want to delete this entry? This action cannot be undone.</small>
 				</div>
 				<div class="modal-body">
-					<form method="DELETE" action="{{ route('hiv_care_destroy') }}">
-						
+					<form method="POST" action="{{ route('hiv_care_destroy') }}">
+						{{ csrf_field() }}
 						<input type="hidden" name="id">
 						<div class="form-group">
 							<label class="control-label">Title</label>

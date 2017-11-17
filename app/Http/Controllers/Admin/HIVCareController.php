@@ -42,7 +42,6 @@ class HIVCareController extends Controller
     }
 
     function destroy(Request $request){
-    	echo $request->id;die;
     	if ($request->id != "") {
     		HIVCare::destroy($request->id);
     		return redirect('hiv-care')->with('status', 'Successfully deleted !');

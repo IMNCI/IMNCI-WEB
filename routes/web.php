@@ -29,7 +29,7 @@ Route::get('/treat_ailment_treatments/{id}', 'Admin\TreatController@treatments')
 Route::get('/reviews', 'Admin\ReviewController@index')->name('reviews');
 Route::get('/hiv-care', 'Admin\HIVCareController@index')->name('hiv_care');
 Route::post('/hiv-care', 'Admin\HIVCareController@store')->name('hiv_care_submit');
-Route::delete('/hiv-care', 'Admin\HIVCareController@destroy')->name('hiv_care_destroy');
+Route::post('/hiv-care-delete', 'Admin\HIVCareController@destroy')->name('hiv_care_destroy');
 Route::get('/glossary', 'Admin\GlossaryController@index')->name('glossary');
 Route::get('/ailments', 'Admin\AilmentsController@index');
 
