@@ -171,11 +171,7 @@
 			<div class="ibox-content">
 				<form method="POST" action="/api/counsel-title">
 					<input type="hidden" name="title_id" value="0" />
-					<div class="form-group">
-						<label class="control-label">Title</label>
-						<input type="text" name="title" class="form-control" required>
-					</div>
-
+					
 					<div class="form-group">
 						<label class="control-label">Cohort</label>
 						<select class="form-control" name="age_group_id" required>
@@ -187,10 +183,15 @@
 					</div>
 
 					<div class="form-group">
+						<label class="control-label">Title</label>
+						<input type="text" name="title" class="form-control" required>
+					</div>
+
+					<div class="form-group">
 						<label>Subtitles</label>
 						<div class="checkbox checkbox-primary">
 							<input type="checkbox" name="is_parent" id="is_parent" />
-							<label class="control-label" for="is_parent">Does this title have subtitle?</label>
+							<label class="control-label" for="is_parent">Does this title have subtitle(s)?</label>
 						</div>						
 					</div>
 

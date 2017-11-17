@@ -27,8 +27,27 @@ Route::get('/treat', 'Admin\TreatController@index')->name('treat');
 Route::get('/treat_ailments/{id}', 'Admin\TreatController@ailments');
 Route::get('/treat_ailment_treatments/{id}', 'Admin\TreatController@treatments');
 Route::get('/reviews', 'Admin\ReviewController@index')->name('reviews');
+Route::get('/hiv-care', 'Admin\HIVCareController@index')->name('hiv_care');
+Route::post('/hiv-care', 'Admin\HIVCareController@store')->name('hiv_care_submit');
+Route::delete('/hiv-care', 'Admin\HIVCareController@destroy')->name('hiv_care_destroy');
 Route::get('/glossary', 'Admin\GlossaryController@index')->name('glossary');
 Route::get('/ailments', 'Admin\AilmentsController@index');
+
+Route::get('storage/{folder}/{filename}', function($folder, $filename){
+	$path = storage_path('app/public/' . $folder . '/' . $filename);
+	// echo $path;die;
+	if (!File::exists($path)){
+		abort(404);
+	}
+
+	$file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+})->name('storage_images');
 
 // Submits
 
