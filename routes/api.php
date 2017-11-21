@@ -72,6 +72,8 @@ Route::get('/signs/{classification_id}', 'API\AssessmentClassificationSignContro
 Route::get('/treatments/{classification_id}', 'API\AssessmentClassificationTreatmentController@get_by_classification');
 Route::get('/remove-classification/{classification_id}', 'API\ClassificationController@remove');
 
+Route::get('/hiv-care', 'API\HivCareController@index');
+
 Route::get('/counties', function(Request $request){
 	return county::all();
 });
