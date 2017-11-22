@@ -8,6 +8,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote-bs3.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/dataTables/datatables.min.css') }}">
+<style type="text/css">
+	/*.hidden{
+		display: none;
+	}*/
+</style>
 @stop
 
 @section('content')
@@ -53,7 +58,9 @@
 												<td>
 													<a class="btn btn-primary btn-xs btn-block" href="/treat_ailments/{{ $title->id }}">Manage Ailments</a>
 													<a class="btn btn-default btn-xs btn-block edit-title" data-id = "{{ $title->id }}" data-title = "{{ $title->title }}" data-guide = "{{ $title->guide }}" data-cohort-id = "{{ $title->age_group_id }}">Edit</a>
-													<!-- <a class="btn btn-danger btn-xs btn-block delete-title" data-id = "{{ $title->id }}">Remove</a> -->
+													@if(count($title->treat_ailments) == 0)
+													<a class="btn btn-danger btn-xs btn-block delete-title" data-id = "{{ $title->id }}" data-title = "{{ $title->title }}" data-guide = "{{ $title->guide }}" data-cohort-id = "{{ $title->age_group_id }}">Remove</a>
+													@endif
 												</td>
 											</tr>
 											<?php $counter++; ?>
@@ -103,7 +110,9 @@
 						<textarea class="form-control" name = "guide" rows="8"></textarea>
 					</div>
 
-					<button class="btn btn-success btn-sm btn-block" id="save-title">Save Title</button>
+					<button class="btn btn-primary btn-sm btn-block hidden" id="save-title">Save Title</button>
+					<a class="btn btn-success btn-sm btn-block" id="submit-title">Submit Title</a>
+					<a class="btn btn-danger btn-sm btn-block hidden" id="remove-title">Remove Title</a>
 				</form>
 			</div>
 		</div>
@@ -125,6 +134,12 @@
 	$(document).ready(function(){
 		guide_summernote = $('textarea[name="guide"]').summernote($summernote_options);
 		titlesDataTable = $('table').dataTable();
+	});
+
+	$('#submit-title').on('click', function(){
+		toastr.warning("Please review your content before you submit it!", "Review");
+		$(this).addClass('hidden');
+		$('#save-title').removeClass('hidden');
 	});
 
 	$('#title-form').submit(function(e){
@@ -160,6 +175,10 @@
 		$('input[name="title"]').val("");
 		$('select[name="age_group_id"]').val(0);
 		guide_summernote.summernote("code", "");
+
+		$('#submit-title').removeClass('hidden');
+		$('#save-title').addClass('hidden');
+		$('#remove-title').addClass('hidden');
 	});
 
 	$('.edit-title').on('click', function(){
@@ -172,6 +191,50 @@
 		$('input[name="title"]').val($(this).attr('data-title'));
 		$('select[name="age_group_id"]').val($(this).attr('data-cohort-id'));
 		guide_summernote.summernote("code", $(this).attr('data-guide'));
+
+		$('#submit-title').removeClass('hidden');
+		$('#save-title').addClass('hidden');
+		$('#remove-title').addClass('hidden');
+	});
+
+	$('.delete-title').on('click', function(){
+		$('#title-form-wrapper .ibox-title h5').text("Delete this Title");
+
+		$('#title-form-wrapper').addClass('bounceInRight');
+		$('#title-form-wrapper').removeClass('bounceOutRight');
+
+		$('input[name="id"]').val($(this).attr('data-id'));
+		$('input[name="title"]').val($(this).attr('data-title'));
+		$('select[name="age_group_id"]').val($(this).attr('data-cohort-id'));
+		guide_summernote.summernote("code", $(this).attr('data-guide'));
+
+		$('#submit-title').addClass('hidden');
+		$('#save-title').addClass('hidden');
+		$('#remove-title').removeClass('hidden');
+	});
+
+	$('#remove-title').on('click', function(){
+		$.ajax({
+			url: "/api/remove-treat-title",
+			method: "POST",
+			data: {
+				id: $('input[name="id"]').val()
+			},
+			beforeSend: function(){
+				$('#title-form-wrapper').block({
+					message: ""
+				});
+			},
+			success: function(){
+				$('#title-form-wrapper').unblock();
+				toastr.success("Successfully deleted title", "Success");
+				location.reload();
+			},
+			error: function(){
+				$('#title-form-wrapper').unblock();
+				toastr.error("There was an error deleting your title", "Error");
+			}
+		});
 	});
 
 	$('.close-btn').click(function(){

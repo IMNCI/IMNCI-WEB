@@ -12,4 +12,8 @@ class TreatTitle extends Model
     public function age_group(){
     	return $this->belongsTo('App\AgeGroup');
     }
+
+    public function treat_ailments(){
+    	return $this->hasMany('App\TreatAilment', 'treat_titles_id');
+    }
 }

@@ -35,6 +35,24 @@ class TreatController extends Controller
     	return $treatTitle;
     }
 
+    function destroy(Request $request){
+        $id = $request->input('id');
+
+        $treatTitle = TreatTitle::find($id);
+
+        // echo "<pre>";print_r($treatTitle);die;
+
+        if ($treatTitle) {
+            if (count($treatTitle->treat_ailments) == 0) {
+                return TreatTitle::destroy($id);
+            }else{
+                abort(405);
+            }
+        }else{
+            abort(404);
+        }
+    }
+
     function ailments(){
         return TreatAilment::all();
     }
