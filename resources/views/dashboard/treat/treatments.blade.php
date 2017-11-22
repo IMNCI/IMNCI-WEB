@@ -8,7 +8,7 @@ Treat the Infant/Child: Ailment Treatments:
 @section('breadcrumb')
 <ol class="breadcrumb">
 	<li><a href="/treat">Treat Titles</a></li>
-	<li><a href="/treat_ailments/{{ $ailment->id }}">Ailments</a></li>
+	<li><a href="/treat_ailments/{{ $ailment->treat_titles_id }}">Ailments</a></li>
 	<li class="active">Treatments</li>
 </ol>
 @stop

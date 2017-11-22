@@ -58,8 +58,6 @@ class TreatController extends Controller
 
         $treatAilment = TreatAilment::find($id);
 
-        // echo "<pre>";print_r($treatAilment);die;
-
         if ($treatAilment) {
             if (count($treatAilment->treatments) == 0) {
                 return TreatAilment::destroy($id);
