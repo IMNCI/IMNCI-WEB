@@ -13,4 +13,8 @@ class TreatAilment extends Model
     public function treat_title(){
     	return $this->belongsTo('App\TreatTitle', 'id');
     }
+
+    public function treatments(){
+    	return $this->hasMany('App\TreatAilmentTreatment', 'ailment_id');
+    }
 }

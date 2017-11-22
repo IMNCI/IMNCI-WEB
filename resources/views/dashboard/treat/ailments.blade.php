@@ -46,7 +46,9 @@ Treat the Infant/Child: Ailments:
 							<td>
 								<a class="btn btn-primary btn-xs btn-block" href="/treat_ailment_treatments/{{ $ailment->id }}">Manage Treatments</a>
 								<a class="btn btn-default btn-xs btn-block edit-ailment" data-id = "{{ $ailment->id }}" data-ailment = "{{ $ailment->ailment }}" data-content = "{{ $ailment->content }}">Edit</a>
-								<!-- <a class="btn btn-danger btn-xs btn-block delete-title" data-id = "{{ $title->id }}">Remove</a> -->
+								@if(count($ailment->treatments) == 0)
+								<a class="btn btn-danger btn-xs btn-block delete-ailment" data-id = "{{ $title->id }}" data-ailment = "{{ $ailment->ailment }}" data-content = "{{ $ailment->content }}">Remove</a>
+								@endif
 							</td>
 						</tr>
 						<?php $counter++; ?>
@@ -59,9 +61,12 @@ Treat the Infant/Child: Ailments:
 	</div>
 
 	<div class="col-md-5">
-		<div class="ibox h-built" id="ailment-form-wrapper">
+		<div class="ibox h-built animated bounceOutRight" id="ailment-form-wrapper">
 			<div class="ibox-title">
 				<h5>Add Ailment for this title</h5>
+				<div class="pull-right">
+					<a class="close-btn text-danger" title="Close this section"><i class = "fa fa-times"></i></a>
+				</div>
 			</div>
 			<div class="ibox-content">
 				<form id="ailment-form" method="POST" action="/api/treat_ailment">
@@ -78,7 +83,9 @@ Treat the Infant/Child: Ailments:
 						<span class="help-block m-b-none">**Leave blank if there is none</span>
 					</div>
 
-					<button class="btn btn-success btn-sm btn-block">Save Ailment</button>
+					<button class="btn btn-primary btn-sm btn-block hidden" id="save-ailment">Save Ailment</button>
+					<a class="btn btn-success btn-sm btn-block" id="submit-ailment">Submit Ailment</a>
+					<a class="btn btn-danger btn-sm btn-block hidden" id="remove-ailment">Remove Ailment</a>
 				</form>
 			</div>
 		</div>
@@ -127,6 +134,13 @@ Treat the Infant/Child: Ailments:
 	$('#add-ailment').on('click', function(){
 		$('.ibox-title h5').text("Add Ailment for this title");
 
+		$('#submit-ailment').removeClass('hidden');
+		$('#remove-ailment').addClass('hidden');
+		$('#save-ailment').addClass('hidden');
+
+		$('#ailment-form-wrapper').addClass('bounceInRight');
+		$('#ailment-form-wrapper').removeClass('bounceOutRight');
+
 		$('input[name="id"]').val(0);
 		$('input[name="ailment"]').val("");
 		content_summernote.summernote("code", "");
@@ -135,9 +149,68 @@ Treat the Infant/Child: Ailments:
 	$('.edit-ailment').on('click', function(){
 		$('.ibox-title h5').text("Editing Ailment");
 
+		$('#submit-ailment').removeClass('hidden');
+		$('#remove-ailment').addClass('hidden');
+		$('#save-ailment').addClass('hidden');
+
+		$('#ailment-form-wrapper').addClass('bounceInRight');
+		$('#ailment-form-wrapper').removeClass('bounceOutRight');
+
 		$('input[name="id"]').val($(this).attr('data-id'));
 		$('input[name="ailment"]').val($(this).attr('data-ailment'));
 		content_summernote.summernote("code", $(this).attr('data-content'));
+	});
+
+	$('.delete-ailment').on('click', function(){
+		$('.ibox-title h5').text("Remove Ailment");
+
+		$('#submit-ailment').addClass('hidden');
+		$('#remove-ailment').removeClass('hidden');
+		$('#save-ailment').addClass('hidden');
+
+		$('#ailment-form-wrapper').addClass('bounceInRight');
+		$('#ailment-form-wrapper').removeClass('bounceOutRight');
+
+		$('input[name="id"]').val($(this).attr('data-id'));
+		$('input[name="ailment"]').val($(this).attr('data-ailment'));
+		content_summernote.summernote("code", $(this).attr('data-content'));
+	});
+
+	$('#submit-ailment').click(function(){
+		toastr.warning("Please verify this content before you save it", "Review");
+
+		$('#submit-ailment').addClass('hidden');
+		$('#remove-ailment').addClass('hidden');
+		$('#save-ailment').removeClass('hidden');
+	});
+
+	$('#remove-ailment').click(function(){
+		$.ajax({
+			url: "/api/remove-treat-ailment",
+			method: "POST",
+			data: {
+				id: $('input[name="id"]').val()
+			},
+			beforeSend: function(){
+				$('#ailment-form-wrapper').block({
+					message: ""
+				});
+			},
+			success: function(){
+				$('#ailment-form-wrapper').unblock();
+				toastr.success("Successfully deleted ailment", "Success");
+				location.reload();
+			},
+			error: function(){
+				$('#ailment-form-wrapper').unblock();
+				toastr.error("There was an error deleting your ailment", "Error");
+			}
+		});
+	});
+
+	$('.close-btn').click(function(){
+		$('#ailment-form-wrapper').removeClass('bounceInRight');
+		$('#ailment-form-wrapper').addClass('bounceOutRight');
 	});
 </script>
 @stop
