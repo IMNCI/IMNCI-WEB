@@ -2,7 +2,11 @@
 
 @section('title')
 Treat the Infant/Child: Ailment Treatments:
-<small>{{ $ailment->ailment }} ({{ $ailment->treat_title->age_group->age_group }})</small>
+<small>{{ $ailment->ailment }}
+	@if($ailment->treat_title)
+	({{ $ailment->treat_title->age_group->age_group }})
+	@endif
+</small>
 @stop
 
 @section('breadcrumb')
