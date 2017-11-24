@@ -11,4 +11,8 @@ class AgeGroup extends Model
     public function ailments(){
     	return $this->hasMany('App\Ailment', 'age_group_id');
     }
+
+    public function treatments(){
+    	return $this->hasMany('App\TreatTitle', 'age_group_id');
+    }
 }
