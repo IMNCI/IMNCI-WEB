@@ -33,6 +33,7 @@ class TreatController extends Controller
         $ailment_id = $request->id;
 
         $data['ailment'] = TreatAilment::findOrFail($ailment_id);
+        $data['title'] = TreatTitle::findOrFail($data['ailment']->treat_titles_id);
         $data['treatments'] = TreatAilmentTreatment::where("ailment_id", $ailment_id)->get();
 
         return view('dashboard.treat.treatments')->with($data);

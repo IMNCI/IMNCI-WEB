@@ -3,7 +3,7 @@
 @section('title')
 Treat the Infant/Child: Ailment Treatments:
 <small>{{ $ailment->ailment }}
-	
+	({{ $title->age_group->age_group }})
 </small>
 @stop
 
