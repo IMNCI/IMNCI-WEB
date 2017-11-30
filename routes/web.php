@@ -33,6 +33,13 @@ Route::post('/hiv-care-delete', 'Admin\HIVCareController@destroy')->name('hiv_ca
 Route::get('/glossary', 'Admin\GlossaryController@index')->name('glossary');
 Route::get('/ailments', 'Admin\AilmentsController@index');
 
+Route::get('/gallery', 'Admin\GalleryController@index')->name('gallery');
+Route::get('/gallery/{id}', 'Admin\GalleryController@index')->name('gallery-with-ailment');
+Route::get('/gallery-ailments', 'Admin\GalleryAilmentController@index');
+Route::get('/gallery-ailments', 'Admin\GalleryAilmentController@index');
+Route::post('/gallery-ailments', 'Admin\GalleryAilmentController@store');
+Route::post('/add-gallery', 'Admin\GalleryController@store');
+
 Route::get('storage/{folder}/{filename}', function($folder, $filename){
 	$path = storage_path('app/public/' . $folder . '/' . $filename);
 	// echo $path;die;
@@ -49,6 +56,7 @@ Route::get('storage/{folder}/{filename}', function($folder, $filename){
     return $response;
 })->name('storage_images');
 
+Route::get('files/get/{id}', 'Admin\GalleryController@getFile')->name('getFile');
 // Submits
 
 Auth::routes();

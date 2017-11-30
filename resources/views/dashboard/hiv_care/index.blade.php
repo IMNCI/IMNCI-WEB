@@ -186,6 +186,7 @@
 	$('input[name="hiv_care_screenshot"]').change(function(){
 		readURL(this);
 	});
+
 	function readURL(input) {
 		var ValidImageTypes = ["image/bmp", "image/jpeg", "image/png"];
 		if (input.files && input.files[0]) {
@@ -208,6 +209,7 @@
 			$('input[name="thumb"]').val("");
 		}
 	}
+	
 </script>
 
 @if (session('status'))

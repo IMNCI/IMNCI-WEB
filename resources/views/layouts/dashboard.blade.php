@@ -47,6 +47,7 @@
 						<li><a href="{{ route('follow_up') }}"><i class="fa fa-stethoscope"></i> <span class="nav-label">Follow Up Care</span></a></li>
 						<li><a href="{{ route('counsel_the_mother') }}"><i class="fa fa-child"></i> <span class="nav-label">Counsel the Mother</span></a></li>
 						<li><a href="{{ route('hiv_care') }}"><i class="fa fa-user-md"></i> <span class="nav-label">HIV Care For Children</span></a></li>
+						<li><a href="{{ route('gallery') }}"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span></a></li>
 						<li><a href="{{ route('glossary') }}"><i class="fa fa-book"></i> <span class="nav-label">Glossary</span></a></li>
 						<li><a href="{{ route('reviews') }}"><i class="fa fa-commenting-o"></i> <span class="nav-label">Reviews</span></a></li>
 						<li><a href="{{ route('logout') }}" class="logout"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a></li>
@@ -122,6 +123,29 @@
 				event.preventDefault(); 
 				document.getElementById('logout-form').submit();
 			});
+
+			function readURL(input) {
+				var ValidImageTypes = ["image/bmp", "image/jpeg", "image/png"];
+				if (input.files && input.files[0]) {
+					var fileType = input.files[0]["type"];
+					if ($.inArray(fileType, ValidImageTypes) < 0) {
+						toastr.error("The file type you are trying to upload is not allowed");
+						$('#remove-screenshot-from-file').trigger('click');
+					}else{
+						var reader = new FileReader();
+						reader.onload = function(e) {
+							console.log(e);
+							$('#screenshot-preview').attr('src', e.target.result);
+							$('input[name="thumb"]').val(e.target.result);
+						}
+
+						reader.readAsDataURL(input.files[0]);
+					}
+				}else{
+					$('#screenshot-preview').attr('src', "#");
+					$('input[name="thumb"]').val("");
+				}
+			}
 		</script>
 	@show
 	<script src="{{ asset('dashboard/js/inspinia.js') }}"></script>

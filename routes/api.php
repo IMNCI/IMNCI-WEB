@@ -8,6 +8,7 @@ use App\Sample;
 use App\DiseaseClassification;
 use App\AssessmentClassfication;
 use App\county;
+use App\GalleryItem;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -76,6 +77,8 @@ Route::get('/remove-classification/{classification_id}', 'API\ClassificationCont
 
 Route::get('/hiv-care', 'API\HivCareController@index');
 
+Route::get('/gallery/view/{id}', 'API\GalleryController@getGalleryDetailsView');
+
 Route::get('/counties', function(Request $request){
 	return county::all();
 });
@@ -107,6 +110,24 @@ Route::get('agegroups', function(){
 	
 	return AgeGroup::all();
 });
+
+Route::get('galleryitems', function(){
+	if (count(GalleryItem::all()) == 0) {
+		$galleryitems = [
+			"Job Aid", "Illustrations", "Video", "Guidelines", "Tools"
+		];
+
+		foreach ($galleryitems as $item) {
+			$data = ['item'=>$item];
+
+			GalleryItem::create($data);
+		}
+	}
+
+	return GalleryItem::all();
+});
+
+Route::delete('gallery/delete/{id}', 'API\GalleryController@remove');
 
 Route::get('assessment_class_group', function(){
 	if (count(AsessmentClassficationCategory::all()) == 0) {
