@@ -77,6 +77,7 @@ Route::get('/remove-classification/{classification_id}', 'API\ClassificationCont
 
 Route::get('/hiv-care', 'API\HivCareController@index');
 
+Route::get('/gallery', 'API\GalleryController@index');
 Route::get('/gallery/view/{id}', 'API\GalleryController@getGalleryDetailsView');
 
 Route::get('/counties', function(Request $request){
@@ -126,6 +127,8 @@ Route::get('galleryitems', function(){
 
 	return GalleryItem::all();
 });
+
+Route::get('gallery-ailments', 'API\GalleryController@getGalleryAilments');
 
 Route::delete('gallery/delete/{id}', 'API\GalleryController@remove');
 

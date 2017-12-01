@@ -6,12 +6,24 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Gallery;
+use App\GalleryItem;
+use App\GalleryAilment;
 
 class GalleryController extends Controller
 {
     //
 
-    function index(){}
+    function index(){
+    	return Gallery::all();
+    }
+
+    function getGalleryCategories(){
+    	return GalleryItem::all();
+    }
+
+    function getGalleryAilments(){
+    	return GalleryAilment::all();
+    }
 
     function getGalleryDetailsView(Request $request){
     	$gallery = Gallery::findOrFail($request->id);
