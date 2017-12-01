@@ -13,6 +13,10 @@ use Illuminate\Http\Response;
 
 class GalleryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     function index(Request $request){
     	$data = [];

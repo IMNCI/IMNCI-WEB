@@ -12,6 +12,10 @@ use App\TreatAilmentTreatment;
 
 class TreatController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
     function index(){
     	$data['titles'] = TreatTitle::all();

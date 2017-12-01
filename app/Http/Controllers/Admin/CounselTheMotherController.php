@@ -11,6 +11,11 @@ use App\CounselSubContent;
 
 class CounselTheMotherController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     function index(){
     	$data = [];
 

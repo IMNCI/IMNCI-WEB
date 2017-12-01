@@ -8,6 +8,10 @@ use App\Review;
 
 class ReviewController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
     function index(){
     	$data['reviews'] = Review::all();
     	$data['average'] = Review::avg('rating');

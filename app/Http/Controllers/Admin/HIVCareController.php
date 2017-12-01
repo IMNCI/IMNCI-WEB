@@ -9,6 +9,10 @@ use App\Http\Requests\UploadImageRequest;
 
 class HIVCareController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     //
 
     function index(){
