@@ -212,7 +212,7 @@
 		var section = $('#section').val();
 
 		$('#add-assessment-modal select[name="age_group_id"]').val(age_group);
-		$('#add-assessment-modal select[name="category_id"]').val(section);
+		$('#add-assessment-modal select[name="section_id"]').val(section);
 	});
 
 	var header_count = $('#assessment-table thead tr th').length;

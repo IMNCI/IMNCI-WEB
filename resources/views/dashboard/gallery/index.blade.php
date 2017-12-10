@@ -68,7 +68,7 @@ use App\GalleryAilment;
 						<div class="modal-body">
 							{{ Form::open(['url' => 'add-gallery', 'files'	=>	true]) }}
 								<div class="form-group">
-									{{ Form::label('gallery_items_id', "Section") }}
+									{{ Form::label('gallery_items_id', "Media Type") }}
 									{{ Form::select('gallery_items_id', GalleryItem::pluck('item', 'id'), null, ['class'=>'form-control']) }}
 								</div>
 
@@ -188,7 +188,7 @@ use App\GalleryAilment;
 											<td>{{ $g->type }}</td>
 											<td>{{ $g->ailment->ailment }}</td>
 											<td>{{ $g->size }}</td>
-											<td>{{ $g->created_at }}</td>
+											<td>{{ date("d M Y H:i:s", strtotime($g->created_at)) }}</td>
 											<!-- <td>
 												@if($g->created_at == $g->updated_at)
 												<span class="label label-warning">Never updated</span>
