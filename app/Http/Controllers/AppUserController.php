@@ -17,6 +17,7 @@ class AppUserController extends Controller
     	$appuser = AppUser::where('display_no', $display_no)->first();
     	if ($appuser) {
     		$appuser->phone_id = $request->input('phone_id');
+            $appuser->save();
     	}else{
     		$appuser = AppUser::create($request->all());
     	}
