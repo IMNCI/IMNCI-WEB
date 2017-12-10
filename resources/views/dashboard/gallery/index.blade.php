@@ -173,11 +173,11 @@ use App\GalleryAilment;
 											<td>
 												@if($g->type == "PDF")
 												<?php $icon = "fa fa-file-pdf-o"; ?>
-												@elseif($g->type = "Word Document")
+												@elseif($g->type == "Word Document")
 												<?php $icon = "fa fa-file-word-o"; ?>
-												@elseif($g->type = "Spreadsheet")
+												@elseif($g->type == "Spreadsheet")
 												<?php $icon = "fa fa-file-excel-o"; ?>
-												@elseif($g->type = "Presentation")
+												@elseif($g->type == "Presentation")
 												<?php $icon = "fa fa-file-powerpoint-o"; ?>
 												@else
 												<?php $icon = "fa fa-file-image-o"; ?>
