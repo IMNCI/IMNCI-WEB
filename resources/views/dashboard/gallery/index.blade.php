@@ -158,6 +158,7 @@ use App\GalleryAilment;
 							<!-- <div class="table-responsive"> -->
 								<table class="table table-striped">
 									<thead>
+										<th></th>
 										<th style="width: 30%;">Title</th>
 										<th>File Type</th>
 										<th>Ailment</th>
@@ -169,6 +170,20 @@ use App\GalleryAilment;
 									<tbody>
 										@forelse($gallery[$item->id] as $g)
 										<tr>
+											<td>
+												@if($g->type == "PDF")
+												<?php $icon = "fa fa-file-pdf-o"; ?>
+												@elseif($g->type = "Word Document")
+												<?php $icon = "fa fa-file-word-o"; ?>
+												@elseif($g->type = "Spreadsheet")
+												<?php $icon = "fa fa-file-excel-o"; ?>
+												@elseif($g->type = "Presentation")
+												<?php $icon = "fa fa-file-powerpoint-o"; ?>
+												@else
+												<?php $icon = "fa fa-file-image-o"; ?>
+												@endif
+												<i class = "{{ $icon }}"></i>
+											</td>
 											<td>{{ $g->title }}</td>
 											<td>{{ $g->type }}</td>
 											<td>{{ $g->ailment->ailment }}</td>

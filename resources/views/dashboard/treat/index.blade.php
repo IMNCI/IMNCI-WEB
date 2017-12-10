@@ -56,7 +56,7 @@
 												<td>{{ $title->title }}</td>
 												<td>{{ $title->age_group->age_group }}</td>
 												<td>
-													<a class="btn btn-primary btn-xs btn-block" href="/treat_ailments/{{ $title->id }}">Manage Ailments</a>
+													<a class="btn btn-primary btn-xs btn-block" href="/treat_ailments/{{ $title->id }}">Manage Ailments / Treatments</a>
 													<a class="btn btn-default btn-xs btn-block edit-title" data-id = "{{ $title->id }}" data-title = "{{ $title->title }}" data-guide = "{{ $title->guide }}" data-cohort-id = "{{ $title->age_group_id }}">Edit</a>
 													@if(count($title->treat_ailments) == 0)
 													<a class="btn btn-danger btn-xs btn-block delete-title" data-id = "{{ $title->id }}" data-title = "{{ $title->title }}" data-guide = "{{ $title->guide }}" data-cohort-id = "{{ $title->age_group_id }}">Remove</a>
