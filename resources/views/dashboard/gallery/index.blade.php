@@ -162,7 +162,7 @@ use App\GalleryAilment;
 										<th>File Type</th>
 										<th>Ailment</th>
 										<th>File Size (Bytes)</th>
-										<th>Date Uploaded</th>
+										<!-- <th>Date Uploaded</th> -->
 										<th>Last Modified</th>
 										<th>Actions</th>
 									</thead>
@@ -174,13 +174,13 @@ use App\GalleryAilment;
 											<td>{{ $g->ailment->ailment }}</td>
 											<td>{{ $g->size }}</td>
 											<td>{{ $g->created_at }}</td>
-											<td>
+											<!-- <td>
 												@if($g->created_at == $g->updated_at)
 												<span class="label label-warning">Never updated</span>
 												@else
 												{{ $g->updated_at }}
 												@endif
-											</td>
+											</td> -->
 											<td>
 												<div class="btn-group">
 													<button data-toggle = "dropdown" class="btn btn-white btn-xs dropdown-toggle">

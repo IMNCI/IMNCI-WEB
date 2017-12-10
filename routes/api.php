@@ -9,6 +9,8 @@ use App\DiseaseClassification;
 use App\AssessmentClassfication;
 use App\county;
 use App\GalleryItem;
+use App\Gallery;
+use Illuminate\Http\Response;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -202,4 +204,13 @@ Route::get('disease_classfication', function(){
 	}
 
 	return DiseaseClassification::all();
+});
+
+Route::get('/files/get/{id}', function(Request $request){
+	 $gallery = Gallery::findOrFail($request->id);
+
+    $file = \Storage::disk('public')->get($gallery->link);
+
+    return (new Response($file, 200))
+            ->header('Content-Type', $gallery->mime);
 });
