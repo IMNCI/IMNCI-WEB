@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\AppUser;
 use App\AgeGroup;
 use App\AsessmentClassficationCategory;
@@ -213,4 +214,25 @@ Route::get('/files/get/{id}', function(Request $request){
 
     return (new Response($file, 200))
             ->header('Content-Type', $gallery->mime);
+});
+
+Route::post('/check-last-update', function(Request $request){
+	$last_app_update = date('Y-m-d H:i:s', strtotime($request->input('last_update')));
+
+	$sql = "SELECT COUNT(UPDATE_TIME) as updated_count FROM information_schema.TABLES 
+	WHERE TABLE_SCHEMA = '".env('DB_DATABASE')."' AND UPDATE_TIME > '".$last_app_update."'";
+
+	$update = DB::select($sql);
+	if ($update[0]->updated_count > 0) {
+		$message = ($update[0]->updated_count == 1) ? "There is an update available" : "There are updates available";
+		return [
+			'status'	=>	true,
+			'message'	=>	$message
+		];
+	}else{
+		return [
+			'status'	=>	false,
+			'message'	=>	'There is no update'
+		];
+	}
 });
