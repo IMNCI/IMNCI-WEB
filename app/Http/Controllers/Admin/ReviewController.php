@@ -13,7 +13,7 @@ class ReviewController extends Controller
         $this->middleware('auth');
     }
     function index(){
-    	$data['reviews'] = Review::all();
+    	$data['reviews'] = Review::orderBy('created_at', 'DESC')->get();
     	$data['average'] = Review::avg('rating');
     	return view('dashboard/reviews/index')->with($data);
     }
