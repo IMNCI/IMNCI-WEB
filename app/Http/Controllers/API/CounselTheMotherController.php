@@ -43,6 +43,20 @@ class CounselTheMotherController extends Controller
     	}
     }
 
+    function delete(Request $request){
+        $id = $request->input('title_id');
+        $title = CounselTitles::find($id);
+        if ($title) {
+            if (count($title->subcontent) == 0) {
+                return CounselTitles::destroy($id);
+            }else{
+                abort(405);
+            }
+        }else{
+            abort(404);
+        }
+    }
+
     function all_sub_content(){
         return CounselSubContent::all();
     }

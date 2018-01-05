@@ -24,7 +24,7 @@
 
 		$('table').dataTable();
 	});
-	$('#add-title-btn, .edit-title').click(function(){
+	$('#add-title-btn, .edit-title, .remove-title').click(function(){
 		manageAddEditUI(this);
 	});
 
@@ -46,6 +46,28 @@
 		}else{
 			toastr.error("Both the title and the cohorts have to be filled");
 		}
+	});
+
+	$('#confirm-remove-title').on('click', function(e){
+		e.preventDefault();
+		$.ajax({
+			url: $('#title-form-wrapper form').attr('action'),
+			method: 'DELETE',
+			data: $('#title-form-wrapper form').serialize(),
+			beforeSend: function(){
+				$('#title-form-wrapper').block({
+					message: ""
+				});
+			},
+			success: function(res){
+				toastr.success("Successfully deleted title");
+				location.reload();
+			},
+			error: function(){
+				$('#title-form-wrapper').unblock();
+				toastr.error("There was an error saving title");
+			}
+		});
 	});
 
 	$('#submit-title').click(function(e){
@@ -145,8 +167,9 @@
 										<td>
 											<a class="btn btn-xs btn-white btn-block edit-title" data-id = "{{ $title->id }}" data-cohort = "{{ $title->age_group_id }}" data-title = "{{ $title->title }}" data-content = "{{ $title->content }}" data-is-parent = "{{ $title->is_parent }}">Edit</a>
 											@if($title->is_parent == 1)
-											<a href = "/counsel-subtitles/{{ $title->id }}" class="btn btn-block btn-white btn-xs">Manage Sub Content</a> 
+											<a href = "/counsel-subtitles/{{ $title->id }}" class="btn btn-block btn-white btn-xs">Manage Sub Content</a>
 											@endif
+											<a class="btn btn-block btn-danger btn-xs remove-title" data-id = "{{ $title->id }}" data-cohort = "{{ $title->age_group_id }}" data-title = "{{ $title->title }}" data-content = "{{ $title->content }}" data-is-parent = "{{ $title->is_parent }}">Remove</a>
 										</td>
 									</tr>
 									@endif
