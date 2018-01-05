@@ -167,7 +167,7 @@
 										<td>
 											<a class="btn btn-xs btn-white btn-block edit-title" data-id = "{{ $title->id }}" data-cohort = "{{ $title->age_group_id }}" data-title = "{{ $title->title }}" data-content = "{{ $title->content }}" data-is-parent = "{{ $title->is_parent }}">Edit</a>
 											@if($title->is_parent == 1)
-											<a href = "/counsel-subtitles/{{ $title->id }}" class="btn btn-block btn-white btn-xs">Manage Sub Content</a>
+											<a href = "/counsel-subtitles/{{ $title->id }}" class="btn btn-block btn-success btn-xs">Manage Sub Content</a>
 											@endif
 											<a class="btn btn-block btn-danger btn-xs remove-title" data-id = "{{ $title->id }}" data-cohort = "{{ $title->age_group_id }}" data-title = "{{ $title->title }}" data-content = "{{ $title->content }}" data-is-parent = "{{ $title->is_parent }}">Remove</a>
 										</td>

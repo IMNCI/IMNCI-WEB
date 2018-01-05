@@ -74,6 +74,7 @@ Route::post('counsel-title', 'API\CounselTheMotherController@store');
 Route::delete('counsel-title', 'API\CounselTheMotherController@delete');
 Route::get('counsel-sub-contents', 'API\CounselTheMotherController@all_sub_content');
 Route::post('counsel-sub-content', 'API\CounselTheMotherController@store_sub_content');
+Route::delete('counsel-sub-content', 'API\CounselTheMotherController@delete_sub_content');
 
 Route::get('/signs/{classification_id}', 'API\AssessmentClassificationSignController@get_by_classification');
 Route::get('/treatments/{classification_id}', 'API\AssessmentClassificationTreatmentController@get_by_classification');

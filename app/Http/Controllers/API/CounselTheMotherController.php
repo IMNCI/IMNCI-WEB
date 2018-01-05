@@ -79,4 +79,10 @@ class CounselTheMotherController extends Controller
             return $sub_content;            
         }       
     }
+
+    function delete_sub_content(Request $request){
+        $id = $request->input('sub_content_id');
+
+        return CounselSubContent::destroy($id);
+    }
 }

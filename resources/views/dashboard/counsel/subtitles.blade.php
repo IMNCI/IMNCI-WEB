@@ -29,7 +29,7 @@
 		});
 	});
 
-	$('#add-sub-title, .edit-sub-title').click(function(){
+	$('#add-sub-title, .edit-sub-title, .remove-sub-content').click(function(){
 		manageAddEditUI(this);
 	});
 
@@ -66,6 +66,28 @@
 			},
 			success: function(){
 				toastr.success("Successfully saved sub content");
+				location.reload();
+			},
+			error: function(){
+				$('#title-form-wrapper').unblock();
+				toastr.error("There was an error saving sub content");
+			}
+		});
+	});
+
+	$('#confirm-remove-title').click(function(e){
+		e.preventDefault();
+		$.ajax({
+			url: $('#title-form-wrapper form').attr('action'),
+			method: 'DELETE',
+			data: $('#title-form-wrapper form').serialize(),
+			beforeSend: function(){
+				$('#title-form-wrapper').block({
+					message: ""
+				});
+			},
+			success: function(){
+				toastr.success("Successfully deleted sub content");
 				location.reload();
 			},
 			error: function(){
@@ -134,6 +156,7 @@
 							<td>{{ $subcontent->sub_content_title }}</td>
 							<td>
 								<a class="edit-sub-title btn btn-xs btn-block btn-white" data-id = "{{ $subcontent->id }}" data-sub-content-title = "{{ $subcontent->sub_content_title }}" data-content = "{{ $subcontent->content }}">Edit</a>
+								<a class="remove-sub-content btn btn-xs btn-block btn-danger" data-id = "{{ $subcontent->id }}" data-sub-content-title = "{{ $subcontent->sub_content_title }}" data-content = "{{ $subcontent->content }}">Remove</a>
 							</td>
 						</tr>
 						@empty
