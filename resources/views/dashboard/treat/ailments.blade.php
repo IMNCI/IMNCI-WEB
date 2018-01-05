@@ -47,7 +47,7 @@ Treat the Infant/Child: Ailments:
 								<a class="btn btn-primary btn-xs btn-block" href="/treat_ailment_treatments/{{ $ailment->id }}">Manage Treatments</a>
 								<a class="btn btn-default btn-xs btn-block edit-ailment" data-id = "{{ $ailment->id }}" data-ailment = "{{ $ailment->ailment }}" data-content = "{{ $ailment->content }}">Edit</a>
 								@if(count($ailment->treatments) == 0)
-								<a class="btn btn-danger btn-xs btn-block delete-ailment" data-id = "{{ $title->id }}" data-ailment = "{{ $ailment->ailment }}" data-content = "{{ $ailment->content }}">Remove</a>
+								<a class="btn btn-danger btn-xs btn-block delete-ailment" data-id = "{{ $ailment->id }}" data-ailment = "{{ $ailment->ailment }}" data-content = "{{ $ailment->content }}">Remove</a>
 								@endif
 							</td>
 						</tr>
