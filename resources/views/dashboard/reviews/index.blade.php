@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Reviews')
+@section('title', 'Issues')
 
 @section('page_css')
 	@parent
@@ -13,10 +13,6 @@
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5>@yield('title')</h5>
-
-					<div class="ibox-tools">
-						<span class="label label-primary">Average Rating: {{ $average }}</span>
-					</div>
 				</div>
 				<div class="ibox-content">
 					<table class="table table-bordered">
@@ -25,7 +21,7 @@
 								<th>#</th>
 								<th>Name</th>
 								<th>Email</th>
-								<th>Rating</th>
+								<th>Issue</th>
 								<th>Comment</th>
 								<th>Date</th>
 							</tr>
@@ -37,7 +33,7 @@
 								<td>{{ $counter }}</td>
 								<td>{{ $review->name }}</td>
 								<td>{{ $review->email }}</td>
-								<td>{{ $review->rating }}</td>
+								<td>{{ $review->issue }}</td>
 								<td>{{ $review->comment }}</td>
 								<td>{{ date('d.m.Y', strtotime($review->created_at)) }}</td>
 							</tr>
