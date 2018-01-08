@@ -48,6 +48,8 @@ Route::post('/classification', 'API\AssessmentController@add_assessment_classifi
 Route::get('/classifications', 'API\AssessmentController@all_classifications');
 Route::get('/classification/{id}', 'API\AssessmentController@get_classification');
 
+Route::post('/profile', 'API\UserProfileController@store');
+
 Route::get('/signs', 'API\AssessmentClassificationSignController@index');
 Route::post('/sign', 'API\AssessmentClassificationSignController@store');
 
