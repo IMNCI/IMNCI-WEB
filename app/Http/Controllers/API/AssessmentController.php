@@ -42,6 +42,7 @@ class AssessmentController extends Controller
 
     		$_assessment->assessment = $assessment;
     		$_assessment->title = $title;
+            $_assessment->category_id = $section;
 
     	}else{
 			$_assessment = new Assessment();

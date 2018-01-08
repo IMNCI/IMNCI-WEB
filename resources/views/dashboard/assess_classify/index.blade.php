@@ -294,6 +294,8 @@
 				id  		: assessment_id
 			};
 
+		console.log(submit_data);
+
 		$.ajax({
 			url : "/api/assessment",
 			type: "POST",
@@ -321,9 +323,7 @@
 		var section = $(this).attr('data-section_id');
 		$.get('/api/assessment/' + $(this).attr('data-id'), function(res){
 			var age_group = $('#age_group').val();
-			// var section = $(this).val();;
-			$('#add-assessment-modal select[name="category_id"]').val(section);
-			// $('#add-assessment-modal input#cohort').val($('#age_group option[value="'+age_group+'"]').text());
+			$('#add-assessment-modal select[name="section_id"]').val(section);
 			$('#add-assessment-modal select[name="age_group_id"]').val(age_group);
 			$('#add-assessment-modal').modal();
 			$('#add-assessment-modal .modal-header').html('<h4 class="modal-title">Edit Assessment</h4><small class="font-bold">Editing the selected assessment</small>');

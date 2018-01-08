@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title', "Counsel the Mother Sub Content: ")
-@section('subtitle', $title->title)
+@section('subtitle', $title->title . " ($cohort->age_group)")
 
 @section('breadcrumb')
 <ol class="breadcrumb">

@@ -30,6 +30,7 @@ class CounselTheMotherController extends Controller
 	    	$data = [];
 
 	    	$data['title'] = $title;
+            $data['cohort'] = $title->cohort;
 	    	return view('dashboard.counsel.subtitles')->with($data);
 	    }catch(Exception $ex){
 	    	echo "There is another thing here";
