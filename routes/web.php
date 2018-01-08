@@ -26,7 +26,7 @@ Route::get('/counsel-subtitles/{title_id}', 'Admin\CounselTheMotherController@su
 Route::get('/treat', 'Admin\TreatController@index')->name('treat');
 Route::get('/treat_ailments/{id}', 'Admin\TreatController@ailments');
 Route::get('/treat_ailment_treatments/{id}', 'Admin\TreatController@treatments');
-Route::get('/reviews', 'Admin\ReviewController@index')->name('reviews');
+Route::get('/reported-issues', 'Admin\ReviewController@index')->name('reported-issues');
 Route::get('/hiv-care', 'Admin\HIVCareController@index')->name('hiv_care');
 Route::post('/hiv-care', 'Admin\HIVCareController@store')->name('hiv_care_submit');
 Route::post('/hiv-care-delete', 'Admin\HIVCareController@destroy')->name('hiv_care_destroy');

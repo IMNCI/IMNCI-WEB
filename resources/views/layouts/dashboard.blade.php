@@ -49,7 +49,7 @@
 						<li><a href="{{ route('hiv_care') }}"><i class="fa fa-user-md"></i> <span class="nav-label">HIV Care For Children</span></a></li>
 						<li><a href="{{ route('gallery') }}"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span></a></li>
 						<li><a href="{{ route('glossary') }}"><i class="fa fa-book"></i> <span class="nav-label">Glossary</span></a></li>
-						<li><a href="{{ route('reviews') }}"><i class="fa fa-commenting-o"></i> <span class="nav-label">Issues</span></a></li>
+						<li><a href="{{ route('reported-issues') }}"><i class="fa fa-commenting-o"></i> <span class="nav-label">Reported Issues</span></a></li>
 						<li><a href="{{ route('logout') }}" class="logout"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a></li>
 					@show
 				</ul>
