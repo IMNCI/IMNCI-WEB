@@ -20,4 +20,19 @@ class ReviewController extends Controller
 
     	return response()->json($review, 200);
     }
+
+    public function update(Request $request){
+        $id = $request->input('id');
+        $action = $request->input('action');
+
+        $review = Review::findOrFail($id);
+
+        if ($review) {
+            $review->status = ($action == "solve") ? "solved" : "archived";
+
+            $review->save();
+
+            return $review;
+        }
+    }
 }

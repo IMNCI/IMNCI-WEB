@@ -48,6 +48,9 @@
 							<td>{{ date('d/M/Y H:i', strtotime($profile->created_at)) }}</td>
 						</tr>
 						@empty
+						<tr>
+							<td colspan="9"><center>No profiels registered yet</center></td>
+						</tr>
 						@endforelse
 					</tbody>
 				</table>

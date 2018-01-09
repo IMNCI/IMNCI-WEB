@@ -30,6 +30,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('appuser/get', 'AppUserController@getappuser');
 Route::post('appuser/add', 'AppUserController@addappuser');
 Route::post('review', 'ReviewController@store');
+Route::post('review/update', 'ReviewController@update');
 Route::post('ailment', 'AilmentsController@store');
 Route::get('ailment', 'AilmentsController@index');
 Route::get('/delete-ailment/{id}', 'AilmentsController@delete');
