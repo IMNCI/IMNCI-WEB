@@ -36,15 +36,17 @@
 					</thead>
 					<tbody>
 						@forelse($profiles as $profile)
-						<td>{{ $profile->email }}</td>
-						<td>{{ $profile->phone }}</td>
-						<td>{{ $profile->gender }}</td>
-						<td>{{ $profile->age_group }}</td>
-						<td>{{ $profile->county }}</td>
-						<td>{{ $profile->profession }}</td>
-						<td>{{ $profile->cadre }}</td>
-						<td>{{ $profile->sector }}</td>
-						<td>{{ date('d/M/Y H:i', strtotime($profile->created_at)) }}</td>
+						<tr>
+							<td>{{ $profile->email }}</td>
+							<td>{{ $profile->phone }}</td>
+							<td>{{ $profile->gender }}</td>
+							<td>{{ $profile->age_group }}</td>
+							<td>{{ $profile->county }}</td>
+							<td>{{ $profile->profession }}</td>
+							<td>{{ $profile->cadre }}</td>
+							<td>{{ $profile->sector }}</td>
+							<td>{{ date('d/M/Y H:i', strtotime($profile->created_at)) }}</td>
+						</tr>
 						@empty
 						@endforelse
 					</tbody>
