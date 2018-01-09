@@ -40,6 +40,8 @@ Route::get('/gallery-ailments', 'Admin\GalleryAilmentController@index');
 Route::post('/gallery-ailments', 'Admin\GalleryAilmentController@store');
 Route::post('/add-gallery', 'Admin\GalleryController@store');
 
+Route::get('/profiles', 'Admin\UserProfileController@index')->name('profile');
+
 Route::get('storage/{folder}/{filename}', function($folder, $filename){
 	$path = storage_path('app/public/' . $folder . '/' . $filename);
 	// echo $path;die;
