@@ -110,4 +110,12 @@ class TreatController extends Controller
 
         return $treatAilmentTreatment;
     }
+
+    function destroyTreatment(Request $request){
+        $id = $request->input('id');
+
+        $treatAilmentTreatment = TreatAilmentTreatment::findOrFail($id);
+
+        return TreatAilmentTreatment::destroy($id);
+    }
 }

@@ -71,6 +71,7 @@ Route::get('treat_ailment_treatments', 'API\TreatController@treatments');
 
 Route::post('treat_ailment', 'API\TreatController@storeAilments');
 Route::post('treat_ailment_treatments', 'API\TreatController@storeTreatment');
+Route::delete('treat_ailment_treatments', 'API\TreatController@destroyTreatment');
 
 Route::get('counsel-titles', 'API\CounselTheMotherController@index');
 Route::post('counsel-title', 'API\CounselTheMotherController@store');

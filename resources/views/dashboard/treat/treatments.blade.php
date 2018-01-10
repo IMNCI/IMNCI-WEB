@@ -33,7 +33,8 @@ Treat the Infant/Child: Ailment Treatments:
 						<tr>
 							<td>{{ $treatment->treatment }}</td>
 							<td>
-								<a class="btn btn-default btn-xs btn-block edit-treatment" data-id = "{{ $treatment->id }}" data-treatment = "{{ $treatment->treatment }}" data-content = "{{ $treatment->content }}">Edit</a>
+								<a class="btn btn-default btn-xs btn-block edit-treatment" data-id = "{{ $treatment->id }}" data-treatment = "{{ $treatment->treatment }}" data-content = "{{ $treatment->content }}" data-type = 'edit'>Edit</a>
+								<a class="btn btn-danger btn-xs btn-block remove-treatment" data-id = "{{ $treatment->id }}" data-treatment = "{{ $treatment->treatment }}" data-content = "{{ $treatment->content }}" data-type = 'remove'>Remove</a>
 							</td>
 						</tr>
 						@endforeach
@@ -62,7 +63,8 @@ Treat the Infant/Child: Ailment Treatments:
 						<span class="help-block m-b-none">**Leave blank if there is none</span>
 					</div>
 
-					<button class="btn btn-success btn-sm btn-block">Save Treatment</button>
+					<button class="btn btn-success btn-sm btn-block" id="save-treatment">Save Treatment</button>
+					<a class="btn btn-danger btn-sm btn-block" id="remove-treatment" style="display: none;">Remove Treatment</a>
 				</form>
 			</div>
 		</div>
@@ -76,6 +78,11 @@ Treat the Infant/Child: Ailment Treatments:
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote-bs3.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/dataTables/datatables.min.css') }}">
+<style type="text/css">
+	.hidden{
+		display: none;
+	}
+</style>
 @stop
 
 @section('page_js')
@@ -91,6 +98,7 @@ Treat the Infant/Child: Ailment Treatments:
 	$(document).ready(function(){
 		content_summernote = $('textarea[name="content"]').summernote($summernote_options);
 		treatmentsDataTable = $('table').dataTable();
+		$('#remove-treatment').hide();
 	});
 
 	$('#treatment-form').submit(function(e){
@@ -111,7 +119,30 @@ Treat the Infant/Child: Ailment Treatments:
 			},
 			error: function(){
 				$('#treatment-form-wrapper').unblock();
-				toastr.error("There was an error saving your ailment", "Error");
+				toastr.error("There was an error saving this treatment", "Error");
+			}
+		});
+	});
+
+	$('#remove-treatment').on('click', function(e){
+		e.preventDefault();
+		$.ajax({
+			url: "/api/treat_ailment_treatments",
+			method: "DELETE",
+			data: $('#treatment-form').serialize(),
+			beforeSend: function(){
+				$('#treatment-form-wrapper').block({
+					message: ""
+				});
+			},
+			success: function(res){
+				$('#treatment-form-wrapper').unblock();
+				toastr.success("Successfully removed treatment", "Success");
+				location.reload();
+			},
+			error: function(){
+				$('#treatment-form-wrapper').unblock();
+				toastr.error("There was an error removing this treatment", "Error");
 			}
 		});
 	});
@@ -124,8 +155,18 @@ Treat the Infant/Child: Ailment Treatments:
 		content_summernote.summernote("code", "");
 	});
 
-	$('.edit-treatment').on('click', function(){
-		$('.ibox-title h5').text("Editing Treatment");
+	$('.edit-treatment, .remove-treatment').on('click', function(){
+		var type = $(this).attr('data-type');
+		if (type == "edit") {
+			$('.ibox-title h5').text("Editing Treatment");
+			$('#remove-treatment').hide();
+			$('#save-treatment').show();
+		}else{
+			$('.ibox-title h5').text("Remove Treatment");
+			$('#remove-treatment').show();
+			$('#save-treatment').hide();
+		}
+		
 
 		$('input[name="id"]').val($(this).attr('data-id'));
 		$('input[name="treatment"]').val($(this).attr('data-treatment'));

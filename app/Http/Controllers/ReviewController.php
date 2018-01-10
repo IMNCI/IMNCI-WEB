@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use App\Review;
+use App\Jobs\SendIssueEmail;
 
 class ReviewController extends Controller
 {
@@ -17,7 +19,7 @@ class ReviewController extends Controller
 
     public function store(Request $request){
     	$review = Review::create($request->all());
-
+        dispatch(new SendIssueEmail($review));
     	return response()->json($review, 200);
     }
 
