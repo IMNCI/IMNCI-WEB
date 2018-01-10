@@ -76,6 +76,49 @@ class GalleryController extends Controller
                 ->with('url', route('getFile', $gallery->id));
     }
 
+    function update(Request $request){
+       $id = $request->input('gallery_id');
+       $gallery = Gallery::findOrFail($id);
+       $path = $gallery->link;
+       $mime = $gallery->mime;
+       $size = $gallery->size;
+       $thumbnail = "TBA";
+       $type = $gallery->type;
+       $file = $request->file('file');
+       if ($file) {
+            $extension = $file->getClientOriginalExtension();
+
+            $destinationPath = public_path('gallery');
+
+            $path = \Storage::disk('public')->put('gallery', $file);
+
+            $type = $this->getTypeFromMime($file->getMimeType());
+
+            if (!$type) {
+                $type = "N/A";
+            }
+
+            $size = $file->getSize();
+            $mime = $file->getMimeType();
+       }
+
+        $gallery->title = $request->input('title');
+        $gallery->description = $request->input('description');
+        $gallery->gallery_ailments_id = $request->input('gallery_ailments_id');
+        $gallery->gallery_items_id = $request->input('gallery_items_id');
+        $gallery->thumbnail = $thumbnail;
+        $gallery->mime = $mime;
+        $gallery->link = $path;
+        $gallery->size = $size;
+        $gallery->type = $type;
+
+        $gallery->save();
+
+        return back()
+                ->with('success', "Successfully updated gallery item")
+                ->with('url', route('getFile', $gallery->id));
+    }
+
     function cleanGallery($gallery){
     	$cleaned_gallery = [];
     	$galleryitems = GalleryItem::all();

@@ -39,6 +39,7 @@ Route::get('/gallery-ailments', 'Admin\GalleryAilmentController@index');
 Route::get('/gallery-ailments', 'Admin\GalleryAilmentController@index');
 Route::post('/gallery-ailments', 'Admin\GalleryAilmentController@store');
 Route::post('/add-gallery', 'Admin\GalleryController@store');
+Route::post('/edit-gallery', 'Admin\GalleryController@update');
 
 Route::get('/profiles', 'Admin\UserProfileController@index')->name('profile');
 

@@ -115,6 +115,67 @@ use App\GalleryAilment;
 				</div>
 			</div>
 
+			<div id="edit-gallery-modal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Editing Gallery Item</h4>
+						</div>
+						<div class="modal-body">
+							{{ Form::open(['url' => 'edit-gallery', 'files'	=>	true]) }}
+								<input type="hidden" name="gallery_id" />
+								<div class="form-group">
+									{{ Form::label('gallery_items_id', "Media Type") }}
+									{{ Form::select('gallery_items_id', GalleryItem::pluck('item', 'id'), null, ['class'=>'form-control']) }}
+								</div>
+
+								<div class="form-group">
+									{{ Form::label('gallery_ailments_id', "Ailment") }}
+									{{ Form::select('gallery_ailments_id', GalleryAilment::pluck('ailment', 'id'), $ailment_id, ['class'=>'form-control']) }}
+								</div>
+
+								<div class="form-group">
+									{{ Form::label('title', "Title") }}
+									{{ Form::text('title', null, ['class'=>'form-control']) }}
+								</div>
+
+								<div class="form-group">
+									{{ Form::label('description', "Description") }}
+									{{ Form::textarea('description', null, ['class'=>'form-control']) }}
+								</div>
+
+								<div class="form-group">
+									{{ Form::label('file', "Upload File") }}
+									<div class="fileinput fileinput-new input-group" data-provides="fileinput">
+										<div class="form-control" data-trigger="fileinput">
+											<i class="glyphicon glyphicon-file fileinput-exists"></i>
+											<span class="fileinput-filename"></span>
+										</div>
+										<span class="input-group-addon btn btn-default btn-file">
+											<span class="fileinput-new">Select file</span>
+											<span class="fileinput-exists">Change</span>
+											{{ Form::file('file') }}
+										</span>
+										<a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+									</div>
+									<p>**Select another file to replace the existent one</p>
+
+									<p id="size" class="hidden"><span><b>File Size: </b></span><span id="fileSize"></span></p>
+								</div>
+						</div>
+						<div class="modal-footer">							
+							<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Save</button>
+							{{ Form::close() }}
+						</div>
+					</div>
+
+				</div>
+			</div>
+
 			<!-- View Details Modal -->
 			<div id="view-gallery-modal" class="modal fade" role="dialog">
 				<div class="modal-dialog">
@@ -207,7 +268,7 @@ use App\GalleryAilment;
 															<a href="{{ route('getFile', $g->id) }}" target="_blank" download><i class="fa fa-download"></i>&nbsp;Download File</a>
 														</li>
 														<li><a href="#" class="view-details" data-id = "{{ $g->id }}"><i class="fa fa-eye"></i>&nbsp;View Details</a></li>
-														<li><a href="#"><i class="fa fa-edit"></i>&nbsp;Edit Upload</a></li>
+														<li><a href="#" class="edit-gallery" data-id = "{{ $g->id }}" data-gallery-item-id = "{{ $g->gallery_items_id }}" data-ailment-id = "{{ $g->gallery_ailments_id }}" data-title = "{{ $g->title }}" data-description = "{{ $g->description }}" data-link = "{{ $g->link }}"><i class="fa fa-edit"></i>&nbsp;Edit Upload</a></li>
 														<li><a href="#" class="remove-gallery" data-id = "{{ $g->id }}"><i class="fa fa-trash-o"></i>&nbsp;Delete Upload</a></li>
 													</ul>
 												</div>
@@ -268,6 +329,16 @@ use App\GalleryAilment;
 		$('#view-gallery-modal .modal-title').text("Delete Gallery Item");
 		$('#delete-gallery').removeClass("hidden");
 		$.when(getGalleryPage(id));
+	});
+
+	$('.edit-gallery').on('click', function(){
+		var id = $(this).attr('data-id');
+		$('input[name="gallery_id"]').val(id);
+		$('#edit-gallery-modal select[name="gallery_items_id"]').val($(this).attr('data-gallery-item-id'));
+		$('#edit-gallery-modal select[name="gallery_ailments_id"]').val($(this).attr('data-ailment-id'));
+		$('input[name="title"]').val($(this).attr('data-title'));
+		$('textarea[name="description"]').val($(this).attr('data-description'));
+		$('#edit-gallery-modal').modal();
 	});
 
 	$('#delete-gallery').on('click', function(){

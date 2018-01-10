@@ -88,7 +88,7 @@ Route::get('/hiv-care', 'API\HivCareController@index');
 
 Route::get('/gallery', 'API\GalleryController@index');
 Route::get('/gallery/view/{id}', 'API\GalleryController@getGalleryDetailsView');
-
+Route::get('/gallery/edit/{id}', 'API\GalleryController@editView');
 Route::get('/counties', function(Request $request){
 	return county::all();
 });
