@@ -7,17 +7,16 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class IssueMailer extends Mailable
+class IssueConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
-
-    protected $issue;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
+    protected $issue;
     public function __construct($issue)
     {
         $this->issue = $issue;
@@ -30,9 +29,9 @@ class IssueMailer extends Mailable
      */
     public function build()
     {
-        return $this
+         return $this
                 ->subject('Issue Reported')
-                ->view('email.issue')->with([
+                ->view('email.issue_confirmation')->with([
                     'issue' =>  $this->issue
                 ]);
     }
