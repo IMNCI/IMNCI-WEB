@@ -19,6 +19,16 @@
         </div>
     @endif
     <div class="row">
+    	<div class="col-md-6">
+    		<div class="ibox">
+    			<div class="ibox-title">
+    				HIV Care Parents
+    			</div>
+    		</div>
+    	</div>
+    	<div class="col-md-6">
+    		
+    	</div>
     	@if(count($hivcare))
     	<div class="ibox">
 			<div class="ibox-content">
@@ -49,11 +59,7 @@
 			<a class="btn btn-sm btn-primary add-hiv-care" data-toggle="modal" data-target="#myModal5">Add the First One</a>
 		</div>
     	@endif
-		@forelse($hivcare as $care)
 		
-		@empty
-		
-		@endforelse
 	</div>
 
 
