@@ -226,7 +226,8 @@ Route::post('/check-last-update', function(Request $request){
 	$last_app_update = date('Y-m-d H:i:s', strtotime($request->input('last_update')));
 
 	$sql = "SELECT COUNT(UPDATE_TIME) as updated_count FROM information_schema.TABLES 
-	WHERE TABLE_SCHEMA = '".env('DB_DATABASE')."' AND UPDATE_TIME > '".$last_app_update."'";
+	WHERE TABLE_SCHEMA = '".env('DB_DATABASE')."' AND UPDATE_TIME > '".$last_app_update."'
+	AND TABLE_NAME NOT IN ('app_users', 'users', 'jobs', 'failed_jobs', 'migrations', 'password_resets', 'user_profiles')";
 
 	Storage::disk('local')->put('sql.txt', $sql);
 
