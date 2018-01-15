@@ -1,5 +1,8 @@
 <?php
 
+// use Mail;
+use App\Mail\DatabaseMailer;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,6 +61,22 @@ Route::get('storage/{folder}/{filename}', function($folder, $filename){
 
     return $response;
 })->name('storage_images');
+
+Route::get('testingbackup', function(){
+	 $details = \Artisan::call('backup:mysql-dump', [
+            '--compress'    =>  true
+        ]);
+
+	 echo $details;die;
+	// $directory = storage_path('app/backups');
+	// $files = File::allFiles($directory);
+	// // $email = new DatabaseMailer($files);
+ // //    Mail::to(env('BACKUP_EMAIL', 'c.otaalo@gmail.com'))->send($email);
+	// foreach ($files as $file) {
+	// 	echo $file->getPathname() . "<br/>";
+	// 	// File::delete($file->getPathname());
+	// }
+});
 
 Route::get('files/get/{id}', 'Admin\GalleryController@getFile')->name('getFile');
 // Submits

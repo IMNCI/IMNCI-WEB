@@ -228,6 +228,8 @@ Route::post('/check-last-update', function(Request $request){
 	$sql = "SELECT COUNT(UPDATE_TIME) as updated_count FROM information_schema.TABLES 
 	WHERE TABLE_SCHEMA = '".env('DB_DATABASE')."' AND UPDATE_TIME > '".$last_app_update."'";
 
+	Storage::disk('local')->put('sql.txt', $sql);
+
 	$update = DB::select($sql);
 	if ($update[0]->updated_count > 0) {
 		$message = ($update[0]->updated_count == 1) ? "There is an update available" : "There are updates available";

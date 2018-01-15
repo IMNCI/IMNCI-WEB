@@ -19,49 +19,83 @@
         </div>
     @endif
     <div class="row">
-    	<div class="col-md-6">
+    	<div class="col-md-4">
     		<div class="ibox">
     			<div class="ibox-title">
     				HIV Care Parents
+
+    				<a class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#add-parent-modal">Add Parent</a>
+    			</div>
+    			<div class="ibox-content">
+    				<table class="table table-striped">
+    					<thead>
+    						<th style="width: 70%">Parent</th>
+    						<th>Actions</th>
+    					</thead>
+    				</table>
     			</div>
     		</div>
     	</div>
-    	<div class="col-md-6">
-    		
-    	</div>
-    	@if(count($hivcare))
-    	<div class="ibox">
-			<div class="ibox-content">
-				<table class="table table-bordered table-hover">
-					<th></th>
-					<th>Title</th>
-					<th>Actions</th>
-					@foreach($hivcare as $k => $care)
-					<tr>
-						<td style="width: 20%;">
-							<img class="img-responsive" src="/storage/{{ $care->image_path }}">
-						</td>
-						<td style="vertical-align: middle;">{{ $care->title }}</td>
-						<td style="vertical-align: middle;">
-							<a href = "#" class="btn btn-sm btn-white btn-block edit-hiv-care" data-id = "{{ $care->id }}" data-title = "{{ $care->title }}" data-image = "/storage/{{ $care->image_path }}"  data-toggle="modal" data-target="#myModal5">Edit</a>
-							<a href = "#" class="btn btn-sm btn-danger btn-block remove-hiv-care" data-id = "{{ $care->id }}" data-title = "{{ $care->title }}" data-image = "/storage/{{ $care->image_path }}" data-toggle="modal" data-target="#removeModal">Remove</a>
-						</td>
-					</tr>
-					
-					@endforeach
-				</table>
+    	<div class="col-md-8">
+    		@if(count($hivcare))
+			<div class="ibox">
+				<div class="ibox-content">
+					<table class="table table-bordered table-hover">
+						<th></th>
+						<th>Title</th>
+						<th>Actions</th>
+						@foreach($hivcare as $k => $care)
+						<tr>
+							<td style="width: 20%;">
+								<img class="img-responsive" src="/storage/{{ $care->image_path }}">
+							</td>
+							<td style="vertical-align: middle;">{{ $care->title }}</td>
+							<td style="vertical-align: middle;">
+								<a href = "#" class="btn btn-sm btn-white btn-block edit-hiv-care" data-id = "{{ $care->id }}" data-title = "{{ $care->title }}" data-image = "/storage/{{ $care->image_path }}"  data-toggle="modal" data-target="#myModal5">Edit</a>
+								<a href = "#" class="btn btn-sm btn-danger btn-block remove-hiv-care" data-id = "{{ $care->id }}" data-title = "{{ $care->title }}" data-image = "/storage/{{ $care->image_path }}" data-toggle="modal" data-target="#removeModal">Remove</a>
+							</td>
+						</tr>
+						
+						@endforeach
+					</table>
+				</div>
 			</div>
-		</div>
-    	@else
-    	<div class="text-center p-xl">
-			<i class="fa fa-exclamation-triangle fa-5x"></i>
-			<h3>There are no HIV Care uploads just yet</h3>
-			<a class="btn btn-sm btn-primary add-hiv-care" data-toggle="modal" data-target="#myModal5">Add the First One</a>
-		</div>
-    	@endif
-		
+	    	@else
+	    	<div class="text-center p-xl">
+				<i class="fa fa-exclamation-triangle fa-5x"></i>
+				<h3>There are no HIV Care uploads just yet</h3>
+				<a class="btn btn-sm btn-primary add-hiv-care" data-toggle="modal" data-target="#myModal5">Add the First One</a>
+			</div>
+	    	@endif
+    	</div>
 	</div>
 
+	<div class="modal inmodal fade" id="add-parent-modal" tabindex="-1" role="dialog"  aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">Add Parent</h4>
+				</div>
+				<div class="modal-body">
+					<form method="POST" action="{{ route('hiv_care_submit') }}" enctype="multipart/form-data">
+						{{ csrf_field() }}
+						<input type="hidden" name="id">
+						<div class="form-group">
+							<label class="control-label">Parent Name</label>
+							<input type="text" name="name" class="form-control" required />
+						</div>	
+					</form>				
+				</div>
+
+				<div class="modal-footer">
+				<a type="button" class="btn btn-white" data-dismiss="modal">Close</a>
+				<button type="submit" class="btn btn-primary">Save changes</button>
+				</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
 		<div class="modal-dialog modal-lg">
