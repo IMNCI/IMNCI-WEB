@@ -198,7 +198,7 @@ Route::get('disease_classfication', function(){
 	];
 
 	$data3 = [
-		'classification'	=>	'Not Serious Classification',
+		'classification'	=>	'Mild Classification',
 		'description'		=>	'Not serious and in most cases no drugs are needed. Simple advice on home management given',
 		'color'				=>	'#32CD32'
 	];
