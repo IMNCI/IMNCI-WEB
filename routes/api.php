@@ -29,6 +29,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('appuser/get', 'AppUserController@getappuser');
 Route::post('appuser/add', 'AppUserController@addappuser');
+Route::get('appuser/download/{format}', 'AppUserController@download');
+Route::get('appuser/brand-statistics', 'AppUserController@getBrandStatistics');
 Route::post('review', 'ReviewController@store');
 Route::post('review/update', 'ReviewController@update');
 Route::post('ailment', 'AilmentsController@store');

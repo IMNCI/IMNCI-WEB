@@ -32,4 +32,53 @@ class AppUserController extends Controller
     	}
     	return $appuser;
     }
+
+    public function getBrandStatistics(){
+        $brand_statistics = [];
+        $brands = AppUser::select('brand', \DB::raw('count(*) as total'))->groupBy('brand')->get();
+        foreach ($brands as $brand) {
+            $brand_statistics[] = [
+                'name'  =>  $brand->brand,
+                'y'     =>  $brand->total
+            ];
+        }
+
+        return $brand_statistics;
+    }
+
+    public function download(Request $request){
+        $format = $request->format;
+
+        $appusers = $this->getappuser();
+
+        foreach ($appusers as $appuser) {
+            $data[] = [
+                'BRAND' => strtoupper($appuser->brand),
+                'DEVICE' => strtoupper($appuser->device),
+                'MODEL' => strtoupper($appuser->model),
+                'ANDROID VERSION' => "Android {$appuser->android_release}",
+                'DOWNLOAD DATE' => date('d.m.Y \a\t h:i a', strtotime($appuser->created_at))
+            ];
+        }
+
+        \Excel::create('DownloadHistory', function($excel) use($data) {
+            // Set the title
+            $excel->setTitle('IMNCI Application Download History');
+
+            // Chain the setters
+            $excel->setCreator('IMNCI Export Bot')
+                    ->setCompany('IMNCI');
+
+            // Call them separately
+            $excel->setDescription('These are the users that have downloaded the IMNCI Application as of ' . date('d/M/Y'));
+
+            $excel->sheet('Phones Listing', function($sheet) use($data) {
+                $sheet->setAutoSize(true);
+                $sheet->cells('A1:E1', function($cells){
+                    $cells->setFontWeight('bold');
+                });
+                $sheet->fromArray($data);
+            });
+        })->export('xlsx');
+    }
 }
