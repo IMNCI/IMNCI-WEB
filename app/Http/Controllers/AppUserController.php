@@ -46,6 +46,37 @@ class AppUserController extends Controller
         return $brand_statistics;
     }
 
+    public function getMonthlyDownloads($year){
+        $sql = "SELECT m.month, COUNT(a.id) as downloads
+            FROM
+            (
+                      SELECT 1 AS MONTH
+                       UNION SELECT 2 AS MONTH
+                       UNION SELECT 3 AS MONTH
+                       UNION SELECT 4 AS MONTH
+                       UNION SELECT 5 AS MONTH
+                       UNION SELECT 6 AS MONTH
+                       UNION SELECT 7 AS MONTH
+                       UNION SELECT 8 AS MONTH
+                       UNION SELECT 9 AS MONTH
+                       UNION SELECT 10 AS MONTH
+                       UNION SELECT 11 AS MONTH
+                       UNION SELECT 12 AS MONTH
+            ) as m
+            LEFT JOIN app_users a ON m.month = MONTH(a.created_at) AND YEAR(a.created_at) = {$year}
+            GROUP BY m.month";
+        $downloads = \DB::select(\DB::raw($sql));
+        $cleaned_data = [];
+        foreach ($downloads as $download) {
+            $cleaned_data[] = [
+                'month'     =>  date('M', strtotime($year . "/" . $download->month . "/01")),
+                'download'  =>  $download->downloads
+            ];
+        }
+
+        return $cleaned_data;
+    }
+
     public function download(Request $request){
         $format = $request->format;
 

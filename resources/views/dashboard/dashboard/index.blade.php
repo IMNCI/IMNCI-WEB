@@ -52,12 +52,12 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="ibox">
-				<div class="ibox-content">
+				<div class="ibox-content" id="monthly-downloads-main">
 					<div class="row">
 						<div class="col-md-2">
 							<div class="form-group">
 								<label>Pick a Year</label>
-								<select class="form-control">
+								<select class="form-control" name="monthly-downloads-year">
 									<option value="2017">2017</option>
 									<option value="2018">2018</option>
 								</select>
@@ -143,7 +143,11 @@
 		});
 
 		drawBrandsPie();
-		drawMonthlyDownloads();
+		drawMonthlyDownloads($('select[name="monthly-downloads-year"]').val());
+	});
+
+	$('select[name="monthly-downloads-year"]').change(function(){
+		drawMonthlyDownloads($(this).val());
 	});
 
 	function drawBrandsPie(){
@@ -206,57 +210,75 @@
 		
 	}
 
-	function drawMonthlyDownloads(month){
-		Highcharts.chart('monthly-downloads', {
-		    chart: {
-		        type: 'column'
-		    },
-		    title: {
-		        text: 'Monthly Application Downloads'
-		    },
-		    xAxis: {
-		        categories: [
-		            'Jan',
-		            'Feb',
-		            'Mar',
-		            'Apr',
-		            'May',
-		            'Jun',
-		            'Jul',
-		            'Aug',
-		            'Sep',
-		            'Oct',
-		            'Nov',
-		            'Dec'
-		        ],
-		        crosshair: true
-		    },
-		    yAxis: {
-		        min: 0,
-		        title: {
-		            text: 'No. of downloads'
-		        }
-		    },
-		    tooltip: {
-		        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-		        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-		            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
-		        footerFormat: '</table>',
-		        shared: true,
-		        useHTML: true
-		    },
-		    plotOptions: {
-		        column: {
-		            pointPadding: 0.2,
-		            borderWidth: 0
-		        }
-		    },
-		    series: [{
-		        name: 'Downloads',
-		        data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+	function drawMonthlyDownloads(year){
+		$.ajax({
+			url: "/api/appuser/monthly-downloads/" + year,
+			method: "GET",
+			beforeSend: function(){
+				$('#monthly-downloads-main').block({
+					message: "<img style = 'width: 50px;' src = '{{ asset('Blocks.gif') }}' />",
+					css: { 
+			            border: 'none', 
+			            padding: '15px', 
+			            backgroundColor: 'none', 
+			            '-webkit-border-radius': '10px', 
+			            '-moz-border-radius': '10px', 
+			            color: '#fff' 
+			        }
+				});
+			},
+			success: function(res){
+				$('#monthly-downloads-main').unblock();
+				data = [];
+				categories = [];
 
-		    }]
+				$.each(res, function(k, v){
+					categories.push(v.month);
+					data.push(v.download);
+				});
+				Highcharts.chart('monthly-downloads', {
+				    chart: {
+				        type: 'column'
+				    },
+				    title: {
+				        text: 'Monthly Application Downloads'
+				    },
+				    xAxis: {
+				        categories: categories,
+				        crosshair: true
+				    },
+				    yAxis: {
+				        min: 0,
+				        title: {
+				            text: 'No. of downloads'
+				        }
+				    },
+				    tooltip: {
+				        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+				        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+				            '<td style="padding:0"><b>{point.y}</b></td></tr>',
+				        footerFormat: '</table>',
+				        shared: true,
+				        useHTML: true
+				    },
+				    plotOptions: {
+				        column: {
+				            pointPadding: 0.2,
+				            borderWidth: 0
+				        }
+				    },
+				    series: [{
+				        name: 'Downloads',
+				        data: data
+
+				    }]
+				});
+			}, error: function(){
+				$('#monthly-downloads-main').unblock();
+				toastr.error('Error', "There was an error loading the monthly downloads chart");
+			}
 		});
+		
 	}
 	
 </script>
