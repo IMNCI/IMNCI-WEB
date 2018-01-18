@@ -69,6 +69,26 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="ibox">
+				<div class="ibox-content" id="version-chart-main">
+					<div class="row">
+						<div class="col-md-8">
+							<div id="version-chart" style="height: 400px;"></div>
+						</div>
+
+						<div class="col-md-4">
+							<ul class="list-group clear-list m-t" id="android-listing">
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-9">
 			<div class="ibox float-e-margins">
@@ -133,6 +153,19 @@
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/highcharts/code/js/highcharts.src.js') }}"></script>
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/highcharts/code/modules/exporting.js') }}"></script>
 <script type="text/javascript">
+	var loader = '<div class="sk-spinner sk-spinner-double-bounce"><div class="sk-double-bounce1"></div><div class="sk-double-bounce2"></div></div>';
+
+	var blockObj = {
+		message: loader,
+		css:  { 
+            border: 'none', 
+            padding: '15px', 
+            backgroundColor: 'none', 
+            '-webkit-border-radius': '10px', 
+            '-moz-border-radius': '10px', 
+            color: '#fff' 
+        }
+	}
 	$(document).ready(function(){
 		$('#app-users').dataTable({
 			aaSorting: [[0, 'desc']]
@@ -144,6 +177,7 @@
 
 		drawBrandsPie();
 		drawMonthlyDownloads($('select[name="monthly-downloads-year"]').val());
+		drawAndroidVersionDistribution();
 	});
 
 	$('select[name="monthly-downloads-year"]').change(function(){
@@ -155,17 +189,7 @@
 			url: "/api/appuser/brand-statistics",
 			method: "GET",
 			beforeSend: function(){
-				$('.loading').block({
-					message: "<img style = 'width: 50px;' src = '{{ asset('Blocks.gif') }}' />",
-					css: { 
-			            border: 'none', 
-			            padding: '15px', 
-			            backgroundColor: 'none', 
-			            '-webkit-border-radius': '10px', 
-			            '-moz-border-radius': '10px', 
-			            color: '#fff' 
-			        }
-				});
+				$('.loading').block(blockObj);
 			},
 			success: function(res){
 				$('.loading').unblock();
@@ -215,17 +239,7 @@
 			url: "/api/appuser/monthly-downloads/" + year,
 			method: "GET",
 			beforeSend: function(){
-				$('#monthly-downloads-main').block({
-					message: "<img style = 'width: 50px;' src = '{{ asset('Blocks.gif') }}' />",
-					css: { 
-			            border: 'none', 
-			            padding: '15px', 
-			            backgroundColor: 'none', 
-			            '-webkit-border-radius': '10px', 
-			            '-moz-border-radius': '10px', 
-			            color: '#fff' 
-			        }
-				});
+				$('#monthly-downloads-main').block(blockObj);
 			},
 			success: function(res){
 				$('#monthly-downloads-main').unblock();
@@ -268,7 +282,7 @@
 				        }
 				    },
 				    series: [{
-				        name: 'Downloads',
+				        name: 'Downloads in ' + year,
 				        data: data
 
 				    }]
@@ -276,6 +290,63 @@
 			}, error: function(){
 				$('#monthly-downloads-main').unblock();
 				toastr.error('Error', "There was an error loading the monthly downloads chart");
+			}
+		});
+		
+	}
+
+	function drawAndroidVersionDistribution(){
+		$.ajax({
+			url: "/api/appuser/android-version-distribution",
+			method: "GET",
+			beforeSend: function(){
+				$('#version-chart-main').block(blockObj);
+			},
+			success: function(res){
+				$('#version-chart-main').unblock();
+				var series = [];
+				res.reverse();
+				$.each(res, function(k, v){
+					data = [];
+					data.push(v.total);
+					seriesObj = {
+						name: "Android " + v.android_release,
+						data: data
+					};
+
+					series.push(seriesObj);
+
+					$('#android-listing').append("<li class = 'list-group-item'><span class = 'pull-right'>"+v.total+"</span>Android "+v.android_release+"</li>");
+				});
+				Highcharts.chart('version-chart', {
+					chart: {
+						type: 'bar'
+					},
+					title: {
+						text: 'Android Version Distribution'
+					},
+					xAxis: {
+						categories: ['Android Version']
+					},
+					yAxis: {
+						min: 0,
+						title: {
+							text: 'Registered Percentages'
+						}
+					},
+					legend: {
+						reversed: false
+					},
+					plotOptions: {
+						series: {
+							stacking: 'percent'
+						}
+					},
+					series: series
+				});
+			},error: function(){
+				$('#version-chart-main').unblock();
+				toastr.error("Error", "Could not load the Android Distribution chart");
 			}
 		});
 		

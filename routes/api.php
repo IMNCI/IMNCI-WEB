@@ -32,6 +32,7 @@ Route::post('appuser/add', 'AppUserController@addappuser');
 Route::get('appuser/download/{format}', 'AppUserController@download');
 Route::get('appuser/brand-statistics', 'AppUserController@getBrandStatistics');
 Route::get('appuser/monthly-downloads/{year}', 'AppUserController@getMonthlyDownloads');
+Route::get('appuser/android-version-distribution', 'AppUserController@getAndroidVersionDistribution');
 Route::post('review', 'ReviewController@store');
 Route::post('review/update', 'ReviewController@update');
 Route::post('ailment', 'AilmentsController@store');

@@ -77,6 +77,12 @@ class AppUserController extends Controller
         return $cleaned_data;
     }
 
+    public function getAndroidVersionDistribution(){
+        $versions = AppUser::select('android_release', \DB::raw('count(*) as total'))->groupBy('android_release')->get();
+
+        return $versions;
+    }
+
     public function download(Request $request){
         $format = $request->format;
 
