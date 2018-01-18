@@ -13,4 +13,22 @@ class UserProfileController extends Controller
 
     	return $profile;
     }
+
+    function genderStatistics(){
+    	$gender = UserProfile::select('gender', \DB::raw('count(*) as total'))->groupBy('gender')->get();
+
+        return $gender;
+    }
+
+    function cohortStatistics(){
+    	$cohort = UserProfile::select('age_group', \DB::raw('count(*) as total'))->groupBy('age_group')->get();
+
+    	return $cohort;
+    }
+
+    function sectorStatistics(){
+    	$sectors = UserProfile::select('sector', \DB::raw('count(*) as total'))->groupBy('sector')->get();
+
+    	return $sectors;
+    }
 }

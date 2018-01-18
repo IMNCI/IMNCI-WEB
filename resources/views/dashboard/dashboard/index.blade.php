@@ -6,6 +6,12 @@
 @parent
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/dataTables/datatables.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/js/plugins/highcharts/code/css/highcharts.css') }}">
+<style type="text/css">
+	.blockOverlay{
+		background-color: #FFF !important;
+		opacity: 0.9 !important;
+	}
+</style>
 @stop
 
 @section('content')
@@ -25,6 +31,30 @@
 						</div>
 					</div>
 					<div id="monthly-downloads" style="width: 100%; height: 400px; margin: 0 auto"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4">
+			<div class="ibox">
+				<div class="ibox-content" id="gender-chart-main">
+					<div id="gender-chart" style="height: 300px;"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="ibox">
+				<div class="ibox-content" id="cohort-chart-main">
+					<div id="cohort-chart" style="height: 300px;"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="ibox">
+				<div class="ibox-content" id="sector-chart-main">
+					<div id="sector-chart" style="height: 300px;"></div>
 				</div>
 			</div>
 		</div>
@@ -146,7 +176,7 @@
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/highcharts/code/js/highcharts.src.js') }}"></script>
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/highcharts/code/modules/exporting.js') }}"></script>
 <script type="text/javascript">
-	var loader = '<div class="sk-spinner sk-spinner-double-bounce"><div class="sk-double-bounce1"></div><div class="sk-double-bounce2"></div></div>';
+	var loader = '<div class="sk-spinner sk-spinner-pulse"></div>';
 
 	var blockObj = {
 		message: loader,
@@ -171,11 +201,138 @@
 		drawBrandsPie();
 		drawMonthlyDownloads($('select[name="monthly-downloads-year"]').val());
 		drawAndroidVersionDistribution();
+		drawGenderChart();
+		drawCohortChart();
+		drawSectorChart();
 	});
 
 	$('select[name="monthly-downloads-year"]').change(function(){
 		drawMonthlyDownloads($(this).val());
 	});
+
+	function drawPie(container, title, series){
+		Highcharts.chart(container, {
+			chart: {
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: false,
+				type: 'pie'
+			},
+			title: {
+				text: title
+			},
+			tooltip: {
+				pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+			},
+			plotOptions: {
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					dataLabels: {
+						enabled: false
+					},
+					showInLegend: true
+				}
+			},
+			series: series
+		});
+	}
+
+	function drawGenderChart(){
+		$.ajax({
+			url: "/api/profile/gender-statistics",
+			method: "GET",
+			beforeSend: function(){
+				$('#gender-chart-main').block(blockObj);
+			},
+			success: function(res){
+				$('#gender-chart-main').unblock();
+				var series_data = [];
+				var data = [];
+				$.each(res, function(k, v){
+					dataObj = {};
+					dataObj.name = v.gender;
+					dataObj.y = v.total;
+					data.push(dataObj);
+				});
+				seriesObj = {
+					name: 'Gender',
+					colorByPoint: true,
+					data: data
+				};
+				series_data.push(seriesObj);
+				drawPie("gender-chart", "Gender Distribution", series_data);
+			},
+			error: function(){
+				$('#gender-chart-main').unblock();
+				toastr.error("Error", "There was an error");
+			}
+		});
+	}
+
+	function drawCohortChart(){
+		$.ajax({
+			url: "/api/profile/cohort-statistics",
+			method: "GET",
+			beforeSend: function(){
+				$('#cohort-chart-main').block(blockObj);
+			},
+			success: function(res){
+				$('#cohort-chart-main').unblock();
+				var series_data = [];
+				var data = [];
+				$.each(res, function(k, v){
+					dataObj = {};
+					dataObj.name = v.age_group;
+					dataObj.y = v.total;
+					data.push(dataObj);
+				});
+				seriesObj = {
+					name: 'Cohort',
+					colorByPoint: true,
+					data: data
+				};
+				series_data.push(seriesObj);
+				drawPie("cohort-chart", "Cohort Distribution", series_data);
+			},
+			error: function(){
+				$('#gender-chart-main').unblock();
+				toastr.error("Error", "There was an error pulling cohort distribution");
+			}
+		});
+	}
+
+	function drawSectorChart(){
+		$.ajax({
+			url: "/api/profile/sector-statistics",
+			method: "GET",
+			beforeSend: function(){
+				$('#sector-chart-main').block(blockObj);
+			},
+			success: function(res){
+				$('#sector-chart-main').unblock();
+				var series_data = [];
+				var data = [];
+				$.each(res, function(k, v){
+					dataObj = {};
+					dataObj.name = v.sector;
+					dataObj.y = v.total;
+					data.push(dataObj);
+				});
+				seriesObj = {
+					name: 'Sector',
+					colorByPoint: true,
+					data: data
+				};
+				series_data.push(seriesObj);
+				drawPie("sector-chart", "Sector Distribution", series_data);
+			},
+			error: function(){
+				$('#gender-chart-main').unblock();
+				toastr.error("Error", "There was an error pulling sector distribution");
+			}
+		});
+	}
 
 	function drawBrandsPie(){
 		$.ajax({
