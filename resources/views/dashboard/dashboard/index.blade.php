@@ -10,6 +10,26 @@
 
 @section('content')
 	<div class="row">
+		<div class="col-md-12">
+			<div class="ibox">
+				<div class="ibox-content" id="monthly-downloads-main">
+					<div class="row">
+						<div class="col-md-2">
+							<div class="form-group">
+								<label>Pick a Year</label>
+								<select class="form-control" name="monthly-downloads-year">
+									<option value="2017">2017</option>
+									<option value="2018">2018</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div id="monthly-downloads" style="width: 100%; height: 400px; margin: 0 auto"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-md-9">
 			<div class="ibox float-e-margins loading">
 				<div class="ibox-content">
@@ -52,37 +72,10 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="ibox">
-				<div class="ibox-content" id="monthly-downloads-main">
-					<div class="row">
-						<div class="col-md-2">
-							<div class="form-group">
-								<label>Pick a Year</label>
-								<select class="form-control" name="monthly-downloads-year">
-									<option value="2017">2017</option>
-									<option value="2018">2018</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<div id="monthly-downloads" style="width: 100%; height: 400px; margin: 0 auto"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-md-12">
-			<div class="ibox">
 				<div class="ibox-content" id="version-chart-main">
 					<div class="row">
-						<div class="col-md-8">
+						<div class="col-md-12">
 							<div id="version-chart" style="height: 400px;"></div>
-						</div>
-
-						<div class="col-md-4">
-							<ul class="list-group clear-list m-t" id="android-listing">
-								
-							</ul>
 						</div>
 					</div>
 				</div>
@@ -315,8 +308,6 @@
 					};
 
 					series.push(seriesObj);
-
-					$('#android-listing').append("<li class = 'list-group-item'><span class = 'pull-right'>"+v.total+"</span>Android "+v.android_release+"</li>");
 				});
 				Highcharts.chart('version-chart', {
 					chart: {
