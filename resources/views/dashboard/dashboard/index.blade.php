@@ -149,7 +149,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-9">
+		<div class="col-md-12">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5><i class="fa fa-download"></i>&nbsp;&nbsp;Download History</h5>
@@ -193,7 +193,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3">
+		<!-- <div class="col-md-3">
 			<div class="ibox">
 				<div class="ibox-content">
 					<h5>Total Downloads</h5>
@@ -202,7 +202,7 @@
 					<small>Users</small>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</div>
 @stop
 
