@@ -20,6 +20,7 @@
             background-image: url({{ asset('dashboard/img/login_page_img.png')  }});
             background-repeat: no-repeat;
             background-size: cover;
+            background-position: center;
         }
     </style>
 </head>
