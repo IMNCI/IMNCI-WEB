@@ -43,4 +43,10 @@ class UserProfileController extends Controller
 
     	return $profession;
     }
+
+    function countyStatistics(){
+    	$counties = UserProfile::select('county', \DB::raw('count(*) as total'))->groupBy('county')->get();
+
+    	return $counties;
+    }
 }

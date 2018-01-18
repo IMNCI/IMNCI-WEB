@@ -77,6 +77,24 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="col-md-8">
+			<div class="ibox">
+				<div class="ibox-content p-0" id = "world-map-main">
+					<div id="world-map" style="height: 300px;"></div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-md-4">
+			<div class="ibox">
+				<div class="ibox-content" id = "county-chart-main">
+					<div id="county-chart" style="height: 300px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-9">
 			<div class="ibox float-e-margins loading">
@@ -193,6 +211,8 @@
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/dataTables/datatables.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/highcharts/code/js/highcharts.src.js') }}"></script>
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/highcharts/code/modules/exporting.js') }}"></script>
+<script src="{{ asset('dashboard/js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+<script src="{{ asset('dashboard/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <script type="text/javascript">
 	var loader = '<div class="sk-spinner sk-spinner-pulse"></div>';
 
@@ -224,11 +244,41 @@
 		drawSectorChart();
 		drawCadreChart();
 		drawProfessionChart();
+		drawMap();
+		drawCountyChart();
 	});
 
 	$('select[name="monthly-downloads-year"]').change(function(){
 		drawMonthlyDownloads($(this).val());
 	});
+
+	function drawMap(){
+		var mapData = {
+			"KE": 35
+		};
+
+		$('#world-map').vectorMap({
+			map: 'world_mill_en',
+			backgroundColor: "transparent",
+			regionStyle: {
+				initial: {
+					fill: '#e4e4e4',
+					"fill-opacity": 0.9,
+					stroke: 'none',
+					"stroke-width": 0,
+					"stroke-opacity": 0
+				}
+			},
+
+			series: {
+				regions: [{
+					values: mapData,
+					scale: ["#1ab394", "#22d6b1"],
+					normalizeFunction: 'polynomial'
+				}]
+			},
+		});
+	}
 
 	function drawPie(container, title, series){
 		Highcharts.chart(container, {
@@ -255,6 +305,38 @@
 				}
 			},
 			series: series
+		});
+	}
+
+	function drawCountyChart(){
+		$.ajax({
+			url: "/api/profile/county-statistics",
+			method: "GET",
+			beforeSend: function(){
+				$('#county-chart-main').block(blockObj);
+			},
+			success: function(res){
+				$('#county-chart-main').unblock();
+				var series_data = [];
+				var data = [];
+				$.each(res, function(k, v){
+					dataObj = {};
+					dataObj.name = v.county;
+					dataObj.y = v.total;
+					data.push(dataObj);
+				});
+				seriesObj = {
+					name: 'County',
+					colorByPoint: true,
+					data: data
+				};
+				series_data.push(seriesObj);
+				drawPie("county-chart", "County Distribution", series_data);
+			},
+			error: function(){
+				$('#county-chart-main').unblock();
+				toastr.error("Error", "There was an error");
+			}
 		});
 	}
 
