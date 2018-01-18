@@ -96,7 +96,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-9">
+		<div class="col-md-8">
 			<div class="ibox float-e-margins loading">
 				<div class="ibox-content">
 					<div class="row">
@@ -118,7 +118,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<div class="ibox">
 				<div class="ibox-content" style="min-height: 450px;">
 					<h3>Summary</h3>
