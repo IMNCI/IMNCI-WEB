@@ -59,6 +59,24 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="col-md-8">
+			<div class="ibox">
+				<div class="ibox-content" id="profession-chart-main">
+					<div id="profession-chart" style="height: 300px;"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="ibox">
+				<div class="ibox-content" id="cadre-chart-main">
+					<div id="cadre-chart" style="height: 300px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-9">
 			<div class="ibox float-e-margins loading">
@@ -204,6 +222,8 @@
 		drawGenderChart();
 		drawCohortChart();
 		drawSectorChart();
+		drawCadreChart();
+		drawProfessionChart();
 	});
 
 	$('select[name="monthly-downloads-year"]').change(function(){
@@ -334,6 +354,38 @@
 		});
 	}
 
+	function drawCadreChart(){
+		$.ajax({
+			url: "/api/profile/cadre-statistics",
+			method: "GET",
+			beforeSend: function(){
+				$('#cadre-chart-main').block(blockObj);
+			},
+			success: function(res){
+				$('#cadre-chart-main').unblock();
+				var series_data = [];
+				var data = [];
+				$.each(res, function(k, v){
+					dataObj = {};
+					dataObj.name = v.cadre;
+					dataObj.y = v.total;
+					data.push(dataObj);
+				});
+				seriesObj = {
+					name: 'Cadre',
+					colorByPoint: true,
+					data: data
+				};
+				series_data.push(seriesObj);
+				drawPie("cadre-chart", "Cadre Distribution", series_data);
+			},
+			error: function(){
+				$('#gender-chart-main').unblock();
+				toastr.error("Error", "There was an error pulling cadre distribution");
+			}
+		});
+	}
+
 	function drawBrandsPie(){
 		$.ajax({
 			url: "/api/appuser/brand-statistics",
@@ -382,6 +434,66 @@
 			}
 		});
 		
+	}
+
+	function drawProfessionChart(){
+		$.ajax({
+			url: "/api/profile/profession-statistics/",
+			method: "GET",
+			beforeSend: function(){
+				$('#profession-chart-main').block(blockObj);
+			},
+			success: function(res){
+				$('#profession-chart-main').unblock();
+				data = [];
+				categories = [];
+
+				$.each(res, function(k, v){
+					categories.push(v.profession);
+					data.push(v.total);
+				});
+				Highcharts.chart('profession-chart', {
+				    chart: {
+				        type: 'column'
+				    },
+				    title: {
+				        text: 'Profession Distribution'
+				    },
+				    xAxis: {
+				        categories: categories,
+				        crosshair: true
+				    },
+				    yAxis: {
+				        min: 0,
+				        title: {
+				            text: 'No. of Participants'
+				        }
+				    },
+				    tooltip: {
+				        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+				        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+				            '<td style="padding:0"><b>{point.y}</b></td></tr>',
+				        footerFormat: '</table>',
+				        shared: true,
+				        useHTML: true
+				    },
+				    plotOptions: {
+				        column: {
+				            pointPadding: 0.2,
+				            borderWidth: 0
+				        }
+				    },
+				    series: [{
+				        name: 'Registrations',
+				        data: data
+
+				    }]
+				});
+			}, error: function(){
+				$('#profession-chart-main').unblock();
+				toastr.error('Error', "There was an error loading the monthly downloads chart");
+			}
+		});
 	}
 
 	function drawMonthlyDownloads(year){

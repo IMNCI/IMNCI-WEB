@@ -57,6 +57,8 @@ Route::post('/profile', 'API\UserProfileController@store');
 Route::get('/profile/gender-statistics', 'API\UserProfileController@genderStatistics');
 Route::get('/profile/cohort-statistics', 'API\UserProfileController@cohortStatistics');
 Route::get('/profile/sector-statistics', 'API\UserProfileController@sectorStatistics');
+Route::get('/profile/cadre-statistics', 'API\UserProfileController@cadreStatistics');
+Route::get('/profile/profession-statistics', 'API\UserProfileController@professionStatistics');
 
 Route::get('/signs', 'API\AssessmentClassificationSignController@index');
 Route::post('/sign', 'API\AssessmentClassificationSignController@store');

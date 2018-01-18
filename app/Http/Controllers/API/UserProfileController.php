@@ -31,4 +31,16 @@ class UserProfileController extends Controller
 
     	return $sectors;
     }
+
+    function cadreStatistics(){
+    	$cadres = UserProfile::select('cadre', \DB::raw('count(*) as total'))->groupBy('cadre')->get();
+
+    	return $cadres;
+    }
+
+    function professionStatistics(){
+    	$profession =UserProfile::select('profession', \DB::raw('count(*) as total'))->groupBy('profession')->get();
+
+    	return $profession;
+    }
 }
