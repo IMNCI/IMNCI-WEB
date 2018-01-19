@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use App\Review;
 use App\Jobs\SendIssueEmail;
+use DB;
 
 class ReviewController extends Controller
 {
@@ -36,5 +37,25 @@ class ReviewController extends Controller
 
             return $review;
         }
+    }
+
+    public function getStatusData(){
+         $issues = \DB::table('reviews')
+                 ->select('status', DB::raw('count(*) as total'))
+                 ->groupBy('status')
+                 ->get();
+
+        $response = [];
+
+        $statuses = ['archived', 'pending', 'solved'];
+
+        foreach ($statuses as $status) {
+            $response[$status] = 0;
+        }
+        foreach ($issues as $issue) {
+            $response[$issue->status] = $issue->total;
+        }
+
+        return $response;
     }
 }

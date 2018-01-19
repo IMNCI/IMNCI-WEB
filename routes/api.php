@@ -33,8 +33,11 @@ Route::get('appuser/download/{format}', 'AppUserController@download');
 Route::get('appuser/brand-statistics', 'AppUserController@getBrandStatistics');
 Route::get('appuser/monthly-downloads/{year}', 'AppUserController@getMonthlyDownloads');
 Route::get('appuser/android-version-distribution', 'AppUserController@getAndroidVersionDistribution');
+
 Route::post('review', 'ReviewController@store');
 Route::post('review/update', 'ReviewController@update');
+Route::get('review/statuses', 'ReviewController@getStatusData');
+
 Route::post('ailment', 'AilmentsController@store');
 Route::get('ailment', 'AilmentsController@index');
 Route::get('/delete-ailment/{id}', 'AilmentsController@delete');

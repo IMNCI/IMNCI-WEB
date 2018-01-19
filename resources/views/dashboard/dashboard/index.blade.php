@@ -16,6 +16,61 @@
 
 @section('content')
 	<div class="row">
+		<div class="col-lg-3">
+			<div class="widget style1 b-r-xs white-bg">
+				<div class="row">
+					<div class="col-xs-4">
+						<i class="fa fa-users fa-5x"></i>
+					</div>
+					<div class="col-xs-8 text-right">
+						<span>User Registrations</span>
+						<h2 class="font-bold">{{ $profiles }}</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="widget style1 b-r-xs white-bg">
+				<div class="row">
+					<div class="col-xs-4">
+						<i class="fa fa-warning fa-5x"></i>
+					</div>
+					<div class="col-xs-8 text-right">
+						<span> Pending Issues </span>
+						<h2 class="font-bold" id = "pending-no">20</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="widget style1 b-r-xs white-bg">
+				<div class="row">
+					<div class="col-xs-4">
+						<i class="fa fa-check fa-5x"></i>
+					</div>
+					<div class="col-xs-8 text-right">
+						<span> Solved Issues </span>
+						<h2 class="font-bold" id = "solved-no">20</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3">
+			<div class="widget style1 b-r-xs white-bg">
+				<div class="row">
+					<div class="col-xs-4">
+						<i class="fa fa-archive fa-5x"></i>
+					</div>
+					<div class="col-xs-8 text-right">
+						<span> Archived Issues </span>
+						<h2 class="font-bold" id = "archived-no">20</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-md-12">
 			<div class="ibox">
 				<div class="ibox-content" id="monthly-downloads-main">
@@ -234,6 +289,23 @@
 
 		$('.download-link').click(function(){
 			window.location = "{{ url('api/appuser/download/excel') }}";
+		});
+
+		$.ajax({
+			url: '/api/review/statuses',
+			method: 'GET',
+			beforeSend: function(){
+				$('.white-bg').block(blockObj);
+			},
+			success: function(res){
+				$('.white-bg').unblock();
+				$('#pending-no').text(res.pending);
+				$('#solved-no').text(res.solved);
+				$('#archived-no').text(res.archived);
+			},error: function(){
+				$('.white-bg').unblock();
+				$('#pending-no').text();
+			}
 		});
 
 		drawBrandsPie();
