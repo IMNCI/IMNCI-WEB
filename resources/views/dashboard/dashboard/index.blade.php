@@ -5,6 +5,7 @@
 @section('page_css')
 @parent
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/dataTables/datatables.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/dataTables/responsive.dataTables.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/js/plugins/highcharts/code/css/highcharts.css') }}">
 <style type="text/css">
 	.blockOverlay{
@@ -37,7 +38,7 @@
 					</div>
 					<div class="col-xs-8 text-right">
 						<span> Pending Issues </span>
-						<h2 class="font-bold" id = "pending-no">20</h2>
+						<h2 class="font-bold" id = "pending-no">0</h2>
 					</div>
 				</div>
 			</div>
@@ -50,7 +51,7 @@
 					</div>
 					<div class="col-xs-8 text-right">
 						<span> Solved Issues </span>
-						<h2 class="font-bold" id = "solved-no">20</h2>
+						<h2 class="font-bold" id = "solved-no">0</h2>
 					</div>
 				</div>
 			</div>
@@ -64,7 +65,7 @@
 					</div>
 					<div class="col-xs-8 text-right">
 						<span> Archived Issues </span>
-						<h2 class="font-bold" id = "archived-no">20</h2>
+						<h2 class="font-bold" id = "archived-no">0</h2>
 					</div>
 				</div>
 			</div>
@@ -75,6 +76,7 @@
 			<div class="ibox">
 				<div class="ibox-content" id="monthly-downloads-main">
 					<div class="row">
+						<div class="col-md-10"></div>
 						<div class="col-md-2">
 							<div class="form-group">
 								<label>Pick a Year</label>
@@ -92,21 +94,21 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-lg-4">
 			<div class="ibox">
 				<div class="ibox-content" id="gender-chart-main">
 					<div id="gender-chart" style="height: 300px;"></div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-lg-4">
 			<div class="ibox">
 				<div class="ibox-content" id="cohort-chart-main">
 					<div id="cohort-chart" style="height: 300px;"></div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-lg-4">
 			<div class="ibox">
 				<div class="ibox-content" id="sector-chart-main">
 					<div id="sector-chart" style="height: 300px;"></div>
@@ -134,7 +136,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-lg-8">
 			<div class="ibox">
 				<div class="ibox-content p-0" id = "world-map-main">
 					<div id="world-map" style="height: 300px;"></div>
@@ -142,7 +144,7 @@
 			</div>
 			
 		</div>
-		<div class="col-md-4">
+		<div class="col-lg-4">
 			<div class="ibox">
 				<div class="ibox-content" id = "county-chart-main">
 					<div id="county-chart" style="height: 300px;"></div>
@@ -151,7 +153,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-lg-8">
 			<div class="ibox float-e-margins loading">
 				<div class="ibox-content">
 					<div class="row">
@@ -173,7 +175,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-lg-4">
 			<div class="ibox">
 				<div class="ibox-content" style="min-height: 450px;">
 					<h3>Summary</h3>
@@ -191,7 +193,7 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-lg-12">
 			<div class="ibox">
 				<div class="ibox-content" id="version-chart-main">
 					<div class="row">
@@ -204,7 +206,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-lg-12">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5><i class="fa fa-download"></i>&nbsp;&nbsp;Download History</h5>
@@ -264,6 +266,7 @@
 @section('page_js')
 @parent
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/dataTables/datatables.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('dashboard/js/plugins/dataTables/dataTables.responsive.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/highcharts/code/js/highcharts.src.js') }}"></script>
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/highcharts/code/modules/exporting.js') }}"></script>
 <script src="{{ asset('dashboard/js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
@@ -284,7 +287,8 @@
 	}
 	$(document).ready(function(){
 		$('#app-users').dataTable({
-			aaSorting: [[0, 'desc']]
+			aaSorting: [[0, 'desc']],
+			responsive: true
 		});
 
 		$('.download-link').click(function(){
@@ -740,13 +744,21 @@
 						text: 'Android Version Distribution'
 					},
 					xAxis: {
-						categories: ['Android Version']
+						categories: ['Android Version'],
+						labels: {
+							enabled: false
+						},
+						visible: false
 					},
 					yAxis: {
 						min: 0,
 						title: {
-							text: 'Registered Percentages'
-						}
+							text: null
+						},
+						labels: {
+							enabled: false
+						},
+						visible: false
 					},
 					legend: {
 						reversed: false
