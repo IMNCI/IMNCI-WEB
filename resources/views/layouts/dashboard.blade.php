@@ -41,16 +41,16 @@
 						</div>
 					</li>
 					@section('sidebar')
-						<li><a href="{{ route('admin') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a></li>
-						<li><a href="{{ route('assess_classify_treatment') }}"><i class="fa fa-clipboard"></i> <span class="nav-label">Assess, Classify and Identify Treatment</span></a></li>
-						<li><a href="{{ route('treat') }}"><i class="fa fa-heartbeat"></i> <span class="nav-label">Treat the Infant/Child</span></a></li>
-						<li><a href="{{ route('follow_up') }}"><i class="fa fa-stethoscope"></i> <span class="nav-label">Follow Up Care</span></a></li>
-						<li><a href="{{ route('counsel_the_mother') }}"><i class="fa fa-child"></i> <span class="nav-label">Counsel the Mother</span></a></li>
-						<li><a href="{{ route('hiv_care') }}"><i class="fa fa-user-md"></i> <span class="nav-label">HIV Care For Children</span></a></li>
-						<li><a href="{{ route('gallery') }}"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span></a></li>
-						<li><a href="{{ route('glossary') }}"><i class="fa fa-book"></i> <span class="nav-label">Glossary</span></a></li>
-						<li><a href="{{ route('profile') }}"><i class="fa fa-users"></i> <span class="nav-label">User Profiles</span></a></li>
-						<li><a href="{{ route('reported-issues') }}"><i class="fa fa-commenting-o"></i> <span class="nav-label">Reported Issues</span></a></li>
+						<li class="{{ Active::check('admin',true) }}"><a href="{{ route('admin') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a></li>
+						<li class="{{ Active::check(['assess_classify_treatment', 'classifications'],true) }}"><a href="{{ route('assess_classify_treatment') }}"><i class="fa fa-clipboard"></i> <span class="nav-label">Assess, Classify and Identify Treatment</span></a></li>
+						<li class="{{ Active::check(['treat', 'treat_ailments', 'treat_ailment_treatments'],true) }}"><a href="{{ route('treat') }}"><i class="fa fa-heartbeat"></i> <span class="nav-label">Treat the Infant/Child</span></a></li>
+						<li class="{{ Active::check(['followUpCare', 'ailments'],true) }}"><a href="{{ route('follow_up') }}"><i class="fa fa-stethoscope"></i> <span class="nav-label">Follow Up Care</span></a></li>
+						<li class="{{ Active::check(['counsel-the-mother', 'counsel-subtitles'],true) }}"><a href="{{ route('counsel_the_mother') }}"><i class="fa fa-child"></i> <span class="nav-label">Counsel the Mother</span></a></li>
+						<li class="{{ Active::check('hiv-care',true) }}"><a href="{{ route('hiv_care') }}"><i class="fa fa-user-md"></i> <span class="nav-label">HIV Care For Children</span></a></li>
+						<li class="{{ Active::check(['gallery'],true) }}"><a href="{{ route('gallery') }}"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span></a></li>
+						<li class="{{ Active::check('glossary',true) }}"><a href="{{ route('glossary') }}"><i class="fa fa-book"></i> <span class="nav-label">Glossary</span></a></li>
+						<li class="{{ Active::check('profiles',true) }}"><a href="{{ route('profile') }}"><i class="fa fa-users"></i> <span class="nav-label">User Profiles</span></a></li>
+						<li class="{{ Active::check('reported-issues',true) }}"><a href="{{ route('reported-issues') }}"><i class="fa fa-commenting-o"></i> <span class="nav-label">Reported Issues</span></a></li>
 						<li><a href="{{ route('logout') }}" class="logout"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a></li>
 					@show
 				</ul>

@@ -169,6 +169,7 @@ return [
          */
         Backup\BackupServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Pyaesone17\ActiveState\ActiveStateServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -195,7 +196,7 @@ return [
     */
 
     'aliases' => [
-
+        'Active' => Pyaesone17\ActiveState\ActiveFacade::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,

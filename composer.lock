@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f094e7f6e19ac4d741435e89af663d7",
+    "content-hash": "944c0515f15faf739e71bbf81d49fffd",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2313,6 +2313,59 @@
                 "shell"
             ],
             "time": "2017-07-29T19:30:02+00:00"
+        },
+        {
+            "name": "pyaesone17/active-state",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pyaesone17/active-state.git",
+                "reference": "4ebeef35fe0d533e63b63de2c4774635b2783877"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pyaesone17/active-state/zipball/4ebeef35fe0d533e63b63de2c4774635b2783877",
+                "reference": "4ebeef35fe0d533e63b63de2c4774635b2783877",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pyaesone17\\ActiveState\\ActiveStateServiceProvider"
+                    ],
+                    "aliases": {
+                        "Active": "Pyaesone17\\ActiveState\\ActiveFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pyaesone17\\ActiveState\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pyae Sone Nyein",
+                    "email": "promise286@gmail.com"
+                }
+            ],
+            "description": "Active State Checker For Laravel Url",
+            "homepage": "https://github.com/pyaesone17/active-state",
+            "keywords": [
+                "dynamic url",
+                "laravel",
+                "request",
+                "url checker"
+            ],
+            "time": "2017-09-29T06:39:41+00:00"
         },
         {
             "name": "ramsey/uuid",

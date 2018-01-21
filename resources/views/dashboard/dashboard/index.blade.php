@@ -218,11 +218,11 @@
 				</div>
 				<div class="ibox-content">
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-lg-12">
 							<table class="table table-bordered" id="app-users">
 								<thead>
 									<tr>
-										<th>#</th>
+										<th style="width: 5%;">#</th>
 										<th>Brand</th>
 										<th>Device</th>
 										<th>Model</th>
@@ -288,7 +288,11 @@
 	$(document).ready(function(){
 		$('#app-users').dataTable({
 			aaSorting: [[0, 'desc']],
-			responsive: true
+			responsive: true,
+			columnDefs: [
+				{"searchable": false, "targets": [0, 5] },
+				{"orderable" : false, "targets" : [1, 2, 3, 4]}
+			]
 		});
 
 		$('.download-link').click(function(){
