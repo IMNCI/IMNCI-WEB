@@ -24,13 +24,13 @@ class DashboardController extends Controller
         $appusers = AppUser::orderBy('updated_at', 'DESC')->get();
         $profiles = UserProfile::count();
 
+        $month = date('Y-m');
+
         $appusers_this_month = \DB::select(\DB::raw('SELECT count(id)  as users FROM app_users
         WHERE DATE_FORMAT(created_at,"%Y-%m") = "'.$month.'"
         GROUP BY DATE_FORMAT(created_at,"%Y-%m");'));
         
         $month_users =(isset($appusers_this_month[0]->users)) ? $appusers_this_month[0]->users : 0;
-
-        $month = date('Y-m');
         
     	return view('dashboard/dashboard/index')->with(['appusers'=>$appusers, 'month_users'   =>  $month_users, 'profiles'=>$profiles]);
     }
