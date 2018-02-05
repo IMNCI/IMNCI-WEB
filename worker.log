@@ -1,0 +1,1143 @@
+[2018-01-10 09:30:44] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 09:30:49] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 11:32:49] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 11:32:58] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 11:42:59] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 11:43:08] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 11:44:26] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 11:44:33] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 11:46:26] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 11:46:33] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 11:47:35] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 11:47:42] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 11:48:18] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 11:48:26] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 11:49:52] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 11:50:00] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 11:50:53] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 11:51:02] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 11:51:21] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 11:51:28] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 11:52:55] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 11:53:07] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 11:59:04] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 11:59:10] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 11:59:45] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 11:59:52] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 12:00:25] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 12:00:32] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 12:01:08] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 12:01:15] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 12:04:27] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 12:04:45] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 12:46:51] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 12:47:03] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 12:51:28] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 12:51:34] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 12:53:34] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 12:53:37] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 12:53:41] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 12:53:44] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 12:56:50] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 12:56:51] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 12:56:51] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 12:56:52] Failed:     App\Jobs\SendIssueEmail
+[2018-01-10 12:59:24] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 12:59:31] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 13:24:12] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 13:24:18] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 13:24:21] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 13:24:25] Failed:     App\Jobs\SendIssueEmail
+[2018-01-10 13:31:05] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 13:31:15] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 13:31:20] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 13:31:24] Failed:     App\Jobs\SendIssueEmail
+[2018-01-10 13:32:51] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 13:32:55] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 13:32:59] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 13:33:02] Failed:     App\Jobs\SendIssueEmail
+[2018-01-10 13:41:23] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 13:41:28] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 13:50:45] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 13:50:50] Processed:  App\Jobs\SendIssueEmail
+[2018-01-10 14:02:27] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 14:02:27] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 14:02:28] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 14:02:28] Failed:     App\Jobs\SendIssueEmail
+[2018-01-10 14:03:22] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 14:03:22] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 14:03:22] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 14:03:22] Failed:     App\Jobs\SendIssueEmail
+[2018-01-10 14:07:12] Processing: App\Jobs\SendIssueEmail
+[2018-01-10 14:07:22] Processed:  App\Jobs\SendIssueEmail
+[2018-01-14 02:53:57] Processing: App\Jobs\BackEmailJob
+[2018-01-14 02:55:27] Processing: App\Jobs\BackEmailJob
+[2018-01-14 02:56:57] Processing: App\Jobs\BackEmailJob
+[2018-01-14 02:58:27] Processing: App\Jobs\BackEmailJob
+[2018-01-14 02:58:28] Failed:     App\Jobs\BackEmailJob
+[2018-01-14 02:58:48] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:00:19] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:01:49] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:03:19] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:03:19] Failed:     App\Jobs\BackEmailJob
+[2018-01-14 03:07:55] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:09:26] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:10:01] Processed:  App\Jobs\BackEmailJob
+[2018-01-14 03:10:40] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:11:29] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:12:01] Processed:  App\Jobs\BackEmailJob
+[2018-01-14 03:12:29] Failed:     App\Jobs\BackEmailJob
+[2018-01-14 03:25:00] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:25:31] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:26:01] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:26:19] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:26:37] Processed:  App\Jobs\BackEmailJob
+[2018-01-14 03:27:01] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:27:49] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:27:59] Processed:  App\Jobs\BackEmailJob
+[2018-01-14 03:28:30] Processed:  App\Jobs\BackEmailJob
+[2018-01-14 03:28:50] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:29:41] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:29:50] Failed:     App\Jobs\BackEmailJob
+[2018-01-14 03:30:15] Processed:  App\Jobs\BackEmailJob
+[2018-01-14 03:36:02] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:37:04] Processed:  App\Jobs\BackEmailJob
+[2018-01-14 03:41:24] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:42:10] Processed:  App\Jobs\BackEmailJob
+[2018-01-14 03:49:01] Processing: App\Jobs\BackEmailJob
+ErrorException {#828
+  #message: "Invalid argument supplied for foreach()"
+  #code: 0
+  #file: "/home/vagrant/Code/IMCI-APP/app/Mail/DatabaseMailer.php"
+  #line: 36
+  #severity: E_WARNING
+  trace: {
+    /home/vagrant/Code/IMCI-APP/app/Mail/DatabaseMailer.php:36: {
+      :             ->view('email.backup');
+      : $email->attach($this->extras);
+      : return $email;
+      arguments: {
+        $level: 2
+        $message: "Invalid argument supplied for foreach()"
+        $file: "/home/vagrant/Code/IMCI-APP/app/Mail/DatabaseMailer.php"
+        $line: 36
+        $context: array:1 [ …1]
+      }
+    }
+    App\Mail\DatabaseMailer->build(): {}
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:29: {
+      : return call_user_func_array(
+      :     $callback, static::getMethodDependencies($container, $callback, $parameters)
+      : );
+      arguments: {
+        $function_name: array:2 [ …2]
+        $parameters: []
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:87: {
+      : 
+      :     return $default instanceof Closure ? $default() : $default;
+      : }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:31: {
+      :         );
+      :     });
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $default: Closure {#23 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/Container.php:549: {
+      : {
+      :     return BoundMethod::call($this, $callback, $parameters, $defaultMethod);
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $parameters: []
+        $defaultMethod: null
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Mail/Mailable.php:117: {
+      : {
+      :     Container::getInstance()->call([$this, 'build']);
+      : 
+      arguments: {
+        $callback: array:2 [ …2]
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php:250: {
+      :     return $mailable instanceof ShouldQueue
+      :             ? $mailable->queue($this->queue) : $mailable->send($this);
+      : }
+      arguments: {
+        $mailer: Illuminate\Mail\Mailer {#709 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php:205: {
+      : if ($view instanceof MailableContract) {
+      :     return $this->sendMailable($view);
+      : }
+      arguments: {
+        $mailable: App\Mail\DatabaseMailer {#693 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Mail/PendingMail.php:99: {
+      : 
+      :     return $this->mailer->send($this->fill($mailable));
+      : }
+      arguments: {
+        $view: App\Mail\DatabaseMailer {#693 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/app/Jobs/BackEmailJob.php:37: {
+      :     $email = new DatabaseMailer($this->files);
+      :     \Mail::to(env('BACKUP_EMAIL', 'c.otaalo@gmail.com'))->send($email);
+      : }
+      arguments: {
+        $mailable: App\Mail\DatabaseMailer {#693 …}
+      }
+    }
+    App\Jobs\BackEmailJob->handle(): {}
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:29: {
+      : return call_user_func_array(
+      :     $callback, static::getMethodDependencies($container, $callback, $parameters)
+      : );
+      arguments: {
+        $function_name: array:2 [ …2]
+        $parameters: []
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:87: {
+      : 
+      :     return $default instanceof Closure ? $default() : $default;
+      : }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:31: {
+      :         );
+      :     });
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $default: Closure {#23 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/Container.php:549: {
+      : {
+      :     return BoundMethod::call($this, $callback, $parameters, $defaultMethod);
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $parameters: []
+        $defaultMethod: null
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php:94: {
+      : $callback = function ($command) {
+      :     return $this->container->call([$command, 'handle']);
+      : };
+      arguments: {
+        $callback: array:2 [ …2]
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:114: {
+      : return function ($passable) use ($destination) {
+      :     return $destination($passable);
+      : };
+      arguments: {
+        App\Jobs\BackEmailJob {#712 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:102: {
+      : 
+      :     return $pipeline($this->passable);
+      : }
+      arguments: {
+        App\Jobs\BackEmailJob {#712 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php:98: {
+      : 
+      :     return $this->pipeline->send($command)->through($this->pipes)->then($callback);
+      : }
+      arguments: {
+        $destination: Closure {#827 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/CallQueuedHandler.php:49: {
+      : $this->dispatcher->dispatchNow(
+      :     $command, $this->resolveHandler($job, $command)
+      : );
+      arguments: {
+        $command: App\Jobs\BackEmailJob {#712 …}
+        $handler: false
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Jobs/Job.php:76: {
+      : 
+      :     ($this->instance = $this->resolve($class))->{$method}($this, $payload['data']);
+      : }
+      arguments: {
+        $job: Illuminate\Queue\Jobs\DatabaseJob {#821 …}
+        $data: array:2 [ …2]
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Worker.php:320: {
+      : // proper events will be fired to let any listeners know this job has finished.
+      : $job->fire();
+      : 
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Worker.php:270: {
+      : try {
+      :     return $this->process($connectionName, $job, $options);
+      : } catch (Exception $e) {
+      arguments: {
+        $connectionName: "database"
+        $job: Illuminate\Queue\Jobs\DatabaseJob {#821 …}
+        $options: Illuminate\Queue\WorkerOptions {#687 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Worker.php:114: {
+      : if ($job) {
+      :     $this->runJob($job, $connectionName, $options);
+      : } else {
+      arguments: {
+        $job: Illuminate\Queue\Jobs\DatabaseJob {#821 …}
+        $connectionName: "database"
+        $options: Illuminate\Queue\WorkerOptions {#687 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Console/WorkCommand.php:101: {
+      : return $this->worker->{$this->option('once') ? 'runNextJob' : 'daemon'}(
+      :     $connection, $queue, $this->gatherWorkerOptions()
+      : );
+      arguments: {
+        $connectionName: "database"
+        $queue: "default"
+        $options: Illuminate\Queue\WorkerOptions {#687 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Console/WorkCommand.php:85: {
+      : $this->runWorker(
+      :     $connection, $queue
+      : );
+      arguments: {
+        $connection: "database"
+        $queue: "default"
+      }
+    }
+    Illuminate\Queue\Console\WorkCommand->handle(): {}
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:29: {
+      : return call_user_func_array(
+      :     $callback, static::getMethodDependencies($container, $callback, $parameters)
+      : );
+      arguments: {
+        $function_name: array:2 [ …2]
+        $parameters: []
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:87: {
+      : 
+      :     return $default instanceof Closure ? $default() : $default;
+      : }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:31: {
+      :         );
+      :     });
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $default: Closure {#23 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/Container.php:549: {
+      : {
+      :     return BoundMethod::call($this, $callback, $parameters, $defaultMethod);
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $parameters: []
+        $defaultMethod: null
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Console/Command.php:180: {
+      : {
+      :     return $this->laravel->call([$this, 'handle']);
+      : }
+      arguments: {
+        $callback: array:2 [ …2]
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/symfony/console/Command/Command.php:264: {
+      : } else {
+      :     $statusCode = $this->execute($input, $output);
+      : }
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Illuminate\Console\OutputStyle {#669 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Console/Command.php:167: {
+      : return parent::run(
+      :     $this->input = $input, $this->output = new OutputStyle($input, $output)
+      : );
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Illuminate\Console\OutputStyle {#669 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/symfony/console/Application.php:888: {
+      : if (null === $this->dispatcher) {
+      :     return $command->run($input, $output);
+      : }
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/symfony/console/Application.php:224: {
+      : $this->runningCommand = $command;
+      : $exitCode = $this->doRunCommand($command, $input, $output);
+      : $this->runningCommand = null;
+      arguments: {
+        $command: Illuminate\Queue\Console\WorkCommand {#507 …}
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/symfony/console/Application.php:125: {
+      :     $e = null;
+      :     $exitCode = $this->doRun($input, $output);
+      : } catch (\Exception $x) {
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Console/Application.php:88: {
+      : 
+      : $exitCode = parent::run($input, $output);
+      : 
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:121: {
+      : 
+      :     return $this->getArtisan()->run($input, $output);
+      : } catch (Exception $e) {
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/artisan:37: {
+      :     $input = new Symfony\Component\Console\Input\ArgvInput,
+      :     new Symfony\Component\Console\Output\ConsoleOutput
+      : );
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+  }
+}
+[2018-01-14 03:50:31] Processing: App\Jobs\BackEmailJob
+ErrorException {#734
+  #message: "Invalid argument supplied for foreach()"
+  #code: 0
+  #file: "/home/vagrant/Code/IMCI-APP/app/Mail/DatabaseMailer.php"
+  #line: 36
+  #severity: E_WARNING
+  trace: {
+    /home/vagrant/Code/IMCI-APP/app/Mail/DatabaseMailer.php:36: {
+      :             ->view('email.backup');
+      : $email->attach($this->extras);
+      : return $email;
+      arguments: {
+        $level: 2
+        $message: "Invalid argument supplied for foreach()"
+        $file: "/home/vagrant/Code/IMCI-APP/app/Mail/DatabaseMailer.php"
+        $line: 36
+        $context: array:1 [ …1]
+      }
+    }
+    App\Mail\DatabaseMailer->build(): {}
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:29: {
+      : return call_user_func_array(
+      :     $callback, static::getMethodDependencies($container, $callback, $parameters)
+      : );
+      arguments: {
+        $function_name: array:2 [ …2]
+        $parameters: []
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:87: {
+      : 
+      :     return $default instanceof Closure ? $default() : $default;
+      : }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:31: {
+      :         );
+      :     });
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $default: Closure {#23 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/Container.php:549: {
+      : {
+      :     return BoundMethod::call($this, $callback, $parameters, $defaultMethod);
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $parameters: []
+        $defaultMethod: null
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Mail/Mailable.php:117: {
+      : {
+      :     Container::getInstance()->call([$this, 'build']);
+      : 
+      arguments: {
+        $callback: array:2 [ …2]
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php:250: {
+      :     return $mailable instanceof ShouldQueue
+      :             ? $mailable->queue($this->queue) : $mailable->send($this);
+      : }
+      arguments: {
+        $mailer: Illuminate\Mail\Mailer {#709 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php:205: {
+      : if ($view instanceof MailableContract) {
+      :     return $this->sendMailable($view);
+      : }
+      arguments: {
+        $mailable: App\Mail\DatabaseMailer {#710 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Mail/PendingMail.php:99: {
+      : 
+      :     return $this->mailer->send($this->fill($mailable));
+      : }
+      arguments: {
+        $view: App\Mail\DatabaseMailer {#710 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/app/Jobs/BackEmailJob.php:37: {
+      :     $email = new DatabaseMailer($this->files);
+      :     \Mail::to(env('BACKUP_EMAIL', 'c.otaalo@gmail.com'))->send($email);
+      : }
+      arguments: {
+        $mailable: App\Mail\DatabaseMailer {#710 …}
+      }
+    }
+    App\Jobs\BackEmailJob->handle(): {}
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:29: {
+      : return call_user_func_array(
+      :     $callback, static::getMethodDependencies($container, $callback, $parameters)
+      : );
+      arguments: {
+        $function_name: array:2 [ …2]
+        $parameters: []
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:87: {
+      : 
+      :     return $default instanceof Closure ? $default() : $default;
+      : }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:31: {
+      :         );
+      :     });
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $default: Closure {#23 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/Container.php:549: {
+      : {
+      :     return BoundMethod::call($this, $callback, $parameters, $defaultMethod);
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $parameters: []
+        $defaultMethod: null
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php:94: {
+      : $callback = function ($command) {
+      :     return $this->container->call([$command, 'handle']);
+      : };
+      arguments: {
+        $callback: array:2 [ …2]
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:114: {
+      : return function ($passable) use ($destination) {
+      :     return $destination($passable);
+      : };
+      arguments: {
+        App\Jobs\BackEmailJob {#728 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:102: {
+      : 
+      :     return $pipeline($this->passable);
+      : }
+      arguments: {
+        App\Jobs\BackEmailJob {#728 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php:98: {
+      : 
+      :     return $this->pipeline->send($command)->through($this->pipes)->then($callback);
+      : }
+      arguments: {
+        $destination: Closure {#735 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/CallQueuedHandler.php:49: {
+      : $this->dispatcher->dispatchNow(
+      :     $command, $this->resolveHandler($job, $command)
+      : );
+      arguments: {
+        $command: App\Jobs\BackEmailJob {#728 …}
+        $handler: false
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Jobs/Job.php:76: {
+      : 
+      :     ($this->instance = $this->resolve($class))->{$method}($this, $payload['data']);
+      : }
+      arguments: {
+        $job: Illuminate\Queue\Jobs\DatabaseJob {#702 …}
+        $data: array:2 [ …2]
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Worker.php:320: {
+      : // proper events will be fired to let any listeners know this job has finished.
+      : $job->fire();
+      : 
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Worker.php:270: {
+      : try {
+      :     return $this->process($connectionName, $job, $options);
+      : } catch (Exception $e) {
+      arguments: {
+        $connectionName: "database"
+        $job: Illuminate\Queue\Jobs\DatabaseJob {#702 …}
+        $options: Illuminate\Queue\WorkerOptions {#687 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Worker.php:114: {
+      : if ($job) {
+      :     $this->runJob($job, $connectionName, $options);
+      : } else {
+      arguments: {
+        $job: Illuminate\Queue\Jobs\DatabaseJob {#702 …}
+        $connectionName: "database"
+        $options: Illuminate\Queue\WorkerOptions {#687 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Console/WorkCommand.php:101: {
+      : return $this->worker->{$this->option('once') ? 'runNextJob' : 'daemon'}(
+      :     $connection, $queue, $this->gatherWorkerOptions()
+      : );
+      arguments: {
+        $connectionName: "database"
+        $queue: "default"
+        $options: Illuminate\Queue\WorkerOptions {#687 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Console/WorkCommand.php:85: {
+      : $this->runWorker(
+      :     $connection, $queue
+      : );
+      arguments: {
+        $connection: "database"
+        $queue: "default"
+      }
+    }
+    Illuminate\Queue\Console\WorkCommand->handle(): {}
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:29: {
+      : return call_user_func_array(
+      :     $callback, static::getMethodDependencies($container, $callback, $parameters)
+      : );
+      arguments: {
+        $function_name: array:2 [ …2]
+        $parameters: []
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:87: {
+      : 
+      :     return $default instanceof Closure ? $default() : $default;
+      : }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:31: {
+      :         );
+      :     });
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $default: Closure {#23 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/Container.php:549: {
+      : {
+      :     return BoundMethod::call($this, $callback, $parameters, $defaultMethod);
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $parameters: []
+        $defaultMethod: null
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Console/Command.php:180: {
+      : {
+      :     return $this->laravel->call([$this, 'handle']);
+      : }
+      arguments: {
+        $callback: array:2 [ …2]
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/symfony/console/Command/Command.php:264: {
+      : } else {
+      :     $statusCode = $this->execute($input, $output);
+      : }
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Illuminate\Console\OutputStyle {#669 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Console/Command.php:167: {
+      : return parent::run(
+      :     $this->input = $input, $this->output = new OutputStyle($input, $output)
+      : );
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Illuminate\Console\OutputStyle {#669 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/symfony/console/Application.php:888: {
+      : if (null === $this->dispatcher) {
+      :     return $command->run($input, $output);
+      : }
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/symfony/console/Application.php:224: {
+      : $this->runningCommand = $command;
+      : $exitCode = $this->doRunCommand($command, $input, $output);
+      : $this->runningCommand = null;
+      arguments: {
+        $command: Illuminate\Queue\Console\WorkCommand {#507 …}
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/symfony/console/Application.php:125: {
+      :     $e = null;
+      :     $exitCode = $this->doRun($input, $output);
+      : } catch (\Exception $x) {
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Console/Application.php:88: {
+      : 
+      : $exitCode = parent::run($input, $output);
+      : 
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:121: {
+      : 
+      :     return $this->getArtisan()->run($input, $output);
+      : } catch (Exception $e) {
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/artisan:37: {
+      :     $input = new Symfony\Component\Console\Input\ArgvInput,
+      :     new Symfony\Component\Console\Output\ConsoleOutput
+      : );
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+  }
+}
+[2018-01-14 03:52:01] Processing: App\Jobs\BackEmailJob
+ErrorException {#818
+  #message: "Invalid argument supplied for foreach()"
+  #code: 0
+  #file: "/home/vagrant/Code/IMCI-APP/app/Mail/DatabaseMailer.php"
+  #line: 36
+  #severity: E_WARNING
+  trace: {
+    /home/vagrant/Code/IMCI-APP/app/Mail/DatabaseMailer.php:36: {
+      :             ->view('email.backup');
+      : $email->attach($this->extras);
+      : return $email;
+      arguments: {
+        $level: 2
+        $message: "Invalid argument supplied for foreach()"
+        $file: "/home/vagrant/Code/IMCI-APP/app/Mail/DatabaseMailer.php"
+        $line: 36
+        $context: array:1 [ …1]
+      }
+    }
+    App\Mail\DatabaseMailer->build(): {}
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:29: {
+      : return call_user_func_array(
+      :     $callback, static::getMethodDependencies($container, $callback, $parameters)
+      : );
+      arguments: {
+        $function_name: array:2 [ …2]
+        $parameters: []
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:87: {
+      : 
+      :     return $default instanceof Closure ? $default() : $default;
+      : }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:31: {
+      :         );
+      :     });
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $default: Closure {#23 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/Container.php:549: {
+      : {
+      :     return BoundMethod::call($this, $callback, $parameters, $defaultMethod);
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $parameters: []
+        $defaultMethod: null
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Mail/Mailable.php:117: {
+      : {
+      :     Container::getInstance()->call([$this, 'build']);
+      : 
+      arguments: {
+        $callback: array:2 [ …2]
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php:250: {
+      :     return $mailable instanceof ShouldQueue
+      :             ? $mailable->queue($this->queue) : $mailable->send($this);
+      : }
+      arguments: {
+        $mailer: Illuminate\Mail\Mailer {#709 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Mail/Mailer.php:205: {
+      : if ($view instanceof MailableContract) {
+      :     return $this->sendMailable($view);
+      : }
+      arguments: {
+        $mailable: App\Mail\DatabaseMailer {#693 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Mail/PendingMail.php:99: {
+      : 
+      :     return $this->mailer->send($this->fill($mailable));
+      : }
+      arguments: {
+        $view: App\Mail\DatabaseMailer {#693 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/app/Jobs/BackEmailJob.php:37: {
+      :     $email = new DatabaseMailer($this->files);
+      :     \Mail::to(env('BACKUP_EMAIL', 'c.otaalo@gmail.com'))->send($email);
+      : }
+      arguments: {
+        $mailable: App\Mail\DatabaseMailer {#693 …}
+      }
+    }
+    App\Jobs\BackEmailJob->handle(): {}
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:29: {
+      : return call_user_func_array(
+      :     $callback, static::getMethodDependencies($container, $callback, $parameters)
+      : );
+      arguments: {
+        $function_name: array:2 [ …2]
+        $parameters: []
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:87: {
+      : 
+      :     return $default instanceof Closure ? $default() : $default;
+      : }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:31: {
+      :         );
+      :     });
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $default: Closure {#23 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/Container.php:549: {
+      : {
+      :     return BoundMethod::call($this, $callback, $parameters, $defaultMethod);
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $parameters: []
+        $defaultMethod: null
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php:94: {
+      : $callback = function ($command) {
+      :     return $this->container->call([$command, 'handle']);
+      : };
+      arguments: {
+        $callback: array:2 [ …2]
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:114: {
+      : return function ($passable) use ($destination) {
+      :     return $destination($passable);
+      : };
+      arguments: {
+        App\Jobs\BackEmailJob {#811 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php:102: {
+      : 
+      :     return $pipeline($this->passable);
+      : }
+      arguments: {
+        App\Jobs\BackEmailJob {#811 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Bus/Dispatcher.php:98: {
+      : 
+      :     return $this->pipeline->send($command)->through($this->pipes)->then($callback);
+      : }
+      arguments: {
+        $destination: Closure {#817 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/CallQueuedHandler.php:49: {
+      : $this->dispatcher->dispatchNow(
+      :     $command, $this->resolveHandler($job, $command)
+      : );
+      arguments: {
+        $command: App\Jobs\BackEmailJob {#811 …}
+        $handler: false
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Jobs/Job.php:76: {
+      : 
+      :     ($this->instance = $this->resolve($class))->{$method}($this, $payload['data']);
+      : }
+      arguments: {
+        $job: Illuminate\Queue\Jobs\DatabaseJob {#712 …}
+        $data: array:2 [ …2]
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Worker.php:320: {
+      : // proper events will be fired to let any listeners know this job has finished.
+      : $job->fire();
+      : 
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Worker.php:270: {
+      : try {
+      :     return $this->process($connectionName, $job, $options);
+      : } catch (Exception $e) {
+      arguments: {
+        $connectionName: "database"
+        $job: Illuminate\Queue\Jobs\DatabaseJob {#712 …}
+        $options: Illuminate\Queue\WorkerOptions {#687 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Worker.php:114: {
+      : if ($job) {
+      :     $this->runJob($job, $connectionName, $options);
+      : } else {
+      arguments: {
+        $job: Illuminate\Queue\Jobs\DatabaseJob {#712 …}
+        $connectionName: "database"
+        $options: Illuminate\Queue\WorkerOptions {#687 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Console/WorkCommand.php:101: {
+      : return $this->worker->{$this->option('once') ? 'runNextJob' : 'daemon'}(
+      :     $connection, $queue, $this->gatherWorkerOptions()
+      : );
+      arguments: {
+        $connectionName: "database"
+        $queue: "default"
+        $options: Illuminate\Queue\WorkerOptions {#687 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Queue/Console/WorkCommand.php:85: {
+      : $this->runWorker(
+      :     $connection, $queue
+      : );
+      arguments: {
+        $connection: "database"
+        $queue: "default"
+      }
+    }
+    Illuminate\Queue\Console\WorkCommand->handle(): {}
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:29: {
+      : return call_user_func_array(
+      :     $callback, static::getMethodDependencies($container, $callback, $parameters)
+      : );
+      arguments: {
+        $function_name: array:2 [ …2]
+        $parameters: []
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:87: {
+      : 
+      :     return $default instanceof Closure ? $default() : $default;
+      : }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php:31: {
+      :         );
+      :     });
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $default: Closure {#23 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Container/Container.php:549: {
+      : {
+      :     return BoundMethod::call($this, $callback, $parameters, $defaultMethod);
+      : }
+      arguments: {
+        $container: Illuminate\Foundation\Application {#2 …}
+        $callback: array:2 [ …2]
+        $parameters: []
+        $defaultMethod: null
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Console/Command.php:180: {
+      : {
+      :     return $this->laravel->call([$this, 'handle']);
+      : }
+      arguments: {
+        $callback: array:2 [ …2]
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/symfony/console/Command/Command.php:264: {
+      : } else {
+      :     $statusCode = $this->execute($input, $output);
+      : }
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Illuminate\Console\OutputStyle {#669 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Console/Command.php:167: {
+      : return parent::run(
+      :     $this->input = $input, $this->output = new OutputStyle($input, $output)
+      : );
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Illuminate\Console\OutputStyle {#669 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/symfony/console/Application.php:888: {
+      : if (null === $this->dispatcher) {
+      :     return $command->run($input, $output);
+      : }
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/symfony/console/Application.php:224: {
+      : $this->runningCommand = $command;
+      : $exitCode = $this->doRunCommand($command, $input, $output);
+      : $this->runningCommand = null;
+      arguments: {
+        $command: Illuminate\Queue\Console\WorkCommand {#507 …}
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/symfony/console/Application.php:125: {
+      :     $e = null;
+      :     $exitCode = $this->doRun($input, $output);
+      : } catch (\Exception $x) {
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Console/Application.php:88: {
+      : 
+      : $exitCode = parent::run($input, $output);
+      : 
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:121: {
+      : 
+      :     return $this->getArtisan()->run($input, $output);
+      : } catch (Exception $e) {
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+    /home/vagrant/Code/IMCI-APP/artisan:37: {
+      :     $input = new Symfony\Component\Console\Input\ArgvInput,
+      :     new Symfony\Component\Console\Output\ConsoleOutput
+      : );
+      arguments: {
+        $input: Symfony\Component\Console\Input\ArgvInput {#24 …}
+        $output: Symfony\Component\Console\Output\ConsoleOutput {#22 …}
+      }
+    }
+  }
+}
+[2018-01-14 03:53:31] Processing: App\Jobs\BackEmailJob
+[2018-01-14 03:53:31] Failed:     App\Jobs\BackEmailJob
