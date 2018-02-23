@@ -34,6 +34,8 @@ class BackEmailJob implements ShouldQueue
     public function handle()
     {
         $email = new DatabaseMailer($this->files);
-        \Mail::to(env('BACKUP_EMAIL', 'c.otaalo@gmail.com'))->send($email);
+        \Mail::to(env('BACKUP_EMAIL', 'mobileimci@googlegroups.com'))
+            ->cc(['c.otaalo@gmail.com'])
+            ->send($email);
     }
 }
