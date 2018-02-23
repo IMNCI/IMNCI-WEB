@@ -40,9 +40,7 @@ class DatabaseBackup extends Command
      */
     public function handle()
     {
-        $details = \Artisan::call('backup:mysql-dump', [
-            '--compress'    =>  true
-        ]);
+        $details = \Artisan::call('backup:mysql-dump');
         $directory = storage_path('app/backups');
         $files = \File::allFiles($directory);
         $files_array = [];

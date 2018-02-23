@@ -1141,3 +1141,12 @@ ErrorException {#818
 }
 [2018-01-14 03:53:31] Processing: App\Jobs\BackEmailJob
 [2018-01-14 03:53:31] Failed:     App\Jobs\BackEmailJob
+[2018-02-24 00:59:20] Processing: App\Jobs\BackEmailJob
+[2018-02-24 00:59:30] Processing: App\Jobs\BackEmailJob
+[2018-02-24 00:59:35] Processing: App\Jobs\BackEmailJob
+[2018-02-24 00:59:39] Failed:     App\Jobs\BackEmailJob
+[2018-02-24 01:02:04] Processing: App\Jobs\BackEmailJob
+[2018-02-24 01:02:09] Processing: App\Jobs\BackEmailJob
+[2018-02-24 01:02:13] Processing: App\Jobs\BackEmailJob
+[2018-02-24 01:02:16] Failed:     App\Jobs\BackEmailJob
+[2018-02-24 01:05:06] Processing: App\Jobs\BackEmailJob
