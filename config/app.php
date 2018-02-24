@@ -177,6 +177,7 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\IMCIServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
@@ -214,6 +215,7 @@ return [
         'File' => Illuminate\Support\Facades\File::class,
         'Form' => 'Collective\Html\FormFacade',
         'Gate' => Illuminate\Support\Facades\Gate::class,
+        'GoogleDrive' => App\Helpers\IMCI\GoogleDrive::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,

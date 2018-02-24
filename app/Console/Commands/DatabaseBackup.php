@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\Jobs\BackEmailJob;
 use Illuminate\Mail\Events\MessageSent;
 use App\Listeners\BackupEmailSent;
+use App\Events\UploadBackupDrive;
 
 class DatabaseBackup extends Command
 {
@@ -45,6 +46,7 @@ class DatabaseBackup extends Command
         $files = \File::allFiles($directory);
         $files_array = [];
         $dump_attachment = $files[count($files) - 1]->getPathname();
+        event(new UploadBackupDrive($files[count($files) - 1]));
         dispatch(new BackEmailJob($dump_attachment));
         event(new BackupEmailSent());
     }

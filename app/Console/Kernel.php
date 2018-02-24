@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('DatabaseBackup:backup')->dailyAt('00:00');
+        $schedule->command('DatabaseBackup:backup')->dailyAt('04:57');
     }
 
     /**

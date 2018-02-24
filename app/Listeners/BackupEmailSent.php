@@ -25,11 +25,10 @@ class BackupEmailSent
      */
     public function handle($event)
     {
-        $directory = storage_path('app/backups');
-        $files = \File::allFiles($directory);
-
-        foreach ($files as $file) {
-            \File::delete($file->getPathname());
-        }
+        // $directory = storage_path('app/backups');
+        // $files = \File::allFiles($directory);
+        // foreach ($files as $file) {
+        //     \File::delete($file->getPathname());
+        // }
     }
 }
