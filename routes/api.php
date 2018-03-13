@@ -11,6 +11,7 @@ use App\AssessmentClassfication;
 use App\county;
 use App\GalleryItem;
 use App\Gallery;
+use App\HCWWorkers;
 use Illuminate\Http\Response;
 /*
 |--------------------------------------------------------------------------
@@ -257,4 +258,21 @@ Route::post('/check-last-update', function(Request $request){
 			'message'	=>	'There is no update'
 		];
 	}
+});
+
+Route::get('/import/hcw', function(Request $request){
+	HCWWorkers::truncate();
+
+	Excel::selectSheetsByIndex(0)->load('storage/app/public/exports/hcws.xlsx', function($reader){
+		$results = $reader->get();
+		foreach($results as $row){
+			$worker = new HCWWorkers();
+
+			$worker->hcw_name = $row->hcw_name;
+			$worker->county = $row->county;
+			$worker->mobile_number = $row->mobile_number;
+
+			$worker->save();
+		}
+	});
 });

@@ -46,6 +46,9 @@ Route::post('/edit-gallery', 'Admin\GalleryController@update');
 
 Route::get('/profiles', 'Admin\UserProfileController@index')->name('profile');
 
+Route::get('/hcw-workers', 'Admin\HCWWorkersController@index')->name('hcw-workers');
+Route::get('/hcw-send-sms/all', 'Admin\SendSMSController@allHCW')->name('hcw-send-sms');
+
 Route::get('storage/{folder}/{filename}', function($folder, $filename){
 	$path = storage_path('app/public/' . $folder . '/' . $filename);
 	// echo $path;die;
