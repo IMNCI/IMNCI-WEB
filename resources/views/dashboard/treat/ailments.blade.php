@@ -1,13 +1,13 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Treat the Infant/Child: Ailments:
+{{ __('dashboard.treat') }}: Ailments:
 <small>{{ $title->title }} ({{ $title->age_group->age_group }})</small>
 @stop
 
 @section('page_css')
 @parent
-<link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/sweetalert/sweetalert.css') }}">
+{{--  <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/sweetalert/sweetalert.css') }}">  --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote-bs3.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/dataTables/datatables.min.css') }}">
@@ -97,6 +97,7 @@ Treat the Infant/Child: Ailments:
 @parent
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/summernote/summernote.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/dataTables/datatables.min.js') }}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 	var content_summernote, ailmentsDataTable;
 	$summernote_options = {
@@ -162,6 +163,7 @@ Treat the Infant/Child: Ailments:
 	});
 
 	$('.delete-ailment').on('click', function(){
+		
 		$('.ibox-title h5').text("Remove Ailment");
 
 		$('#submit-ailment').addClass('hidden');
@@ -185,27 +187,41 @@ Treat the Infant/Child: Ailments:
 	});
 
 	$('#remove-ailment').click(function(){
-		$.ajax({
-			url: "/api/remove-treat-ailment",
-			method: "POST",
-			data: {
-				id: $('input[name="id"]').val()
-			},
-			beforeSend: function(){
-				$('#ailment-form-wrapper').block({
-					message: ""
+		swal({
+			title: "Are you sure?",
+			text: "Once deleted, you will not be able to recover this ailment",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		})
+		.then((willDelete)	=>	{
+			if (willDelete) {
+				$.ajax({
+					url: "/api/remove-treat-ailment",
+					method: "POST",
+					data: {
+						id: $('input[name="id"]').val()
+					},
+					beforeSend: function(){
+						$('#ailment-form-wrapper').block({
+							message: ""
+						});
+					},
+					success: function(){
+						$('#ailment-form-wrapper').unblock();
+						toastr.success("Successfully deleted ailment", "Success");
+						location.reload();
+					},
+					error: function(){
+						$('#ailment-form-wrapper').unblock();
+						toastr.error("There was an error deleting your ailment", "Error");
+					}
 				});
-			},
-			success: function(){
-				$('#ailment-form-wrapper').unblock();
-				toastr.success("Successfully deleted ailment", "Success");
-				location.reload();
-			},
-			error: function(){
-				$('#ailment-form-wrapper').unblock();
-				toastr.error("There was an error deleting your ailment", "Error");
+			}else{
+				swal("Deletion cancelled!");
 			}
 		});
+		
 	});
 
 	$('.close-btn').click(function(){

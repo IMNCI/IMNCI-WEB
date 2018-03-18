@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-Treat the Infant/Child: Ailment Treatments:
+{{ __('dashboard.treat') }}: Ailment Treatments:
 <small>{{ $ailment->ailment }}
 	({{ $title->age_group->age_group }})
 </small>

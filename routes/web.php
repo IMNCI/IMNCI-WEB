@@ -48,6 +48,8 @@ Route::get('/profiles', 'Admin\UserProfileController@index')->name('profile');
 
 Route::get('/hcw-workers', 'Admin\HCWWorkersController@index')->name('hcw-workers');
 Route::get('/hcw-send-sms/all', 'Admin\SendSMSController@allHCW')->name('hcw-send-sms');
+Route::get('/hcw-send-sms/test', 'Admin\SendSMSController@testHCW')->name('hcw-send-test-sms');
+Route::get('/sms/logs', 'Admin\SendSMSController@logs')->name('sms-log');
 
 Route::get('storage/{folder}/{filename}', function($folder, $filename){
 	$path = storage_path('app/public/' . $folder . '/' . $filename);

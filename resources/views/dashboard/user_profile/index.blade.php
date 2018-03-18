@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'User Profiles')
+@section('title', 'User Profiles (from the Mobile App)')
 
 @section('page_css')
 @parent

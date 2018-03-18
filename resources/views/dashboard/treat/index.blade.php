@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Treat the Child/Infant')
+@section('title', __('dashboard.treat'))
 
 @section('page_css')
 @parent
@@ -60,6 +60,9 @@
 													<a class="btn btn-default btn-xs btn-block edit-title" data-id = "{{ $title->id }}" data-title = "{{ $title->title }}" data-guide = "{{ $title->guide }}" data-cohort-id = "{{ $title->age_group_id }}">Edit</a>
 													@if(count($title->treat_ailments) == 0)
 													<a class="btn btn-danger btn-xs btn-block delete-title" data-id = "{{ $title->id }}" data-title = "{{ $title->title }}" data-guide = "{{ $title->guide }}" data-cohort-id = "{{ $title->age_group_id }}">Remove</a>
+													@else
+													<br/>
+													<span class = 'label label-default'>Already has some ailments. Cannot be deleted.</span>
 													@endif
 												</td>
 											</tr>

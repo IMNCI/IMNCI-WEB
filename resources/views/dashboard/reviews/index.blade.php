@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Reported Issues')
+@section('title', 'Reported Issues (from the Mobile App)')
 
 @section('page_css')
 	@parent

@@ -60,7 +60,7 @@
 					@section('sidebar')
 						<li class="{{ Active::check('admin',true) }}"><a href="{{ route('admin') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span></a></li>
 						<li class="{{ Active::check(['assess_classify_treatment', 'classifications'],true) }}"><a href="{{ route('assess_classify_treatment') }}"><i class="fa fa-clipboard"></i> <span class="nav-label">Assess, Classify and Identify Treatment</span></a></li>
-						<li class="{{ Active::check(['treat', 'treat_ailments', 'treat_ailment_treatments'],true) }}"><a href="{{ route('treat') }}"><i class="fa fa-heartbeat"></i> <span class="nav-label">Treat the Infant/Child</span></a></li>
+						<li class="{{ Active::check(['treat', 'treat_ailments', 'treat_ailment_treatments'],true) }}"><a href="{{ route('treat') }}"><i class="fa fa-heartbeat"></i> <span class="nav-label">{{ __('dashboard.treat') }}</span></a></li>
 						<li class="{{ Active::check(['followUpCare', 'ailments'],true) }}"><a href="{{ route('follow_up') }}"><i class="fa fa-stethoscope"></i> <span class="nav-label">Follow Up Care</span></a></li>
 						<li class="{{ Active::check(['counsel-the-mother', 'counsel-subtitles'],true) }}"><a href="{{ route('counsel_the_mother') }}"><i class="fa fa-child"></i> <span class="nav-label">Counsel the Mother</span></a></li>
 						<li class="{{ Active::check('hiv-care',true) }}"><a href="{{ route('hiv_care') }}"><i class="fa fa-user-md"></i> <span class="nav-label">HIV Care For Children</span></a></li>
@@ -89,7 +89,7 @@
 				</nav>
 			</div>
 			<div class="row wrapper border-bottom white-bg page-heading">
-				<div class="col-sm-10">
+				<div class="col-sm-8">
 					<h2>@yield('title')<small>@yield('subtitle')</small></h2>
 					@yield('breadcrumb')
 					<!-- <ol class="breadcrumb">
@@ -101,7 +101,7 @@
 						</li>
 					</ol> -->
 				</div>
-				<div class="col-sm-2">
+				<div class="col-sm-4">
 					<div class="title-action">
 						@section('action_area')
 						@show

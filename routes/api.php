@@ -276,3 +276,5 @@ Route::get('/import/hcw', function(Request $request){
 		}
 	});
 });
+
+Route::post('/hcw/import', 'API\ImportController@hcw');
