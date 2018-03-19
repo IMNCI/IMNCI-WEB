@@ -17,7 +17,7 @@
         <li><a href="#" data-toggle="modal" data-target="#uploadModal"><i class = 'fa fa-upload'></i>&nbsp;&nbsp;Import Data</a></li>
     </ul>
 </div>
-<a class = "btn btn-primary btn-sm" href = '{{ route("hcw-send-sms") }}'>Send Invitation SMS to All Workers</a>
+<button id = "send-all" class = "btn btn-primary btn-sm" data-href = '{{ route("hcw-send-sms") }}'>Send Invitation SMS to All Workers</button>
 @stop
 
 @section('content')
@@ -83,6 +83,7 @@
 @section('page_js')
 @parent
 <script src="{{ asset('dashboard/js/plugins/dropzone/dropzone.js') }}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     Dropzone.options.dropzoneForm = {
         maxFiles: 1,
@@ -99,5 +100,20 @@
             });
         }
     }
+
+    $('#send-all').on('click', function(){
+        var url = $(this).attr('data-href');
+        swal({
+            title: "Continue?",
+			text: "This will send an invitation SMS to all Health Care Workers",
+			icon: "warning",
+			buttons: true,
+        })
+        .then((willSend)    =>  {
+            if(willSend){
+                window.location = url;
+            }
+        });
+    });
 </script>
 @stop

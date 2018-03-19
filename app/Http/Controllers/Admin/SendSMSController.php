@@ -48,7 +48,7 @@ class SendSMSController extends Controller
             'json'  =>  $message
         ]);
 
-        echo "<pre>";print_r($response->getStatusCode());die;
+        echo "<pre>";print_r($response->getBody());die;
     }
 
     public function testHCW(Request $request){

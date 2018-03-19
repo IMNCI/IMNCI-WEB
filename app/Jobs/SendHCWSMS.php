@@ -50,22 +50,6 @@ class SendHCWSMS implements ShouldQueue
             $message= array("sender"=>$senderid,"recipient"=>$num ,"message"=>$msg);
 
             $URL="http://sms.southwell.io/api/v1/messages";
-            $sms = json_encode($message);
-
-            // $httpRequest = curl_init($URL);
-            // curl_setopt($httpRequest, CURLOPT_NOBODY, true);
-            // curl_setopt($httpRequest, CURLOPT_POST, true);
-            // curl_setopt($httpRequest, CURLOPT_POSTFIELDS, $sms);
-            // curl_setopt($httpRequest, CURLOPT_TIMEOUT, 30); //timeout after 30 seconds
-            // curl_setopt($httpRequest, CURLOPT_RETURNTRANSFER,1);
-            // curl_setopt($httpRequest, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($sms)));
-            // curl_setopt($httpRequest, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-            // curl_setopt($httpRequest, CURLOPT_USERPWD, "$username:$password");
-            // $results=curl_exec ($httpRequest);
-            // $status_code = curl_getinfo($httpRequest, CURLINFO_HTTP_CODE); //get status code
-            // curl_close ($httpRequest);
-            // $response = json_decode($results);
-            // echo $status_code;
 
             $client = new Client();
 
@@ -83,18 +67,14 @@ class SendHCWSMS implements ShouldQueue
             $smslog->phonenumber = $this->worker->mobile_number;
             $smslog->name = $this->worker->hcw_name;
             $smslog->time_sent = $datesent;
-            //echo $response->message;
+
             if ($response->getStatusCode() =='201') //success
             {
                 $smslog->status = 1;
-
-            //$d=mysql_query("update viralsamples set patientsmssent=1, patientsmsdatesent='$datesent'  where ID='$ID'");
             }       
             else
             {
                 $smslog->status = 0;
-                // report("There was an error sending SMS to {$num}");
-                //  throw new Exception("sms not successful");  
             }
 
             $smslog->save();
