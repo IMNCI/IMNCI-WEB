@@ -41,7 +41,7 @@ class SendHCWSMS implements ShouldQueue
 
             $num = $this->worker->mobile_number;
 
-            $msg="The 2017 Edition of the IMNCI Guidelines is available for download from Google Play Store for FREE.  \n
+            $msg="The 2017 Edition of the IMNCI Guidelines Android app is available for download from Google Play Store for FREE.  \n
     Click this link to download https://play.google.com/store/apps/details?id=org.ministryofhealth.newimci&hl=en .  \n
     Ministry of Health - NCAHU";
 
