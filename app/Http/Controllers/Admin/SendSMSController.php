@@ -59,9 +59,9 @@ class SendSMSController extends Controller
                 'mobile_number' =>  '254725160399'
             ],
             [
-                'hcw_name'      =>  'Chrispine Otaalo',
-                'county'        =>  'Migori',
-                'mobile_number' =>  '254728837126'
+                'hcw_name'      =>  'Sheila Mutheu',
+                'county'        =>  'Nairobi',
+                'mobile_number' =>  '254726416795'
             ]
         ];
 

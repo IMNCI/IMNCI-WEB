@@ -200,19 +200,19 @@ Route::get('sample', function(){
 
 Route::get('disease_classfication', function(){
 	$data1 = [
-		'classification'	=>	'Severe Classification',
+		'classification'	=>	'Severe',
 		'description'		=>	'Severe Classification needing admission or pre-referral treatment and referral',
 		'color'				=>	'#FF69B4'
 	];
 
 	$data2 = [
-		'classification'	=>	'Normal Classification',
+		'classification'	=>	'Mild',
 		'description'		=>	'A classification needing specific medical treatment and advice',
 		'color'				=>	'#FFD700'
 	];
 
 	$data3 = [
-		'classification'	=>	'Mild Classification',
+		'classification'	=>	'Normal',
 		'description'		=>	'Not serious and in most cases no drugs are needed. Simple advice on home management given',
 		'color'				=>	'#32CD32'
 	];
