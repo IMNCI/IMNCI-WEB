@@ -52,6 +52,8 @@ Route::get('/hcw-send-sms/test', 'Admin\SendSMSController@testHCW')->name('hcw-s
 Route::get('/hcw-send-sms/new-test', 'Admin\SendSMSController@test')->name('send-test');
 Route::get('/sms/logs', 'Admin\SendSMSController@logs')->name('sms-log');
 
+Route::get('/documentation', 'Admin\DocumentationController@index')->name('documentation');
+
 Route::get('storage/{folder}/{filename}', function($folder, $filename){
 	$path = storage_path('app/public/' . $folder . '/' . $filename);
 	// echo $path;die;

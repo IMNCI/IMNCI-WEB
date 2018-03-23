@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'treat' =>  'Treat the Infant/Child'
+    'treat'             =>  'Treat the Infant/Child',
+    'documentation'     =>  'Documentation'
 ];
