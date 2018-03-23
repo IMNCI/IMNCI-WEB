@@ -35,10 +35,10 @@ class AppUserController extends Controller
 
     public function getBrandStatistics(){
         $brand_statistics = [];
-        $brands = AppUser::select('brand', \DB::raw('count(*) as total'))->groupBy('brand')->get();
+        $brands = AppUser::select('brand', \DB::raw('count(*) as total'))->groupBy('brand')->orderBy('total', 'DESC')->get();
         foreach ($brands as $brand) {
             $brand_statistics[] = [
-                'name'  =>  $brand->brand,
+                'name'  =>  ucwords(strtolower($brand->brand)),
                 'y'     =>  $brand->total
             ];
         }
