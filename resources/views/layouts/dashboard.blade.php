@@ -69,6 +69,7 @@
 						<li class="{{ Active::check('profiles',true) }}"><a href="{{ route('profile') }}"><i class="fa fa-users"></i> <span class="nav-label">User Profiles</span></a></li>
 						<li class="{{ Active::check('reported-issues',true) }}"><a href="{{ route('reported-issues') }}"><i class="fa fa-commenting-o"></i> <span class="nav-label">Reported Issues</span></a></li>
 						<li class="{{ Active::check('hcw-workers',true) }}"><a href="{{ route('hcw-workers') }}"><i class="fa fa-users"></i> <span class="nav-label">HCW Workers</span></a></li>
+						<li class="{{ Active::check('hcw-workers',true) }}"><a href="{{ route('hcw-workers') }}"><i class="fa fa-file-o"></i> <span class="nav-label">Documentation</span></a></li>
 						<li><a href="{{ route('logout') }}" class="logout"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a></li>
 					@show
 				</ul>
