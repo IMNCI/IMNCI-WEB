@@ -45,6 +45,9 @@
 								</td>
 							</tr>
 							@empty
+							<tr>
+								<td colspan="2"><center>There are no parents to display</center></td>
+							</tr>
 							@endforelse
 						</tbody>
     				</table>
