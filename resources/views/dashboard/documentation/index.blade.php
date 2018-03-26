@@ -32,7 +32,7 @@
                     </div>
                     <div class="file-name">
                         <p>{{ substr($file, strpos($file, "/") + 1) }}</p>
-                        <small>{{ date('M d, Y', Storage::lastModified($file)) }}</small>
+                        Last Modified: <small>{{ date('M d, Y', Storage::lastModified($file)) }}</small>
                     </div>
                 </a>
             </div>
