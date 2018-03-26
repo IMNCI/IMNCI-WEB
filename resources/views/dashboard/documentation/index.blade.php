@@ -3,3 +3,7 @@
 @section('title')
 {{ __('dashboard.documentation') }}
 @stop
+
+<?php
+phpinfo();
+?>
