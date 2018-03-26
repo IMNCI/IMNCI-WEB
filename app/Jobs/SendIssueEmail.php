@@ -38,7 +38,7 @@ class SendIssueEmail implements ShouldQueue
         $email = new IssueMailer($this->issue);
         $confirmer = new IssueConfirmation($this->issue);
 
-        Mail::to(env('DEFAULT_SUPPORT_EMAIL', 'c.otaalo@gmail.com'))->send($email);
+        Mail::to(env('DEFAULT_SUPPORT_EMAIL', 'mobileimci@googlegroups.com'))->send($email);
         Mail::to($this->issue->email)->send($confirmer);
     }
 }
