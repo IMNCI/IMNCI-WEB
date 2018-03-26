@@ -81,7 +81,7 @@ class SendSMSController extends Controller
     }
     
     public function logs(){
-        $data['logs'] = SMSLog::all();
+        $data['logs'] = SMSLog::orderBy('created_at', 'DESC')->get();
         return view('dashboard/sendsms/index')->with($data);
     }
 }
