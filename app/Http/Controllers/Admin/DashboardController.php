@@ -22,6 +22,12 @@ class DashboardController extends Controller
 
     function index(){
         $appusers = AppUser::orderBy('updated_at', 'DESC')->get();
+        $years = AppUser::distinct()
+            ->orderBy('year', 'DESC')
+            ->get([
+                \DB::raw('YEAR(opened_at) AS `year`')
+            ]);
+
         $profiles = UserProfile::count();
 
         $month = date('Y-m');
@@ -32,6 +38,6 @@ class DashboardController extends Controller
         
         $month_users =(isset($appusers_this_month[0]->users)) ? $appusers_this_month[0]->users : 0;
         
-    	return view('dashboard/dashboard/index')->with(['appusers'=>$appusers, 'month_users'   =>  $month_users, 'profiles'=>$profiles]);
+    	return view('dashboard/dashboard/index')->with(['years' => $years, 'appusers'=>$appusers, 'month_users'   =>  $month_users, 'profiles'=>$profiles]);
     }
 }

@@ -81,8 +81,9 @@
 							<div class="form-group">
 								<label>Pick a Year</label>
 								<select class="form-control" name="monthly-downloads-year">
-									<option value="2017">2017</option>
-									<option value="2018">2018</option>
+									@foreach($years as $year)
+									<option value="{{ $year->year }}">{{ $year->year }}</option>
+									@endforeach
 								</select>
 							</div>
 						</div>
