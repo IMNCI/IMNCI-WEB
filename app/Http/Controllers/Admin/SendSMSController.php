@@ -20,7 +20,7 @@ class SendSMSController extends Controller
             dispatch(new SendHCWSMS($worker));
         }
 
-        $request->session()->flash('success', 'Your messages are on their way to ' . count($workers) . ' HCW Workers');
+        $request->session()->flash('success', 'The SMS have been queued for dispatch to the recepients');
         return redirect()->route('hcw-workers');
     }
 
@@ -76,7 +76,7 @@ class SendSMSController extends Controller
             dispatch(new SendHCWSMS($worker));
         }
 
-        $request->session()->flash('success', 'Your messages are on their way to ' . count($workers) . ' test accounts');
+        $request->session()->flash('success', '[Test] The SMS have been queued for dispatch to the recepients');
         return redirect()->route('hcw-workers');
     }
     
