@@ -3,7 +3,7 @@
 @section('title', 'HIV Care for Children')
 
 @section('action_area')
-<a class="btn btn-sm btn-primary add-hiv-care" data-toggle="modal" data-target="#myModal5">Add HIV Care</a>
+<!-- <a class="btn btn-sm btn-primary add-hiv-care" data-toggle="modal" data-target="#myModal5">Add HIV Care</a> -->
 
 @endsection
 
@@ -19,7 +19,69 @@
         </div>
     @endif
     <div class="row">
+
     	<div class="col-md-5">
+    		<div class="ibox">
+    			<div class="ibox-content">
+    				@if(count($hivcare))
+    				<ul class="sortable-list connectList agile-list" id="todo">
+    					@if($parents)
+	    					@foreach($parents as $parent)
+	    					<h3>{{ $parent->parent }}</h3>
+	    						@foreach($hivcare as $care)
+	    							@if($care->parent == $parent->parent)
+	    							<li class="care-link" style="">
+	    								<input type="hidden" class="care_id" value="{{ $care->id }}">
+	    								<span>{{ $care->title }}</span>
+	    								<div class="agile-detail">
+											<span class="pull-right">
+												<a class="btn btn-xs btn-white edit-care" data-id = "{{ $care->id }}" data-title = "{{ $care->title }}" data-care = '{{ $care->content }}' data-parent = "{{ $care->parent }}">View/Edit</a>&nbsp;
+												<a class="btn btn-xs btn-white remove-care" data-id = "{{ $care->id }}" data-title = "{{ $care->title }}" data-care = '{{ $care->content }}' data-parent = "{{ $care->parent }}">Remove</a>
+											</span>
+											@if ($care->parent)
+											{{ $care->parent }}
+											@else
+											<br/>
+											@endif
+										</div>
+	    							</li>
+	    							@endif
+	    						@endforeach
+	    					@endforeach
+    					@endif
+    				</ul>
+    				@else
+    				@endif
+    			</div>
+    		</div>
+    	</div>
+    	<div class="col-md-7">
+    		<div class="ibox">
+    			<div class="ibox-content">
+    				{!! Form::open(['url' => route('hiv_care_submit')]) !!}
+    					{{ csrf_field() }}
+    					{!! Form::hidden('id', 0) !!}
+    					<div class="form-group">
+    						{!! Form::label('title', 'Title', ['class'=>'control-label']) !!}
+    						{!! Form::text('title', NULL, ['class' => 'form-control']) !!}
+    					</div>
+    					<div class="form-group">
+    						{!! Form::label('parent', 'Parent', ['class'=>'control-label']) !!}
+    						{!! Form::text('parent', NULL, ['class' => 'form-control']) !!}
+    					</div>
+    					<div class="form-group">
+    						{!! Form::label('content', 'Content', ['class'=>'control-label']) !!}
+    						{!! Form::textarea('content', NULL, ['class' => 'form-control']) !!}
+    					</div>
+
+    					<a href="#" class="btn btn-success btn-block" id="save-changes">Save Changes</a>
+    					<button class = "btn btn-danger btn-block" id="delete-data">Yes, Delete this data</button>
+    					<button class="btn btn-primary btn-block" id="submit-data">Submit data</button>
+    				{!! Form::close() !!}
+    			</div>
+    		</div>
+    	</div>
+    	<!-- <div class="col-md-5">
     		<div class="ibox">
     			<div class="ibox-title">
     				HIV Care Parents
@@ -93,7 +155,7 @@
 				<a class="btn btn-sm btn-primary add-hiv-care" data-toggle="modal" data-target="#myModal5">Add the First One</a>
 			</div>
 	    	@endif
-    	</div>
+    	</div> -->
 	</div>
 
 	<div class="modal inmodal fade" id="add-parent-modal" tabindex="-1" role="dialog"  aria-hidden="true">
@@ -217,12 +279,82 @@
 @section('page_css')
 @parent
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/jasny/jasny-bootstrap.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote-bs3.css') }}">
+<style type="text/css">
+	.hidden{
+		display: none;
+	}
+</style>
 @endsection
 
 @section('page_js')
 @parent
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/jasny/jasny-bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('dashboard/js/plugins/typehead/bootstrap3-typeahead.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('dashboard/js/plugins/typehead/bloodhound.js') }}"></script>
+<script type="text/javascript" src="{{ asset('dashboard/js/plugins/summernote/summernote.min.js') }}"></script>
 <script type="text/javascript">
+
+	var content_summernote;
+	var emptyText = "<p></p><p></p>";
+
+	$('#delete-data').addClass('hidden');
+	$('#submit-data').addClass('hidden');
+
+	$(document).ready(function(){
+		content_summernote = $('textarea[name="content"]').summernote({
+			height: "250px",
+			placeholder: "Type here..."
+		});
+
+		$.get('/api/hiv/parents', function(res){
+			$('input[name="parent"]').typeahead({ source:res });
+		});
+
+		$('.care-link').on('click', function(){
+			var care_id = $(this).find('.care_id').val();
+			showManageCare();
+
+			$('input[name="title"]').val($(this).find('.edit-care').attr('data-title'));
+			$('input[name="parent"]').val($(this).find('.edit-care').attr('data-parent'));
+			content_summernote.summernote('code', $(this).find('.edit-care').attr('data-care'));
+		});
+
+		$('.edit-care').on('click', function(e){
+			showManageCare();
+
+			$('input[name="title"]').val($(this).attr('data-title'));
+			$('input[name="parent"]').val($(this).attr('data-parent'));
+			content_summernote.summernote('code', $(this).attr('data-care'));
+
+			e.stopPropagation();
+		});
+
+		$('.remove-care').on('click', function(e){
+			showManageCare("remove");
+
+			$('input[name="title"]').val($(this).attr('data-title'));
+			$('input[name="parent"]').val($(this).attr('data-parent'));
+			content_summernote.summernote('code', $(this).attr('data-care'));
+
+			e.stopPropagation();
+		});
+	});
+
+	function showManageCare(type){
+		if (typeof(type) == "undefined") {
+			$('#delete-data').addClass('hidden');
+			$('#submit-data').addClass('hidden');
+			$('#save-changes').removeClass('hidden');
+		}else{
+			$('#delete-data').removeClass('hidden');
+			$('#submit-data').addClass('hidden');
+			$('#save-changes').addClass('hidden');
+		}
+	}
+
+
 	$('.edit-hiv-care').click(function(){
 		var id = $(this).attr('data-id');
 		var title = $(this).attr('data-title');

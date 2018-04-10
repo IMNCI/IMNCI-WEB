@@ -99,6 +99,7 @@ Route::get('/treatments/{classification_id}', 'API\AssessmentClassificationTreat
 Route::get('/remove-classification/{classification_id}', 'API\ClassificationController@remove');
 
 Route::get('/hiv-care', 'API\HivCareController@index');
+Route::get('/hiv/parents', 'API\HivCareController@getParents');
 
 Route::get('/gallery', 'API\GalleryController@index');
 Route::get('/gallery/view/{id}', 'API\GalleryController@getGalleryDetailsView');

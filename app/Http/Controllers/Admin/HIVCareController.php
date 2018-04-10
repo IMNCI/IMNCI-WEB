@@ -18,7 +18,7 @@ class HIVCareController extends Controller
 
     function index(){
 		$data['hivcare'] = HIVCare::all();
-		$data['parents'] = HIVCareParent::all(['id', 'parent_name']);
+		$data['parents'] = HIVCare::select('parent')->groupBy('parent')->get();
 
 		// echo "<pre>";print_r(HIVCareParent::pluck('parent_name', 'id'));die;
 		
@@ -26,15 +26,14 @@ class HIVCareController extends Controller
     }
 
     function store(Request $request){
+    	$this->validate($request, ['title'=>'required', 'parent' => "required", 'content' => 'required']);
     	if($request->id == 0){
-    		$this->validate($request, ['title'=>'required', 'hiv_care_screenshot' => "required|image|mimes:jpeg,bmp,png"]);
-	    	$filename = $request->hiv_care_screenshot->store('hiv_care');
+    		$this->validate($request, ['title'=>'required', 'parent' => "required", 'content' => 'required']);
 	    	$hivCare = new HIVCare();
 
 	    	$hivCare->title = $request->title;
-	    	$hivCare->thumbnail = $request->thumb;
-			$hivCare->image_path = $filename;
-			$hivCare->parent_id = $request->parent_id;
+	    	$hivCare->parent = $request->parent;
+			$hivCare->content = $request->content;
 	    }else{
 	    	$this->validate($request, ['title'=>'required']);
 	    	$hivCare = HIVCare::findOrFail($request->id);
