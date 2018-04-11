@@ -32,6 +32,7 @@ Route::get('/treat_ailment_treatments/{id}', 'Admin\TreatController@treatments')
 Route::get('/reported-issues', 'Admin\ReviewController@index')->name('reported-issues');
 Route::get('/hiv-care', 'Admin\HIVCareController@index')->name('hiv_care');
 Route::post('/hiv-care', 'Admin\HIVCareController@store')->name('hiv_care_submit');
+Route::get('/hiv-care/delete/{id}', 'Admin\HIVCareController@destroy')->name('hiv_care_delete');
 Route::post('/hiv-care/parent', 'Admin\HIVCareController@storeParent')->name('hiv_care_submit_parent');
 Route::post('/hiv-care-delete', 'Admin\HIVCareController@destroy')->name('hiv_care_destroy');
 Route::get('/glossary', 'Admin\GlossaryController@index')->name('glossary');

@@ -39,11 +39,8 @@ class HIVCareController extends Controller
 	    	$hivCare = HIVCare::findOrFail($request->id);
 
 			$hivCare->title = $request->title;
-			$hivCare->parent_id = $request->parent_id;
-	    	if ($request->thumb != "") {
-	    		$hivCare->thumbnail = $request->thumb;
-	    		$hivCare->image_path = $request->hiv_care_screenshot->store('hiv_care');
-	    	}
+	    	$hivCare->parent = $request->parent;
+			$hivCare->content = $request->content;
 	    }
 
 	    $hivCare->save();

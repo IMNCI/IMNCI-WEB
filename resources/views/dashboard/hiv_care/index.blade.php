@@ -23,6 +23,8 @@
     	<div class="col-md-5">
     		<div class="ibox">
     			<div class="ibox-content">
+    				<button class="btn btn-sm btn-success pull-right" id = 'add-hiv-care'>Add HIV Care</button>
+    				<br/>
     				@if(count($hivcare))
     				<ul class="sortable-list connectList agile-list" id="todo">
     					@if($parents)
@@ -67,7 +69,7 @@
     					</div>
     					<div class="form-group">
     						{!! Form::label('parent', 'Parent', ['class'=>'control-label']) !!}
-    						{!! Form::text('parent', NULL, ['class' => 'form-control']) !!}
+    						{!! Form::text('parent', NULL, ['class' => 'form-control', 'autocomplete'	=>	'off']) !!}
     					</div>
     					<div class="form-group">
     						{!! Form::label('content', 'Content', ['class'=>'control-label']) !!}
@@ -75,7 +77,7 @@
     					</div>
 
     					<a href="#" class="btn btn-success btn-block" id="save-changes">Save Changes</a>
-    					<button class = "btn btn-danger btn-block" id="delete-data">Yes, Delete this data</button>
+    					<a class = "btn btn-danger btn-block" id="delete-data">Yes, Delete this data</a>
     					<button class="btn btn-primary btn-block" id="submit-data">Submit data</button>
     				{!! Form::close() !!}
     			</div>
@@ -281,6 +283,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/jasny/jasny-bootstrap.min.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/summernote/summernote-bs3.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/sweetalert/sweetalert.css') }}">
 <style type="text/css">
 	.hidden{
 		display: none;
@@ -294,6 +297,7 @@
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/typehead/bootstrap3-typeahead.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/typehead/bloodhound.js') }}"></script>
 <script type="text/javascript" src="{{ asset('dashboard/js/plugins/summernote/summernote.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('dashboard/js/plugins/sweetalert/sweetalert.min.js') }}"></script>
 <script type="text/javascript">
 
 	var content_summernote;
@@ -319,6 +323,16 @@
 			$('input[name="title"]').val($(this).find('.edit-care').attr('data-title'));
 			$('input[name="parent"]').val($(this).find('.edit-care').attr('data-parent'));
 			content_summernote.summernote('code', $(this).find('.edit-care').attr('data-care'));
+			$('input[name="id"]').val($(this).find('.edit-care').attr('data-id'));
+		});
+
+		$('#add-hiv-care').click(function(){
+			showManageCare();
+
+			$('input[name="title"]').val("");
+			$('input[name="parent"]').val("");
+			content_summernote.summernote('code', "");
+			$('input[name="id"]').val(0);
 		});
 
 		$('.edit-care').on('click', function(e){
@@ -327,6 +341,7 @@
 			$('input[name="title"]').val($(this).attr('data-title'));
 			$('input[name="parent"]').val($(this).attr('data-parent'));
 			content_summernote.summernote('code', $(this).attr('data-care'));
+			$('input[name="id"]').val($(this).attr('data-id'));
 
 			e.stopPropagation();
 		});
@@ -337,8 +352,29 @@
 			$('input[name="title"]').val($(this).attr('data-title'));
 			$('input[name="parent"]').val($(this).attr('data-parent'));
 			content_summernote.summernote('code', $(this).attr('data-care'));
+			$('input[name="id"]').val($(this).attr('data-id'));
 
 			e.stopPropagation();
+		});
+
+		$('#save-changes').click(function(){
+			toastr.warning("Please validate the data before submitting");
+			$(this).addClass('hidden');
+			$('#submit-data').removeClass('hidden');
+		});
+
+		$('#delete-data').click(function(){
+			var id = $('input[name="id"]').val();
+			swal({
+				'title': 'Warning',
+				'text': 'Once deleted, please note that this cannot be undone',
+				'type' : 'warning',
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Yes, delete it!"
+			}, function(){
+				window.location = '/hiv-care/delete/' + id;
+			});
 		});
 	});
 
