@@ -52,6 +52,7 @@ Route::get('/hcw-workers', 'Admin\HCWWorkersController@index')->name('hcw-worker
 Route::get('/hcw-send-sms/all', 'Admin\SendSMSController@allHCW')->name('hcw-send-sms');
 Route::get('/hcw-send-sms/test', 'Admin\SendSMSController@testHCW')->name('hcw-send-test-sms');
 Route::get('/hcw-send-sms/new-test', 'Admin\SendSMSController@test')->name('send-test');
+Route::get('/hcw-workers/upload', 'Admin\HCWWorkersController@uploadPage')->name('hcw-upload-data');
 Route::get('/sms/logs', 'Admin\SendSMSController@logs')->name('sms-log');
 
 Route::get('/documentation', 'Admin\DocumentationController@index')->name('documentation');

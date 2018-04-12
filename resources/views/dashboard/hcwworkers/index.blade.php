@@ -6,6 +6,8 @@
 @parent
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/dropzone/basic.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/dropzone/dropzone.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/dataTables/datatables.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('dashboard/css/plugins/dataTables/responsive.dataTables.min.css') }}">
 @stop
 
 @section('action_area')
@@ -14,7 +16,7 @@
     <ul class="dropdown-menu">
         <li><a href="{{ route('hcw-send-test-sms') }}"><i class = 'fa fa-wrench'></i>&nbsp;&nbsp;Send Test SMS</a></li>
         <li><a href="{{ route('sms-log') }}"><i class = 'fa fa-table'></i>&nbsp;&nbsp;View SMS Log</a></li>
-        <li><a href="#" data-toggle="modal" data-target="#uploadModal"><i class = 'fa fa-upload'></i>&nbsp;&nbsp;Import Data</a></li>
+        <li><a href="{{ route('hcw-upload-data') }}"><i class = 'fa fa-upload'></i>&nbsp;&nbsp;Import Data</a></li>
     </ul>
 </div>
 <button id = "send-all" class = "btn btn-primary btn-sm" data-href = '{{ route("hcw-send-sms") }}'>Send Invitation SMS to All Workers</button>
@@ -31,7 +33,7 @@
     <div class="col-md-12">
         <div class="ibox">
 			<div class="ibox-content">
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="hcw-workers">
                     <thead>
                         <th style = 'width: 65%;'>Name</th>
                         <th>Mobile</th>
@@ -45,9 +47,9 @@
                                 <td>{{ $worker->county }}</td>
                             </tr>
                         @empty
-                            <tr>
+                            <!-- <tr>
                                 <td colspan = '3'><center>No HCW Workers found here</center></td>
-                            </tr>
+                            </tr> -->
                         @endforelse
                     </tbody>
                 </table>
@@ -84,7 +86,15 @@
 @parent
 <script src="{{ asset('dashboard/js/plugins/dropzone/dropzone.js') }}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('dashboard/js/plugins/dataTables/datatables.min.js') }}"></script>
+<script src="{{ asset('dashboard/js/plugins/dataTables/dataTables.responsive.min.js') }}"></script>
 <script>
+    $(document).ready(function(){
+        $('#hcw-workers').dataTable({
+            "iDisplayLength": 25
+        });
+    });
+
     Dropzone.options.dropzoneForm = {
         maxFiles: 1,
         accept: function(file, done) {

@@ -279,3 +279,5 @@ Route::get('/import/hcw', function(Request $request){
 });
 
 Route::post('/hcw/import', 'API\ImportController@hcw');
+Route::get('/hcw-temp/all', 'API\HCWController@allTemp');
+Route::get('/hcw-temp/update', 'API\HCWController@update');
